@@ -1,0 +1,15 @@
+name: CI-Check
+
+on:
+  pull_request:
+    branches: [ "main", "develop", "feature", "hotfix" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Status check
+        run: echo "Check voltooid!"
