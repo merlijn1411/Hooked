@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WinListener : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem confettiEffect;
+
     private void OnEnable()
     {
         WinEvent.OnPlayersWon += OnWin;
@@ -16,5 +18,6 @@ public class WinListener : MonoBehaviour
     private void OnWin()
     {
         Debug.Log("You Won!");
+        Instantiate(confettiEffect);
     }
 }
