@@ -11,6 +11,7 @@ public class DayNightCycle : MonoBehaviour
     private Image _image;
     private Scrollbar _scrollBar;
     private float _timer;
+    private bool _hasTriggered;
 
     void Start()
     {
@@ -32,6 +33,11 @@ public class DayNightCycle : MonoBehaviour
             float progress = _timer / cycleDuration;
             _scrollBar.value = progress;
             _image.color = Color.Lerp(startColor, endColor, progress);
+            if (_timer >= cycleDuration && !_hasTriggered)
+            {
+                _hasTriggered = true;
+                WinEvent.TriggerWin();
+            }
         }
     }
 }
