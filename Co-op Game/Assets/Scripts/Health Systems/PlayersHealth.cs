@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayersHealth : MonoBehaviour
 {
@@ -48,9 +49,14 @@ public class PlayersHealth : MonoBehaviour
             case 0:
                 heartsAliveImages[2].enabled = false;
                 heartsDeadImages[2].enabled = true;
-                Debug.Log("You Died");
-                //call you died function
+                PlayerHaveDied();
                 break;
         }
+    }
+
+    //This function is called when te player has died and a resart menu can open. For now we just quickly resart the level.
+    private void PlayerHaveDied()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
