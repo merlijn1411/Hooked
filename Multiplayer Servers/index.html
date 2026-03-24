@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Controller</title>
+    <style>
+        :root {
+            --safe-gap: clamp(10px, 2vw, 20px);
+            --button-size: clamp(54px, 12vw, 90px);
+            --button-font: clamp(14px, 3.2vw, 20px);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: #101010;
+        }
+
+        canvas {
+            position: fixed;
+            inset: 0;
+            display: block;
+            z-index: 0;
+        }
+
+        .hud {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .title {
+            position: fixed;
+            top: var(--safe-gap);
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(16px, 4vw, 28px);
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .buttons {
+            position: fixed;
+            right: clamp(26px, 9vw, 150px);
+            bottom: calc(env(safe-area-inset-bottom, 0px) + var(--safe-gap));
+            display: grid;
+            grid-template-columns: repeat(2, var(--button-size));
+            grid-template-areas:
+                "jump jump"
+                "left right";
+            justify-items: center;
+            gap: clamp(8px, 1.8vw, 14px);
+            pointer-events: auto;
+        }
+
+        .buttons button {
+            width: var(--button-size);
+            height: var(--button-size);
+            border: 0;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #121212;
+            font-size: var(--button-font);
+            font-weight: 700;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+            touch-action: manipulation;
+        }
+
+        .buttons button:active {
+            transform: scale(0.96);
+        }
+
+        .btn-jump {
+            grid-area: jump;
+        }
+
+        .btn-left {
+            grid-area: left;
+        }
+
+        .btn-right {
+            grid-area: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="hud">
+        <h1 class="title">Phone Controller</h1>
+
+        <div class="buttons">
+            <button class="btn-jump" onclick="sendInput('jump')">Jump</button>
+            <button class="btn-left" onclick="sendInput('left')">Left</button>
+            <button class="btn-right" onclick="sendInput('right')">Right</button>
+        </div>
+    </div>
+
+    <script src="./vector.js"></script>
+    <script src="./joystick.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        const socket = new WebSocket("ws://192.168.68.131:3000");//thuis = 192.168.68.131 school = 10.120.9.16
+
+        let playerId = null;
+
+        socket.onopen = () => {
+            socket.send(JSON.stringify({
+                type: "register",
+                clientType: "controller"
+            }));
+        };
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+
+            if (data.type === "welcome") {
+                playerId = data.playerId;
+                console.log("🎮 My Player ID:", playerId);
+            }
+        };
+
+        function sendInput(action) {
+            if (!playerId) return;
+
+            socket.send(JSON.stringify({
+                type: "input",
+                action: action
+            }));
+        }
+    </script>
+</body>
+</html>
