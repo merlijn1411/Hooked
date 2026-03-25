@@ -3,47 +3,52 @@ using UnityEngine;
 public class HookRandomizer : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float minSpeed = 1f;
-    public float maxSpeed = 3f;
+    [SerializeField] private float minSpeed = 1f;
+    [SerializeField] private float maxSpeed = 3f;
 
     [Header("Vertical Settings")]
-    public float minY = -1.29f;
-    public float maxY = 9f;
-    public float verticalCooldown = 1f; // cooldown in seconden na omhoog/omlaag
+    [SerializeField] private float minY = -1.29f;
+    [SerializeField] private float maxY = 9f;
+    [SerializeField] private float verticalCooldown = 1f;
 
     [Header("Horizontal Settings")]
-    public float horizontalRange = 2f;      // groter bereik voor meer links/rechts
-    public float horizontalSpeedMin = 0.5f; // minimale horizontale snelheid
-    public float horizontalSpeedMax = 2f;   // maximale horizontale snelheid
+    [SerializeField] private float horizontalRange = 2f;
+    [SerializeField] private float horizontalSpeedMin = 0.5f;
+    [SerializeField] private float horizontalSpeedMax = 2f;
 
     [Header("Spacing")]
-    public float minDistance = 1f; // minimale afstand tot andere haken
+    [SerializeField] private float minDistance = 1f;
 
-    private Vector3 startPos;
-    private float verticalDirection;
-    private float verticalSpeed;
+    [Header("Line Settings")]
+    [SerializeField] private Transform lineStart;       
+    [SerializeField] private GameObject linePrefab;     
+    private GameObject _lineInstance;
+    private Transform _lineTransform;
 
-    private Vector3 horizontalTarget;
-    private float horizontalSpeed;
+    private Vector3 _startPos;
+    private float _verticalDirection;
+    private float _verticalSpeed;
 
-    private float verticalCooldownTimer = 0f;
+    private Vector3 _horizontalTarget;
+    private float _horizontalSpeed;
 
-    private HookRandomizer[] allHooks;
+    private float _verticalCooldownTimer = 0f;
+
+    private HookRandomizer[] _allHooks;
 
     void Start()
     {
-        startPos = transform.position;
+        _startPos = transform.position;
 
-        verticalDirection = Random.value < 0.5f ? -1f : 1f;
-        verticalSpeed = Random.Range(minSpeed, maxSpeed);
+        _verticalDirection = Random.value < 0.5f ? -1f : 1f;
+        _verticalSpeed = Random.Range(minSpeed, maxSpeed);
 
         ChooseNewHorizontalTarget();
 
-        // Haal alle haken in de scene op zodat we afstand kunnen controleren
-        allHooks = FindObjectsByType<HookRandomizer>(FindObjectsSortMode.None);
+        _allHooks = FindObjectsByType<HookRandomizer>(FindObjectsSortMode.None);
 
-        // Zorg dat startpositie minimaal minDistance van andere haken is
-        foreach (var hook in allHooks)
+
+        foreach (var hook in _allHooks)
         {
             if (hook == this) continue;
             if (Vector3.Distance(transform.position, hook.transform.position) < minDistance)
@@ -51,66 +56,90 @@ public class HookRandomizer : MonoBehaviour
                 transform.position += new Vector3(minDistance, 0, 0);
             }
         }
+
+   
+        if (linePrefab != null && lineStart != null)
+        {
+            _lineInstance = Instantiate(linePrefab, lineStart.position, Quaternion.identity);
+            _lineTransform = _lineInstance.transform;
+        }
     }
 
     void Update()
     {
+        HandleMovementAndLine();
+    }
+
+    private void HandleMovementAndLine()
+    {
         Vector3 pos = transform.position;
 
-        // Cooldown aftellen
-        if (verticalCooldownTimer > 0f)
+        if (_verticalCooldownTimer > 0f)
         {
-            verticalCooldownTimer -= Time.deltaTime;
+            _verticalCooldownTimer -= Time.deltaTime;
         }
         else
         {
-            // Verticaal bewegen alleen als cooldown voorbij is
-            pos.y += verticalDirection * verticalSpeed * Time.deltaTime;
+            pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
 
-            // Check verticale grenzen
             if (pos.y >= maxY)
             {
                 pos.y = maxY;
-                verticalDirection = -1f;
-                verticalCooldownTimer = verticalCooldown;
+                _verticalDirection = -1f;
+                _verticalCooldownTimer = verticalCooldown;
                 ChooseNewHorizontalTarget();
             }
             else if (pos.y <= minY)
             {
                 pos.y = minY;
-                verticalDirection = 1f;
-                verticalCooldownTimer = verticalCooldown;
+                _verticalDirection = 1f;
+                _verticalCooldownTimer = verticalCooldown;
                 ChooseNewHorizontalTarget();
             }
         }
 
-        // Horizontaal bewegen richting target
-        pos = Vector3.MoveTowards(pos, horizontalTarget, horizontalSpeed * Time.deltaTime);
+        
+        pos = Vector3.MoveTowards(pos, _horizontalTarget, _horizontalSpeed * Time.deltaTime);
 
-        // Controleer minimale afstand tot andere haken
-        foreach (var hook in allHooks)
+       
+        foreach (var hook in _allHooks)
         {
             if (hook == this) continue;
             if (Vector3.Distance(pos, hook.transform.position) < minDistance)
             {
-                pos = transform.position; // stop beweging als te dichtbij
+                pos = transform.position; 
                 break;
             }
         }
 
         transform.position = pos;
 
-        // Als horizontaal target bereikt is, kies een nieuwe
-        if (Vector3.Distance(pos, horizontalTarget) < 0.01f)
+
+        if (Vector3.Distance(pos, _horizontalTarget) < 0.01f)
         {
             ChooseNewHorizontalTarget();
         }
+
+    
+        if (_lineTransform != null && lineStart != null)
+        {
+            Vector3 direction = pos - lineStart.position;
+            float distance = direction.magnitude;
+
+            _lineTransform.position = lineStart.position; // begint exact bovenaan
+            _lineTransform.localScale = new Vector3(
+                _lineTransform.localScale.x,
+                distance, // GEEN 0.5 meer!
+                _lineTransform.localScale.z);
+
+            _lineTransform.up = direction.normalized;
+        }
     }
 
-    void ChooseNewHorizontalTarget()
+    private void ChooseNewHorizontalTarget()
     {
-        float newX = startPos.x + Random.Range(-horizontalRange, horizontalRange);
-        horizontalTarget = new Vector3(newX, transform.position.y, 0);
-        horizontalSpeed = Random.Range(horizontalSpeedMin, horizontalSpeedMax);
+        float newX = _startPos.x + Random.Range(-horizontalRange, horizontalRange);
+        _horizontalTarget = new Vector3(newX, transform.position.y, 0);
+        _horizontalSpeed = Random.Range(horizontalSpeedMin, horizontalSpeedMax);
     }
 }
