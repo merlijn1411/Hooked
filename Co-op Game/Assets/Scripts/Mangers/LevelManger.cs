@@ -17,6 +17,12 @@ public class LevelManger : MonoBehaviour
         mainMenuUI.SetActive(false);
     }
 
+    public void BackToMainMenu()
+    {
+        mainMenuUI.SetActive(true);
+        levelSelectionUI.SetActive(false);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("MainScene");
