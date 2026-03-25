@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManger
   mainMenuUI: {fileID: 0}
   levelSelectionUI: {fileID: 0}
+  levels:
+  - MainScene
+  - LuukScene
+  - MerlijnScene
