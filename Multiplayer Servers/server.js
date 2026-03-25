@@ -25,10 +25,12 @@ wss.on("connection", (ws) => {
     ws.playerId = null;
 
     ws.on("message", (message) => {
-        const data = JSON.parse(message);
+        try {
+            const data = JSON.parse(message);
+            console.log("📥 Received:", data);
 
-        if (data.type === "register") {
-            ws.clientType = data.clientType;
+            if (data.type === "register") {
+                ws.clientType = data.clientType;
 
             if (ws.clientType === "controller") {
 
@@ -60,17 +62,22 @@ wss.on("connection", (ws) => {
             }
 
             return;
+            }
+
+            if (ws.clientType === "controller" && data.type === "input") {
+                console.log(`📩 Input from ${ws.playerId}:`, data);
+
+                broadcastToUnity({
+                    type: "input",
+                    playerId: ws.playerId,
+                    action: data.action
+                });
+            }
+        }
+        catch (err) {
+            console.log("❌ JSON error:", message.toString());
         }
 
-        if (ws.clientType === "controller" && data.type === "input") {
-            console.log(`📩 Input from ${ws.playerId}:`, data);
-
-            broadcastToUnity({
-                type: "input",
-                playerId: ws.playerId,
-                action: data.action
-            });
-        }
     });
 
     ws.on("close", () => {

@@ -126,6 +126,14 @@
             }
         };
 
+        socket.onclose = (event) => {
+            console.log("❌ Socket closed:", event);
+        };
+
+        socket.onerror = (error) => {
+            console.log("⚠️ Socket error:", error);
+        };
+
         function sendInput(action) {
             if (!playerId) return;
 
