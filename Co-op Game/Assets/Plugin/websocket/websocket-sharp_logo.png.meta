@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 08503ec9b01d7014493f71ad9e873f8e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7025631935300508950
+    second: websocket-sharp_logo_0
+  - first:
+      213: -6463574450424712344
+    second: websocket-sharp_logo_1
+  - first:
+      213: -3459654299680033116
+    second: websocket-sharp_logo_2
+  - first:
+      213: 2577312532803392671
+    second: websocket-sharp_logo_3
+  - first:
+      213: 1346875865375141677
+    second: websocket-sharp_logo_4
+  - first:
+      213: 4948030103851087880
+    second: websocket-sharp_logo_5
+  - first:
+      213: -7135840134582631167
+    second: websocket-sharp_logo_6
+  - first:
+      213: -5422990816034381547
+    second: websocket-sharp_logo_7
+  - first:
+      213: -698387060007297267
+    second: websocket-sharp_logo_8
+  - first:
+      213: 3973266119924842885
+    second: websocket-sharp_logo_9
+  - first:
+      213: -6515989222444005768
+    second: websocket-sharp_logo_10
+  - first:
+      213: -4524337851611426585
+    second: websocket-sharp_logo_11
+  - first:
+      213: 7235964740954540503
+    second: websocket-sharp_logo_12
+  - first:
+      213: -7711419685410170424
+    second: websocket-sharp_logo_13
+  - first:
+      213: 4878551571006227082
+    second: websocket-sharp_logo_14
+  - first:
+      213: 6066123525261169100
+    second: websocket-sharp_logo_15
+  - first:
+      213: -4213989227259149033
+    second: websocket-sharp_logo_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: websocket-sharp_logo_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 31
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2e5cd6af0ff7e90800000000000000
+      internalID: -7025631935300508950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 31
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863f4276845cc46a0800000000000000
+      internalID: -6463574450424712344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 31
+        width: 47
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a63be59eb6dcffc0800000000000000
+      internalID: -3459654299680033116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_3
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 31
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9498e8e71474c320800000000000000
+      internalID: 2577312532803392671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_4
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 31
+        width: 28
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f6b38a67011b210800000000000000
+      internalID: 1346875865375141677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_5
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 31
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 808bbf5e92feaa440800000000000000
+      internalID: 4948030103851087880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_6
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 31
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1050a34743768fc90800000000000000
+      internalID: -7135840134582631167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_7
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 31
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511a016c59aadb4b0800000000000000
+      internalID: -5422990816034381547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_8
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 31
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f198c4ba4de46f0800000000000000
+      internalID: -698387060007297267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_9
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 31
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581073c1c70e32730800000000000000
+      internalID: 3973266119924842885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_10
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 31
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87683fb435e8295a0800000000000000
+      internalID: -6515989222444005768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_11
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 44
+        width: 28
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e0d8d6e1b25631c0800000000000000
+      internalID: -4524337851611426585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_12
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 31
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d9c8d7189f4b6460800000000000000
+      internalID: 7235964740954540503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_13
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 31
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c91c2927a88bf490800000000000000
+      internalID: -7711419685410170424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_14
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 31
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8200406ec814b340800000000000000
+      internalID: 4878551571006227082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_15
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 31
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc115ded4333f2450800000000000000
+      internalID: 6066123525261169100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: websocket-sharp_logo_16
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 18
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71545eddf17e485c0800000000000000
+      internalID: -4213989227259149033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      websocket-sharp_logo_0: -7025631935300508950
+      websocket-sharp_logo_1: -6463574450424712344
+      websocket-sharp_logo_10: -6515989222444005768
+      websocket-sharp_logo_11: -4524337851611426585
+      websocket-sharp_logo_12: 7235964740954540503
+      websocket-sharp_logo_13: -7711419685410170424
+      websocket-sharp_logo_14: 4878551571006227082
+      websocket-sharp_logo_15: 6066123525261169100
+      websocket-sharp_logo_16: -4213989227259149033
+      websocket-sharp_logo_2: -3459654299680033116
+      websocket-sharp_logo_3: 2577312532803392671
+      websocket-sharp_logo_4: 1346875865375141677
+      websocket-sharp_logo_5: 4948030103851087880
+      websocket-sharp_logo_6: -7135840134582631167
+      websocket-sharp_logo_7: -5422990816034381547
+      websocket-sharp_logo_8: -698387060007297267
+      websocket-sharp_logo_9: 3973266119924842885
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
