@@ -106,7 +106,8 @@
     <script src="./joystick.js"></script>
     <script src="./main.js"></script>
     <script>
-        const socket = new WebSocket(window.location.hostname);
+        const socket = new WebSocket(`ws://${window.location.hostname}:3000`);
+        console.log(socket) 
 
         let playerId = null;
         let lastJoystick = { x: 0, y: 0 };
