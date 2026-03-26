@@ -18,6 +18,12 @@ function getLogHistoryLimit() {
     return Math.max(1, playerCount) * LOG_HISTORY_PER_PLAYER;
 }
 
+function trimLogHistory() {
+    while (logHistory.length > getLogHistoryLimit()) {
+        logHistory.shift();
+    }
+}
+
 function formatLogPart(part) {
     if (typeof part === "string") {
         return part;
@@ -35,9 +41,7 @@ function logMessage(...parts) {
     const line = parts.map(formatLogPart).join(" ");
     logHistory.push(line);
 
-    if (logHistory.length > getLogHistoryLimit()) {
-        logHistory.shift();
-    }
+    trimLogHistory();
 
     console.clear();
     for (const entry of logHistory) {
@@ -126,9 +130,10 @@ wss.on("connection", (ws) => {
     ws.on("close", () => {
 
         if (ws.clientType === "controller" && ws.playerId) {
-            logMessage("❌ Player disconnected:", ws.playerId);
-
             delete players[ws.playerId];
+
+            logMessage("❌ Player disconnected:", ws.playerId);
+            trimLogHistory();
 
             broadcastToUnity({
                 type: "player_left",
