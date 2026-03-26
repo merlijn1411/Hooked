@@ -92,6 +92,22 @@ class Joystick {
             this.pos = this.origin.add(diff.normalize().mul(maxDist));
         }
     }
+    getAxis() {
+        const delta = this.pos.sub(this.origin);
+        const rawX = delta.x / this.radius;
+        const rawY = delta.y / this.radius;
+
+        const clamp = (value) => Math.max(-1, Math.min(1, value));
+        const deadzone = 0.08;
+
+        let x = clamp(rawX);
+        let y = clamp(rawY);
+
+        if (Math.abs(x) < deadzone) x = 0;
+        if (Math.abs(y) < deadzone) y = 0;
+
+        return { x, y };
+    }
     draw(){
         // draw joystick base
         circle(this.origin, this.radius, '#707070');
@@ -100,6 +116,10 @@ class Joystick {
     }
     update() {
         this.reposition();
+        if (typeof window.sendJoystickInput === 'function') {
+            const axis = this.getAxis();
+            window.sendJoystickInput(axis.x, axis.y);
+        }
         this.draw();
     }
 }

@@ -10,6 +10,35 @@ const wss = new WebSocket.Server({ server });
 
 let players = {}; // playerId → websocket
 const MAX_PLAYERS = 4;
+const LOG_HISTORY_LIMIT = 10;
+const logHistory = [];
+
+function formatLogPart(part) {
+    if (typeof part === "string") {
+        return part;
+    }
+
+    try {
+        return JSON.stringify(part);
+    }
+    catch {
+        return String(part);
+    }
+}
+
+function logMessage(...parts) {
+    const line = parts.map(formatLogPart).join(" ");
+    logHistory.push(line);
+
+    if (logHistory.length > LOG_HISTORY_LIMIT) {
+        logHistory.shift();
+    }
+
+    console.clear();
+    for (const entry of logHistory) {
+        console.log(entry);
+    }
+}
 
 app.use(express.static(__dirname));
 
@@ -17,7 +46,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-console.log("✅ Server running on port 3000");
+logMessage("✅ Server running on port 3000");
 
 wss.on("connection", (ws) => {
 
@@ -27,7 +56,6 @@ wss.on("connection", (ws) => {
     ws.on("message", (message) => {
         try {
             const data = JSON.parse(message);
-            console.log("📥 Received:", data);
 
             if (data.type === "register") {
                 ws.clientType = data.clientType;
@@ -43,7 +71,7 @@ wss.on("connection", (ws) => {
                 ws.playerId = uuidv4();
                 players[ws.playerId] = ws;
 
-                console.log("🎮 Player joined:", ws.playerId);
+                logMessage("🎮 Player joined:", ws.playerId);
 
                 ws.send(JSON.stringify({
                     type: "welcome",
@@ -58,24 +86,34 @@ wss.on("connection", (ws) => {
             }
 
             if (ws.clientType === "unity") {
-                console.log("🖥️ Unity connected");
+                logMessage("🖥️ Unity connected");
             }
 
             return;
             }
 
             if (ws.clientType === "controller" && data.type === "input") {
-                console.log(`📩 Input from ${ws.playerId}:`, data);
+                logMessage(`📩 Input from ${ws.playerId}:`, data);
 
-                broadcastToUnity({
+                const unityInput = {
                     type: "input",
                     playerId: ws.playerId,
                     action: data.action
-                });
+                };
+
+                if (typeof data.x === "number") {
+                    unityInput.x = data.x;
+                }
+
+                if (typeof data.y === "number") {
+                    unityInput.y = data.y;
+                }
+
+                broadcastToUnity(unityInput);
             }
         }
         catch (err) {
-            console.log("❌ JSON error:", message.toString());
+            logMessage("❌ JSON error:", message.toString());
         }
 
     });
@@ -83,7 +121,7 @@ wss.on("connection", (ws) => {
     ws.on("close", () => {
 
         if (ws.clientType === "controller" && ws.playerId) {
-            console.log("❌ Player disconnected:", ws.playerId);
+            logMessage("❌ Player disconnected:", ws.playerId);
 
             delete players[ws.playerId];
 
@@ -100,7 +138,7 @@ wss.on("connection", (ws) => {
         }
 
         if (ws.clientType === "unity") {
-            console.log("❌ Unity disconnected");
+            logMessage("❌ Unity disconnected");
         }
     });
 });
@@ -116,6 +154,6 @@ function broadcastToUnity(data) {
 }
 
 server.listen(3000, () => {
-    console.log("🌐 HTTP server on http://localhost:3000");
-    console.log("🔌 WebSocket on ws://localhost:3000");
+    logMessage("🌐 HTTP server on http://localhost:3000");
+    logMessage("🔌 WebSocket on ws://localhost:3000");
 });

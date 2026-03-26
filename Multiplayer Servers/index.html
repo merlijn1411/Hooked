@@ -106,9 +106,10 @@
     <script src="./joystick.js"></script>
     <script src="./main.js"></script>
     <script>
-        const socket = new WebSocket("ws://192.168.68.131:3000");//thuis = 192.168.68.131 school = 10.120.9.16
+        const socket = new WebSocket("ws://10.120.20.85:3000");
 
         let playerId = null;
+        let lastJoystick = { x: 0, y: 0 };
 
         socket.onopen = () => {
             socket.send(JSON.stringify({
@@ -142,6 +143,32 @@
                 action: action
             }));
         }
+
+        // Exposed globally so joystick.js can forward analog movement to Unity.
+        function sendJoystickInput(x, y) {
+            if (!playerId) return;
+            if (socket.readyState !== WebSocket.OPEN) return;
+
+            // Quantize a bit so tiny touch jitter does not create duplicate-like spam.
+            const quantizedX = Number(x.toFixed(2));
+            const quantizedY = Number(y.toFixed(2));
+
+            const sameAsLast = quantizedX === lastJoystick.x && quantizedY === lastJoystick.y;
+            if (sameAsLast) {
+                return;
+            }
+
+            lastJoystick = { x: quantizedX, y: quantizedY };
+
+            socket.send(JSON.stringify({
+                type: "input",
+                action: "joystick",
+                x: quantizedX,
+                y: quantizedY
+            }));
+        }
+
+        window.sendJoystickInput = sendJoystickInput;
     </script>
 </body>
 </html>

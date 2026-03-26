@@ -4,10 +4,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-
     private Dictionary<string, Player> players = new Dictionary<string, Player>();
 
-    public void HandlePlayerInput(string playerId, string action)
+    // Voeg float x en float y toe aan parameters met een standaardwaarde van 0
+    public void HandlePlayerInput(string playerId, string action, float x = 0f, float y = 0f)
     {
         if (!players.ContainsKey(playerId))
         {
@@ -16,9 +16,16 @@ public class PlayerManager : MonoBehaviour
 
         Player player = players[playerId];
 
+        // Bestaande acties
         if (action == "jump") player.Jump();
         if (action == "left") player.MoveLeft();
         if (action == "right") player.MoveRight();
+
+        // Nieuwe actie voor de joystick, we geven x en y door naar de Player
+        if (action == "joystick")
+        {
+            player.MoveWithJoystick(x, y);
+        }
     }
 
     void SpawnPlayer(string playerId)
@@ -27,7 +34,6 @@ public class PlayerManager : MonoBehaviour
         Player player = obj.GetComponent<Player>();
 
         players.Add(playerId, player);
-
         Debug.Log("✅ Spawned player: " + playerId);
     }
 
@@ -36,9 +42,7 @@ public class PlayerManager : MonoBehaviour
         if (!players.ContainsKey(playerId)) return;
 
         Player player = players[playerId];
-
         Destroy(player.gameObject);
-
         players.Remove(playerId);
 
         Debug.Log("🗑️ Removed player: " + playerId);
