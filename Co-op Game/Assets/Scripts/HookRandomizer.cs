@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HookRandomizer : MonoBehaviour
 {
@@ -25,6 +25,8 @@ public class HookRandomizer : MonoBehaviour
     private GameObject _lineInstance;
     private Transform _lineTransform;
 
+    [Header("Line Follow Settings")]
+[SerializeField] private float lineFollowSpeed = 5f;
     private Vector3 _startPos;
     private float _verticalDirection;
     private float _verticalSpeed;
@@ -120,16 +122,25 @@ public class HookRandomizer : MonoBehaviour
             ChooseNewHorizontalTarget();
         }
 
-    
+        if (lineStart != null)
+        {
+            Vector3 startPos = lineStart.position;
+
+            startPos.x = Mathf.Lerp(startPos.x, pos.x, Time.deltaTime * lineFollowSpeed);
+
+            lineStart.position = startPos;
+        }
+
+
         if (_lineTransform != null && lineStart != null)
         {
             Vector3 direction = pos - lineStart.position;
             float distance = direction.magnitude;
 
-            _lineTransform.position = lineStart.position; // begint exact bovenaan
+            _lineTransform.position = lineStart.position; 
             _lineTransform.localScale = new Vector3(
                 _lineTransform.localScale.x,
-                distance, // GEEN 0.5 meer!
+                distance, 
                 _lineTransform.localScale.z);
 
             _lineTransform.up = direction.normalized;

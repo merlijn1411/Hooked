@@ -137,3 +137,4 @@ MonoBehaviour:
   minDistance: 1
   lineStart: {fileID: 0}
   linePrefab: {fileID: 2655797758632893023, guid: 45d1e84a55d746c4da483da0641e101b, type: 3}
+  lineFollowSpeed: 5
