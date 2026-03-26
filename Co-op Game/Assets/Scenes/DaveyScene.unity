@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneInputManager
   enableDebugLogs: 1
+  serverListener: {fileID: 481691328}
   playerManager: {fileID: 481691327}
   InputMessage:
     type: 
@@ -335,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b88a69569300744b441367371b99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServerListener
+  phoneInputManager: {fileID: 481691324}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

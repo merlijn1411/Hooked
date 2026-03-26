@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WebSocketSharp;
 using System.Collections.Concurrent;
 using System.Net;
@@ -8,11 +9,13 @@ using System.Linq;
 public class PhoneInputManager : MonoBehaviour
 {
     [Header("Debug Settings")]
-    public bool enableDebugLogs = true;
+    [SerializeField] private bool enableDebugLogs = true;
+
+    [SerializeField] private ServerListener serverListener;
 
     private WebSocket ws;
     private ConcurrentQueue<string> messageQueue = new ConcurrentQueue<string>();
-
+    
     public PlayerManager playerManager;
     public InputMessage InputMessage;
 
@@ -37,6 +40,7 @@ public class PhoneInputManager : MonoBehaviour
 
         ws.OnClose += (sender, e) =>
         {
+            ServerListener.EndServer();
             if (enableDebugLogs) Debug.LogWarning("❌ Disconnected from server. Reason: " + e.Reason);
         };
 
@@ -80,13 +84,16 @@ public class PhoneInputManager : MonoBehaviour
         }
     }
     
-    
-
     private void OnApplicationQuit()
     {
         if (ws != null)
         {
             ws.Close();
         }
+    }
+
+    private void OnEnable()
+    {
+        serverListener.EnableLogs(enableDebugLogs);
     }
 }
