@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using WebSocketSharp;
 using System.Collections.Concurrent;
+using System.Net;
+using System.Net.Sockets;
+using System.Linq;
 
 public class PhoneInputManager : MonoBehaviour
 {
@@ -15,8 +18,8 @@ public class PhoneInputManager : MonoBehaviour
 
     void Start()
     {
-        string serverIP = "10.120.18.225";
-        string serverURL = $"ws://{serverIP}:3000";
+        var ip = GetLocalIPv4();
+        var serverURL = $"ws://{ip}:3000";
 
         ws = new WebSocket(serverURL);
 
@@ -44,6 +47,14 @@ public class PhoneInputManager : MonoBehaviour
 
         ws.ConnectAsync();
     }
+    
+    private static string GetLocalIPv4()
+    {
+        return Dns.GetHostEntry(Dns.GetHostName())
+            .AddressList
+            .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)
+            ?.ToString();
+    }
 
     void Update()
     {
@@ -68,6 +79,8 @@ public class PhoneInputManager : MonoBehaviour
             }
         }
     }
+    
+    
 
     private void OnApplicationQuit()
     {
