@@ -10,8 +10,13 @@ const wss = new WebSocket.Server({ server });
 
 let players = {}; // playerId → websocket
 const MAX_PLAYERS = 4;
-const LOG_HISTORY_LIMIT = 10;
+const LOG_HISTORY_PER_PLAYER = 10;
 const logHistory = [];
+
+function getLogHistoryLimit() {
+    const playerCount = Object.keys(players).length;
+    return Math.max(1, playerCount) * LOG_HISTORY_PER_PLAYER;
+}
 
 function formatLogPart(part) {
     if (typeof part === "string") {
@@ -30,7 +35,7 @@ function logMessage(...parts) {
     const line = parts.map(formatLogPart).join(" ");
     logHistory.push(line);
 
-    if (logHistory.length > LOG_HISTORY_LIMIT) {
+    if (logHistory.length > getLogHistoryLimit()) {
         logHistory.shift();
     }
 
