@@ -13,11 +13,11 @@ public class PhoneInputManager : MonoBehaviour
     public PlayerManager playerManager;
     public InputMessage InputMessage;
 
-    void Start()
-    {
-        string serverIP = "10.120.20.85";
-        string serverURL = $"ws://{serverIP}:3000";
 
+    private void Start()
+    {
+        string serverIP = "10.120.18.225";
+        string serverURL = $"ws://{serverIP}:3000";
         ws = new WebSocket(serverURL);
 
         ws.OnOpen += (sender, e) =>

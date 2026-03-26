@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Controller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hud">
+        <h1 class="title">Phone Controller</h1>
+
+        <div class="buttons">
+            <button class="btn-jump" onclick="sendInput('jump')">Jump</button>
+            <button class="btn-left" onclick="sendInput('left')">Left</button>
+            <button class="btn-right" onclick="sendInput('right')">Right</button>
+        </div>
+    </div>
+
+    <script src="./vector.js"></script>
+    <script src="./joystick.js"></script>
+    <script src="./main.js"></script>
+    <script src="./socket.js"></script>
+</body>
+</html>
