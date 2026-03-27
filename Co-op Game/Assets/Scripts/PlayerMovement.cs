@@ -1,32 +1,52 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private float speed = 5f; 
+    [SerializeField] private float stepSize = 1f;
+    
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    
+    private float _currentX = 0f;
+    private float _currentY = 0f;
+    
     public Vector3 Velocity { get; private set; }
     
-    [SerializeField] private float speed;
-    
-    private SpriteRenderer _spriteRenderer;
     private Vector3 _lastPosition;
     
-    private void Start()
+    public void MoveLeft()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.Translate(Vector3.left * stepSize);
+    }
+    
+    public void MoveRight()
+    {
+        transform.Translate(Vector3.right * stepSize);
     }
 
-    private void FixedUpdate()
+    public void Jump()
     {
-        var inputX = Input.GetAxis("Horizontal");
-        var inputY = Input.GetAxis("Vertical"); 
+        Debug.Log("Jump!");
+    }
+    
+    public void MoveWithJoystick(float x, float y)
+    {
+        _currentX = x;
+        _currentY = -y;
+    }
+    
+    private void Update()
+    {
+        Vector3 movement = new Vector3(_currentX, _currentY, 0); 
         
-        var tempTrans = new Vector3(inputX, inputY, 0);
-        tempTrans = tempTrans.normalized * speed * Time.deltaTime;
-
-        transform.position += tempTrans;
+        if (movement.sqrMagnitude > 0)
+        {
+            transform.Translate(movement * speed * Time.deltaTime);
+        }
+        
         SpriteFlip();
     }
-
+    
     private void SpriteFlip()
     {
         Velocity = (transform.position - _lastPosition) / Time.deltaTime;
