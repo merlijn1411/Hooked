@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-    private Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private Dictionary<string, PlayerMovement> players = new Dictionary<string, PlayerMovement>();
 
     // Voeg float x en float y toe aan parameters met een standaardwaarde van 0
     public void HandlePlayerInput(string playerId, string action, float x = 0f, float y = 0f)
@@ -14,38 +14,38 @@ public class PlayerManager : MonoBehaviour
             SpawnPlayer(playerId);
         }
 
-        Player player = players[playerId];
+        PlayerMovement playerMovement = players[playerId];
 
         // Bestaande acties
-        if (action == "jump") player.Jump();
-        if (action == "left") player.MoveLeft();
-        if (action == "right") player.MoveRight();
+        if (action == "jump") playerMovement.Jump();
+        if (action == "left") playerMovement.MoveLeft();
+        if (action == "right") playerMovement.MoveRight();
 
-        // Nieuwe actie voor de joystick, we geven x en y door naar de Player
+        // Nieuwe actie voor de joystick, we geven x en y door naar de PlayerMovement
         if (action == "joystick")
         {
-            player.MoveWithJoystick(x, y);
+            playerMovement.MoveWithJoystick(x, y);
         }
     }
 
     void SpawnPlayer(string playerId)
     {
         GameObject obj = Instantiate(playerPrefab, RandomSpawn(), Quaternion.identity);
-        Player player = obj.GetComponent<Player>();
+        PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
 
-        players.Add(playerId, player);
-        Debug.Log("✅ Spawned player: " + playerId);
+        players.Add(playerId, playerMovement);
+        Debug.Log("✅ Spawned playerMovement: " + playerId);
     }
 
     public void RemovePlayer(string playerId)
     {
         if (!players.ContainsKey(playerId)) return;
 
-        Player player = players[playerId];
-        Destroy(player.gameObject);
+        PlayerMovement playerMovement = players[playerId];
+        Destroy(playerMovement.gameObject);
         players.Remove(playerId);
 
-        Debug.Log("🗑️ Removed player: " + playerId);
+        Debug.Log("🗑️ Removed playerMovement: " + playerId);
     }
 
     Vector3 RandomSpawn()

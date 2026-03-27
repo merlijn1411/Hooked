@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4430849839417690180}
   - component: {fileID: 7986974400025125065}
   - component: {fileID: 3953571562111013460}
-  - component: {fileID: 6684324647944026659}
+  - component: {fileID: 1688813617652384565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6684324647944026659
+--- !u!114 &1688813617652384565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +176,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6496856112558239959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e44f5ccc360d04db5f6de8feaf31fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 43a36dae290bb4c49bfb7b3099a824f5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 1.5
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  speed: 5
+  stepSize: 1
+  _spriteRenderer: {fileID: 4430849839417690180}

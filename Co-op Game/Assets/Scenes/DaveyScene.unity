@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc3bd388e5f0364e9297194dfc15bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneInputManager
-  enableDebugLogs: 1
+  enableDebugLogs: 0
   serverListener: {fileID: 481691328}
   playerManager: {fileID: 481691327}
   InputMessage:
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe3de428082a394d8ae2a25460e4866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  playerPrefab: {fileID: 4483273420813827041, guid: aae80a9fe46721d4eb59705919afa7e6, type: 3}
+  playerPrefab: {fileID: 6496856112558239959, guid: aae80a9fe46721d4eb59705919afa7e6, type: 3}
 --- !u!114 &481691328
 MonoBehaviour:
   m_ObjectHideFlags: 0

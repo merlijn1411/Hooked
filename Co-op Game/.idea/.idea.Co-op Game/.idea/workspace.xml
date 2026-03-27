@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21600f67-269a-4456-81d4-02339db8fb9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerListener.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Multiplayer-Servers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Multiplayer-Servers/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Multiplayer-Servers/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Multiplayer-Servers/socket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Multiplayer-Servers/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Multiplayer-Servers/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Co-op Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Co-op Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DaveyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DaveyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhoneInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PhoneInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +100,7 @@
       <updated>1774512270760</updated>
       <workItem from="1774512275518" duration="1996000" />
       <workItem from="1774517144390" duration="606000" />
+      <workItem from="1774598324041" duration="1962000" />
     </task>
     <servers />
   </component>
