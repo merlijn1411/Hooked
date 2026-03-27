@@ -16,13 +16,19 @@ public class PhoneInputManager : MonoBehaviour
     private ConcurrentQueue<string> _messageQueue = new ConcurrentQueue<string>();
     
     private PlayerManager _playerManager;
+    public LobbyManager lobbyManager;
+
+    public string ServerURL { get; private set; }
+
+    private void Awake()
+    {
+        var ip = GetLocalIPv4();
+        ServerURL = $"ws://{ip}:3000";
+    }
 
     private void Start()
     {
-        var ip = GetLocalIPv4();
-        var serverURL = $"ws://{ip}:3000";
-
-        _ws = new WebSocket(serverURL);
+        _ws = new WebSocket(ServerURL);
         _playerManager = GetComponent<PlayerManager>();
         
         _ws.OnOpen += (sender, e) =>
@@ -65,20 +71,42 @@ public class PhoneInputManager : MonoBehaviour
         {
             InputMessage msg = JsonUtility.FromJson<InputMessage>(command);
 
-            if (msg != null && msg.type == "input")
+            if (msg == null) continue;
+
+            if (msg.type == "input")
             {
                 if (enableDebugLogs)
                     Debug.Log($"🎮 Player {msg.playerId} did {msg.action} (x: {msg.x}, y: {msg.y})");
 
-                // We geven nu ook x en y mee aan de PlayerManager!
-                _playerManager.HandlePlayerInput(msg.playerId, msg.action, msg.x, msg.y);
+                InputRouter.Instance.HandleInput(msg.playerId, msg.action);
             }
-            else if (msg != null && msg.type == "disconnect")
+            else if (msg.type == "player_joined")
             {
                 if (enableDebugLogs)
-                    Debug.Log($"❌ Player disconnected: {msg.playerId}");
+                    Debug.Log($"👥 Player joined: {msg.playerId}");
+                
+                if (lobbyManager != null)
+                {
+                    lobbyManager.PlayerJoined(msg.playerId);
+                }
+            }
+            else if (msg.type == "player_left" || msg.type == "disconnect")
+            {
+                if (enableDebugLogs)
+                    Debug.Log($"👋 Player left: {msg.playerId}");
 
-                _playerManager.RemovePlayer(msg.playerId);
+                if (lobbyManager != null)
+                {
+                    lobbyManager.PlayerLeft(msg.playerId);
+                }
+
+                // Call router and remove player from manager like before
+                InputRouter.Instance.HandleInput(msg.playerId, "leave");
+                
+                if (_playerManager != null)
+                {
+                    _playerManager.RemovePlayer(msg.playerId);
+                }
             }
         }
     }
