@@ -2,12 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class ShapeCollider : MonoBehaviour
+public class ShapeCollider2D : MonoBehaviour
 {
     [SerializeField] private float radius;
     [SerializeField] private bool needsConvert;
-
-    private ConvertCollider _convertCollider;
+    
     private EdgeCollider2D _edgeCollider2D;
     private void Start()
     {
@@ -39,12 +38,11 @@ public class ShapeCollider : MonoBehaviour
 
     private void ConvertCollider()
     {
-        _convertCollider = GetComponent<ConvertCollider>();
+        var _convertCollider = GetComponent<ConvertCollider2D>();
 
         if (needsConvert && _convertCollider)
         {
             _convertCollider.Convert(_edgeCollider2D);
         }
-       
     }
 }

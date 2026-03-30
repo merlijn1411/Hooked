@@ -302,7 +302,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDamping: 0
+  m_LinearDamping: 4
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShapeCollider
   radius: 0.05
-  _convertColliders: {fileID: 760458532}
+  needsConvert: 0
 --- !u!68 &760458531
 EdgeCollider2D:
   m_ObjectHideFlags: 0

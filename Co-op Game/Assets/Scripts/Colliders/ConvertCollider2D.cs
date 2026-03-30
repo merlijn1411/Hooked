@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ConvertCollider : MonoBehaviour
+public class ConvertCollider2D : MonoBehaviour
 {
     public void Convert(EdgeCollider2D edge)
     {
@@ -11,6 +11,6 @@ public class ConvertCollider : MonoBehaviour
         
         poly.SetPath(0, edge.points);
         
-        Destroy(edge); 
+        DestroyImmediate(edge); 
     }
 }
