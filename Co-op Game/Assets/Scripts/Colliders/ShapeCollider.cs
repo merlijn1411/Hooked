@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -6,12 +5,21 @@ using System.Collections.Generic;
 public class ShapeCollider : MonoBehaviour
 {
     [SerializeField] private float radius;
-    
+    [SerializeField] private bool needsConvert;
+
+    private ConvertCollider _convertCollider;
+    private EdgeCollider2D _edgeCollider2D;
     private void Start()
     {
-        var sprite = GetComponent<SpriteRenderer>().sprite;
-        var edgeCollider = GetComponent<EdgeCollider2D>();
+        CreateShape();
+        ConvertCollider();
+    }
 
+    private void CreateShape()
+    {
+        var sprite = GetComponent<SpriteRenderer>().sprite;
+        _edgeCollider2D = GetComponent<EdgeCollider2D>();
+        
         if (sprite == null) return;
         var points = new List<Vector2>();
             
@@ -19,8 +27,19 @@ public class ShapeCollider : MonoBehaviour
             
         points.Add(points[0]); 
             
-        edgeCollider.SetPoints(points);
+        _edgeCollider2D.SetPoints(points);
 
-        edgeCollider.edgeRadius = radius;
+        _edgeCollider2D.edgeRadius = radius;
+    }
+
+    private void ConvertCollider()
+    {
+        _convertCollider = GetComponent<ConvertCollider>();
+
+        if (needsConvert && _convertCollider)
+        {
+            _convertCollider.Convert(_edgeCollider2D);
+        }
+       
     }
 }
