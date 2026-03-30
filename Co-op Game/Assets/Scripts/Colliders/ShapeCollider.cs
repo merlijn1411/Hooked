@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(EdgeCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class ShapeCollider : MonoBehaviour
 {
     [SerializeField] private float radius;
@@ -17,8 +17,13 @@ public class ShapeCollider : MonoBehaviour
 
     private void CreateShape()
     {
-        var sprite = GetComponent<SpriteRenderer>().sprite;
         _edgeCollider2D = GetComponent<EdgeCollider2D>();
+        
+        if (_edgeCollider2D == null) gameObject.AddComponent<EdgeCollider2D>();
+        
+        Debug.Log(_edgeCollider2D);
+        var sprite = GetComponent<SpriteRenderer>().sprite;
+        
         
         if (sprite == null) return;
         var points = new List<Vector2>();
