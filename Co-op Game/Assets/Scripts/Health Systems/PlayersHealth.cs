@@ -20,18 +20,10 @@ public class PlayersHealth : MonoBehaviour
         }    
     }
 
-    void Update()
-    {
-        TakingDamage();;
-    }
-
     public void TakingDamage()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hearts -= damage;
-            UpdateUI();
-        }
+        hearts -= damage;
+        UpdateUI();
     }
 
     private void UpdateUI()
