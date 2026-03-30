@@ -1,16 +1,27 @@
 using UnityEngine;
 
-public class GameplayInputHandler : MonoBehaviour , IInputHandler
+public class GameplayInputHandler : MonoBehaviour, IInputHandler
 {
     public PlayerManager playerManager;
 
-    void Start()
+    private void Start()
     {
-        InputRouter.Instance.SetHandler(this);
+        if (InputRouter.Instance != null)
+        {
+            InputRouter.Instance.SetHandler(this);
+        }
+    }
+    
+    private void OnEnable()
+    {
+        if (InputRouter.Instance != null)
+        {
+            InputRouter.Instance.SetHandler(this);
+        }
     }
 
-    public void HandleInput(string playerId, string action)
+    public void HandleInput(string playerId, string action, float x = 0f, float y = 0f)
     {
-        playerManager.HandlePlayerInput(playerId, action);
+        playerManager.HandlePlayerInput(playerId, action, x, y);
     }
 }

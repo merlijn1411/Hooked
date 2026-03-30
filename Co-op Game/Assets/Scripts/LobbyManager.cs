@@ -8,12 +8,12 @@ public class LobbyManager : MonoBehaviour
 
     public List<TextMeshProUGUI> playerSlots;
 
-    private List<string> players = new List<string>();
+    public List<string> players = new List<string>();
     
-    public RectTransform cursor;
-    public float cursorSpeed = 500f;
+    //public RectTransform cursor;
+    //public float cursorSpeed = 500f;
 
-    private Vector2 cursorPosition;
+    //private Vector2 cursorPosition;
 
     private void Start()
     {

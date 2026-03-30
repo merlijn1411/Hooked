@@ -17,11 +17,12 @@ public class InputRouter : MonoBehaviour
         Debug.Log("🔄 Input switched to: " + handler.GetType().Name);
     }
 
-    public void HandleInput(string playerId, string action)
+    // Voeg optionele x en y parameters toe met standaard op 0f
+    public void HandleInput(string playerId, string action, float x = 0f, float y = 0f)
     {
         if (currentHandler != null)
         {
-            currentHandler.HandleInput(playerId, action);
+            currentHandler.HandleInput(playerId, action, x, y);
         }
     }
 }
