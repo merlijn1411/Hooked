@@ -34,7 +34,7 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
         if (string.IsNullOrEmpty(_hostPlayerId) && lobbyManager != null && lobbyManager.players.Count > 0)
         {
             _hostPlayerId = lobbyManager.players[0];
-            Debug.Log("🎮 Host player set to: " + _hostPlayerId);
+            Debug.Log("👑 Host player set to: " + _hostPlayerId);
         }
 
         if (playerId == _hostPlayerId)
