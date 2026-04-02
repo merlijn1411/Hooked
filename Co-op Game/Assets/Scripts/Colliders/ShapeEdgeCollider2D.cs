@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class ShapeEdgeCollider2D : MonoBehaviour
 {
     [SerializeField] private float radius;
@@ -76,4 +74,5 @@ public class ShapeEdgeCollider2D : MonoBehaviour
             _convertCollider.Convert(_edgeCollider2D);
         }
     }
+    
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4430849839417690180}
   - component: {fileID: 1688813617652384565}
   - component: {fileID: -4593063299524981696}
-  - component: {fileID: 5678713828421044846}
   - component: {fileID: 7986974400025125065}
   - component: {fileID: -4810050939005166073}
   m_Layer: 0
@@ -124,18 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShapeCollider
   radius: 0.05
   needsConvert: 1
---- !u!114 &5678713828421044846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496856112558239959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e38e4a036fe35045b224ed121f042de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConvertColliders
 --- !u!50 &7986974400025125065
 Rigidbody2D:
   serializedVersion: 5
