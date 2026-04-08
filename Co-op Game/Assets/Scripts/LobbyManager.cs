@@ -9,11 +9,6 @@ public class LobbyManager : MonoBehaviour
     public List<TextMeshProUGUI> playerSlots;
 
     public List<string> players = new List<string>();
-    
-    //public RectTransform cursor;
-    //public float cursorSpeed = 500f;
-
-    //private Vector2 cursorPosition;
 
     private void Start()
     {
@@ -25,6 +20,11 @@ public class LobbyManager : MonoBehaviour
         if (players.Count >= 4) return;
 
         players.Add(playerId);
+        
+        if (!readyStates.ContainsKey(playerId))
+        {
+            readyStates[playerId] = false;
+        }
 
         UpdateUI();
     }
@@ -32,6 +32,10 @@ public class LobbyManager : MonoBehaviour
     public void PlayerLeft(string playerId)
     {
         players.Remove(playerId);
+        if (readyStates.ContainsKey(playerId))
+        {
+            readyStates.Remove(playerId);
+        }
 
         UpdateUI();
     }
@@ -42,18 +46,31 @@ public class LobbyManager : MonoBehaviour
         {
             if (i < players.Count)
             {
-                playerSlots[i].text = "Player " + (i + 1);
+                string playerId = players[i];
+                bool isReady = readyStates.ContainsKey(playerId) && readyStates[playerId];
+                
+                if (isReady)
+                {
+                    playerSlots[i].text = "Player " + (i + 1) + " (Ready!)";
+                    playerSlots[i].color = Color.green;
+                }
+                else
+                {
+                    playerSlots[i].text = "Player " + (i + 1);
+                    playerSlots[i].color = Color.white;
+                }
             }
             else
             {
                 playerSlots[i].text = "Waiting...";
+                playerSlots[i].color = Color.gray; 
             }
         }
     }
 
     public void HandleInput(string playerId, string action)
     {
-        if (action == "ready")
+        if (action == "B")
         {
             ToggleReady(playerId);
         }
@@ -70,6 +87,7 @@ public class LobbyManager : MonoBehaviour
 
         Debug.Log($"✅ Player {playerId} ready: {readyStates[playerId]}");
 
+        UpdateUI();        
         CheckAllReady();
     }
 

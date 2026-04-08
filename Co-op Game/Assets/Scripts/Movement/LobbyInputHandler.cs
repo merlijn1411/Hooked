@@ -39,8 +39,6 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
 
         if (playerId == _hostPlayerId)
         {
-            // Als de actie van de joystick komt, slaan we x en y op. 
-            //(Zorg ervoor dat the string in je PhoneInputManager overeenkomt! bijv: "joystick")
             if (action == "joystick")
             {
                 _currentJoystickX = x;
@@ -48,7 +46,7 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
             }
         }
 
-        if (action == "ready")
+        if (action == "B")
         {
             lobbyManager.HandleInput(playerId, action);
         }

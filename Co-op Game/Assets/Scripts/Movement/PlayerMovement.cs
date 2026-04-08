@@ -3,8 +3,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f; 
-    [SerializeField] private float stepSize = 1f;
-    
     [SerializeField] private SpriteRenderer _spriteRenderer;
     
     private float _currentX = 0f;
@@ -14,19 +12,19 @@ public class PlayerMovement : MonoBehaviour
     
     private Vector3 _lastPosition;
     
-    public void MoveLeft()
+    public void InteractieA()
     {
-        transform.Translate(Vector3.left * stepSize);
+        Debug.Log("Interact A!");
     }
     
-    public void MoveRight()
+    public void InteractieB()
     {
-        transform.Translate(Vector3.right * stepSize);
+        Debug.Log("Interact B!");
     }
 
-    public void Jump()
+    public void InteractieY()
     {
-        Debug.Log("Jump!");
+        Debug.Log("Interact Y!");
     }
     
     public void MoveWithJoystick(float x, float y)

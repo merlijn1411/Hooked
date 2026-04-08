@@ -17,9 +17,9 @@ public class PlayerManager : MonoBehaviour
         PlayerMovement playerMovement = players[playerId];
 
         // Bestaande acties
-        if (action == "jump") playerMovement.Jump();
-        if (action == "left") playerMovement.MoveLeft();
-        if (action == "right") playerMovement.MoveRight();
+        if (action == "Y") playerMovement.InteractieY();
+        if (action == "A") playerMovement.InteractieA();
+        if (action == "B") playerMovement.InteractieB();
 
         // Nieuwe actie voor de joystick, we geven x en y door naar de PlayerMovement
         if (action == "joystick")

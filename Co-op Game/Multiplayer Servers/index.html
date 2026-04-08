@@ -78,15 +78,15 @@
             transform: scale(0.96);
         }
 
-        .btn-jump {
+        .btn-Y {
             grid-area: jump;
         }
 
-        .btn-left {
+        .btn-A {
             grid-area: left;
         }
 
-        .btn-right {
+        .btn-B {
             grid-area: right;
         }
     </style>
@@ -94,11 +94,10 @@
 <body>
     <div class="hud">
         <h1 class="title">Phone Controller</h1>
-
         <div class="buttons">
-            <button class="btn-jump" onclick="sendInput('jump')">Jump</button>
-            <button class="btn-left" onclick="sendInput('left')">Left</button>
-            <button class="btn-right" onclick="sendInput('right')">Right</button>
+            <button class="btn-Y" onclick="sendInput('Y')">Y</button>
+            <button class="btn-A" onclick="sendInput('A')">A</button>
+            <button class="btn-B" onclick="sendInput('B')">B</button>
         </div>
     </div>
 
