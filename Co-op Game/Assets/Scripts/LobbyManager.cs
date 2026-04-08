@@ -1,17 +1,25 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class LobbyManager : MonoBehaviour
 {
     private Dictionary<string, bool> readyStates = new Dictionary<string, bool>();
 
     public List<TextMeshProUGUI> playerSlots;
-
     public List<string> players = new List<string>();
+
+    [Header("UI Elements")]
+    public Button startGameButton;
 
     private void Start()
     {
+        if (startGameButton != null)
+        {
+            startGameButton.interactable = false;
+        }
+        
         UpdateUI();
     }
 
@@ -27,6 +35,7 @@ public class LobbyManager : MonoBehaviour
         }
 
         UpdateUI();
+        CheckAllReady(); 
     }
 
     public void PlayerLeft(string playerId)
@@ -38,6 +47,7 @@ public class LobbyManager : MonoBehaviour
         }
 
         UpdateUI();
+        CheckAllReady(); 
     }
 
     void UpdateUI()
@@ -63,7 +73,7 @@ public class LobbyManager : MonoBehaviour
             else
             {
                 playerSlots[i].text = "Waiting...";
-                playerSlots[i].color = Color.gray; 
+                playerSlots[i].color = Color.white; 
             }
         }
     }
@@ -93,19 +103,34 @@ public class LobbyManager : MonoBehaviour
 
     void CheckAllReady()
     {
-        if (readyStates.Count == 0 || readyStates.Count != players.Count) return;
+        if (startGameButton == null) return;
 
-        foreach (var player in readyStates)
+        if (readyStates.Count == 0 || players.Count == 0)
         {
-            if (!player.Value) return;
+            startGameButton.interactable = false;
+            return;
         }
 
-        Debug.Log("🚀 All players ready → start game!");
-        StartGame();
+        foreach (var playerId in players)
+        {
+            if (!readyStates.ContainsKey(playerId) || !readyStates[playerId])
+            {
+                startGameButton.interactable = false;
+                return;
+            }
+        }
+
+        Debug.Log("🎉 All players are ready! You can now start the game.");
+        startGameButton.interactable = true;
     }
 
-    void StartGame()
+    // Koppel deze methode aan the "On Click ()" event in de Inspector van je UI Unity Button!
+    public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+        // Ingebouwde check mocht the button op de een of andere manier gehackt of per ongeluk ge-clickt worden
+        if (startGameButton != null && !startGameButton.interactable) return;
+
+        Debug.Log("🚀 the Host has started the game!");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 }
