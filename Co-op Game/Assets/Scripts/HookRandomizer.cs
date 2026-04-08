@@ -37,6 +37,9 @@ public class HookRandomizer : MonoBehaviour
     private float _verticalCooldownTimer = 0f;
 
     private HookRandomizer[] _allHooks;
+    private HookWarningIndecator _warning;
+    
+    private bool _isWaitingForDrop = false;
 
     void Start()
     {
@@ -65,6 +68,7 @@ public class HookRandomizer : MonoBehaviour
             _lineInstance = Instantiate(linePrefab, lineStart.position, Quaternion.identity);
             _lineTransform = _lineInstance.transform;
         }
+            _warning = GetComponent<HookWarningIndecator>();
     }
 
     void Update()
@@ -87,9 +91,17 @@ public class HookRandomizer : MonoBehaviour
             if (pos.y >= maxY)
             {
                 pos.y = maxY;
-                _verticalDirection = -1f;
-                _verticalCooldownTimer = verticalCooldown;
-                ChooseNewHorizontalTarget();
+                if (!_isWaitingForDrop && _warning != null)
+                {
+                    _isWaitingForDrop = true;
+                    StartCoroutine(_warning.ShowWarning(() =>
+                    {
+                        _verticalDirection = -1f;
+                        _isWaitingForDrop = false;
+                    }));
+                    return;
+                }
+       
             }
             else if (pos.y <= minY)
             {
