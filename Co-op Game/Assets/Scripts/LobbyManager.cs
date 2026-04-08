@@ -124,10 +124,8 @@ public class LobbyManager : MonoBehaviour
         startGameButton.interactable = true;
     }
 
-    // Koppel deze methode aan the "On Click ()" event in de Inspector van je UI Unity Button!
     public void StartGame()
     {
-        // Ingebouwde check mocht the button op de een of andere manier gehackt of per ongeluk ge-clickt worden
         if (startGameButton != null && !startGameButton.interactable) return;
 
         Debug.Log("🚀 the Host has started the game!");
