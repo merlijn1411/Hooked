@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LobbyInputHandler : MonoBehaviour, IInputHandler 
 {
@@ -39,16 +42,19 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
 
         if (playerId == _hostPlayerId)
         {
-            // Als de actie van de joystick komt, slaan we x en y op. 
-            //(Zorg ervoor dat the string in je PhoneInputManager overeenkomt! bijv: "joystick")
             if (action == "joystick")
             {
                 _currentJoystickX = x;
                 _currentJoystickY = -y;  
             }
+
+            if (action == "A")
+            {
+                SimulateCursorClick();
+            }
         }
 
-        if (action == "ready")
+        if (action == "B")
         {
             lobbyManager.HandleInput(playerId, action);
         }
@@ -66,6 +72,34 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
             Vector3 movement = new Vector3(_currentJoystickX, _currentJoystickY, 0) * cursorSpeed * Time.deltaTime;
             
             cursor.anchoredPosition += (Vector2)movement;
+        }
+    }
+
+    private void SimulateCursorClick()
+    {
+        if (cursor == null || EventSystem.current == null) return;
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = cursor.position
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        if (results.Count > 0)
+        {
+            foreach (RaycastResult result in results)
+            {
+                Button clickedButton = result.gameObject.GetComponentInParent<Button>();
+
+                if (clickedButton != null && clickedButton.interactable)
+                {
+                    Debug.Log("🖱️ Cursor clicked button: " + clickedButton.gameObject.name);
+                    clickedButton.onClick.Invoke();
+                    break;
+                }
+            }
         }
     }
 }

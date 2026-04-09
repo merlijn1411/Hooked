@@ -1,22 +1,25 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class LobbyManager : MonoBehaviour
 {
     private Dictionary<string, bool> readyStates = new Dictionary<string, bool>();
 
     public List<TextMeshProUGUI> playerSlots;
-
     public List<string> players = new List<string>();
-    
-    //public RectTransform cursor;
-    //public float cursorSpeed = 500f;
 
-    //private Vector2 cursorPosition;
+    [Header("UI Elements")]
+    public Button startGameButton;
 
     private void Start()
     {
+        if (startGameButton != null)
+        {
+            startGameButton.interactable = false;
+        }
+        
         UpdateUI();
     }
 
@@ -25,15 +28,26 @@ public class LobbyManager : MonoBehaviour
         if (players.Count >= 4) return;
 
         players.Add(playerId);
+        
+        if (!readyStates.ContainsKey(playerId))
+        {
+            readyStates[playerId] = false;
+        }
 
         UpdateUI();
+        CheckAllReady(); 
     }
 
     public void PlayerLeft(string playerId)
     {
         players.Remove(playerId);
+        if (readyStates.ContainsKey(playerId))
+        {
+            readyStates.Remove(playerId);
+        }
 
         UpdateUI();
+        CheckAllReady(); 
     }
 
     void UpdateUI()
@@ -42,18 +56,31 @@ public class LobbyManager : MonoBehaviour
         {
             if (i < players.Count)
             {
-                playerSlots[i].text = "Player " + (i + 1);
+                string playerId = players[i];
+                bool isReady = readyStates.ContainsKey(playerId) && readyStates[playerId];
+                
+                if (isReady)
+                {
+                    playerSlots[i].text = "Player " + (i + 1) + " (Ready!)";
+                    playerSlots[i].color = Color.green;
+                }
+                else
+                {
+                    playerSlots[i].text = "Player " + (i + 1);
+                    playerSlots[i].color = Color.white;
+                }
             }
             else
             {
                 playerSlots[i].text = "Waiting...";
+                playerSlots[i].color = Color.white; 
             }
         }
     }
 
     public void HandleInput(string playerId, string action)
     {
-        if (action == "ready")
+        if (action == "B")
         {
             ToggleReady(playerId);
         }
@@ -70,24 +97,36 @@ public class LobbyManager : MonoBehaviour
 
         Debug.Log($"✅ Player {playerId} ready: {readyStates[playerId]}");
 
+        UpdateUI();        
         CheckAllReady();
     }
 
     void CheckAllReady()
     {
-        if (readyStates.Count == 0 || readyStates.Count != players.Count) return;
+        if (startGameButton == null) return;
 
-        foreach (var player in readyStates)
+        if (readyStates.Count == 0 || players.Count == 0)
         {
-            if (!player.Value) return;
+            startGameButton.interactable = false;
+            return;
         }
 
-        Debug.Log("🚀 All players ready → start game!");
-        StartGame();
+        foreach (var playerId in players)
+        {
+            if (!readyStates.ContainsKey(playerId) || !readyStates[playerId])
+            {
+                startGameButton.interactable = false;
+                return;
+            }
+        }
+
+        Debug.Log("🎉 All players are ready! You can now start the game.");
+        startGameButton.interactable = true;
     }
 
-    void StartGame()
+    public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+        if (startGameButton != null && !startGameButton.interactable) return;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 }

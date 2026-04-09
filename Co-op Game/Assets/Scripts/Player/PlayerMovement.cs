@@ -22,19 +22,21 @@ public class PlayerMovement : MonoBehaviour
         _rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public void MoveLeft()
+
+    
+    public void InteractieA()
     {
-        transform.Translate(Vector3.left * stepSize);
+        Debug.Log("Interact A!");
     }
     
-    public void MoveRight()
+    public void InteractieB()
     {
-        transform.Translate(Vector3.right * stepSize);
+        Debug.Log("Interact B!");
     }
 
-    public void Jump()
+    public void InteractieY()
     {
-        Debug.Log("Jump!");
+        Debug.Log("Interact Y!");
     }
     
     public void MoveWithJoystick(float x, float y)
