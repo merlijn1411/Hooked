@@ -42,8 +42,8 @@ Delysha:
 
 Davey:
 * Player Input
-* Multiplayer 
-
+* Multiplayer
+  
 Luuk: 
 * MainMenu
 * WinLooseCondition
