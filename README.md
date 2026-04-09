@@ -71,7 +71,7 @@ class DayNightCycle {
     - UpdateScroller()
 }
 ```
-**Health Systeem**
+**Health Systeem door Luuk**
 
 Het Health Systeem houdt bij hoeveel levens de spelers nog hebben tijdens een level. Wanneer een speler schade oploopt, wordt het aantal levens verminderd.
 De resterende levens worden visueel weergegeven in de UI, zodat spelers altijd kunnen zien hoeveel health er nog over is. Op dit moment wordt hiervoor tijdelijke art gebruikt, die later vervangen kan worden door definitieve visuals.
@@ -89,4 +89,26 @@ class PlayersHealth {
     - UpdateUI()
     - PlayerHaveDied()
 }
+```
+**Win & Lose Condition door Luuk**
+
+De Win & Lose Condition bepaalt of de spelers een level winnen of verliezen.
+De spelers verliezen wanneer alle levens op zijn. In dat geval wordt het level opnieuw gestart. De spelers winnen wanneer de Day & Night Cycle is voltooid en de dag succesvol is overleefd.
+Dit systeem zorgt voor een duidelijk doel binnen elk level: overleven totdat de tijd op is zonder alle levens te verliezen.
+```mermaid
+classDiagram
+class WinEvent {
+    + Action OnPlayersWon
+    + TriggerWin()
+}
+
+class WinListener {
+    - ParticleSystem confettiEffect
+
+    - OnEnable()
+    - OnDisable()
+    - OnWin()
+}
+
+WinEvent --> WinListener : triggers event
 ```
