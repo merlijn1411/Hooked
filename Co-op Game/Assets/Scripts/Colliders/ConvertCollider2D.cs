@@ -6,7 +6,7 @@ public class ConvertCollider2D : MonoBehaviour
     {
         if (edge == null) return;
 
-        Vector2[] outer = edge.points;
+        var outer = edge.points;
         
         if (outer[0] != outer[^1])
         {
