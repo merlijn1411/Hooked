@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HookRandomizer : MonoBehaviour
 {
@@ -9,57 +10,44 @@ public class HookRandomizer : MonoBehaviour
     [Header("Vertical Settings")]
     [SerializeField] private float minY = -1.29f;
     [SerializeField] private float maxY = 9f;
-    [SerializeField] private float verticalCooldown = 1f;
+
+    [Header("Drop Timing")]
+    [SerializeField] private float warningDuration = 4f;
 
     [Header("Horizontal Settings")]
     [SerializeField] private float horizontalRange = 2f;
     [SerializeField] private float horizontalSpeedMin = 0.5f;
     [SerializeField] private float horizontalSpeedMax = 2f;
 
-    [Header("Spacing")]
-    [SerializeField] private float minDistance = 1f;
-
     [Header("Line Settings")]
-    [SerializeField] private Transform lineStart;       
-    [SerializeField] private GameObject linePrefab;     
+    [SerializeField] private Transform lineStart;
+    [SerializeField] private GameObject linePrefab;
     private GameObject _lineInstance;
     private Transform _lineTransform;
+    [SerializeField] private float lineFollowSpeed = 5f;
 
-    [Header("Line Follow Settings")]
-[SerializeField] private float lineFollowSpeed = 5f;
-    private Vector3 _startPos;
-    private float _verticalDirection;
     private float _verticalSpeed;
+    private float _verticalDirection = 1f;
 
+    private Vector3 _startPos;
     private Vector3 _horizontalTarget;
     private float _horizontalSpeed;
 
-    private float _verticalCooldownTimer = 0f;
+    private bool _isWaiting = false;
+    private bool _isDropping = false;
 
-    private HookRandomizer[] _allHooks;
+    private HookWarningIndecator _warning;
 
     void Start()
     {
         _startPos = transform.position;
-
-        _verticalDirection = Random.value < 0.5f ? -1f : 1f;
         _verticalSpeed = Random.Range(minSpeed, maxSpeed);
 
         ChooseNewHorizontalTarget();
 
-        _allHooks = FindObjectsByType<HookRandomizer>(FindObjectsSortMode.None);
+        _warning = GetComponent<HookWarningIndecator>();
 
-
-        foreach (var hook in _allHooks)
-        {
-            if (hook == this) continue;
-            if (Vector3.Distance(transform.position, hook.transform.position) < minDistance)
-            {
-                transform.position += new Vector3(minDistance, 0, 0);
-            }
-        }
-
-   
+        // Line setup
         if (linePrefab != null && lineStart != null)
         {
             _lineInstance = Instantiate(linePrefab, lineStart.position, Quaternion.identity);
@@ -69,82 +57,77 @@ public class HookRandomizer : MonoBehaviour
 
     void Update()
     {
-        HandleMovementAndLine();
+        Move();
+        UpdateLine();
     }
 
-    private void HandleMovementAndLine()
+    private void Move()
     {
         Vector3 pos = transform.position;
 
-        if (_verticalCooldownTimer > 0f)
-        {
-            _verticalCooldownTimer -= Time.deltaTime;
-        }
-        else
+        // 🔼 OMHOOG of WACHTEN
+        if (!_isDropping)
         {
             pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
 
             if (pos.y >= maxY)
             {
                 pos.y = maxY;
-                _verticalDirection = -1f;
-                _verticalCooldownTimer = verticalCooldown;
-                ChooseNewHorizontalTarget();
+
+                if (!_isWaiting)
+                {
+                    _isWaiting = true;
+                    StartCoroutine(DropRoutine());
+                }
             }
-            else if (pos.y <= minY)
+        }
+        else
+        {
+            // 🔽 NAAR BENEDEN
+            pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
+
+            if (pos.y <= minY)
             {
                 pos.y = minY;
+
+                _isDropping = false;
                 _verticalDirection = 1f;
-                _verticalCooldownTimer = verticalCooldown;
+                _isWaiting = false;
+
+                HookDropManager.Instance?.DropFinished();
                 ChooseNewHorizontalTarget();
             }
         }
 
-        
+        // Horizontale movement
         pos = Vector3.MoveTowards(pos, _horizontalTarget, _horizontalSpeed * Time.deltaTime);
-
-       
-        foreach (var hook in _allHooks)
-        {
-            if (hook == this) continue;
-            if (Vector3.Distance(pos, hook.transform.position) < minDistance)
-            {
-                pos = transform.position; 
-                break;
-            }
-        }
 
         transform.position = pos;
 
+        // Refresh indicator
+        _warning?.RefreshIndicatorAt(pos.x);
 
-        if (Vector3.Distance(pos, _horizontalTarget) < 0.01f)
+        if (Vector3.Distance(pos, _horizontalTarget) < 0.05f)
         {
             ChooseNewHorizontalTarget();
         }
+    }
 
-        if (lineStart != null)
-        {
-            Vector3 startPos = lineStart.position;
+    private IEnumerator DropRoutine()
+    {
+        // 🔒 WACHT OP MAX 2
+        if (HookDropManager.Instance != null)
+            yield return HookDropManager.Instance.RequestDrop();
 
-            startPos.x = Mathf.Lerp(startPos.x, pos.x, Time.deltaTime * lineFollowSpeed);
+        // ⚠️ WARNING
+        if (_warning != null)
+            yield return StartCoroutine(_warning.ShowWarning(warningDuration));
+        else
+            yield return new WaitForSeconds(warningDuration);
 
-            lineStart.position = startPos;
-        }
-
-
-        if (_lineTransform != null && lineStart != null)
-        {
-            Vector3 direction = pos - lineStart.position;
-            float distance = direction.magnitude;
-
-            _lineTransform.position = lineStart.position; 
-            _lineTransform.localScale = new Vector3(
-                _lineTransform.localScale.x,
-                distance, 
-                _lineTransform.localScale.z);
-
-            _lineTransform.up = direction.normalized;
-        }
+        // ⬇️ DROP START
+        _isDropping = true;
+        _verticalDirection = -1f;
     }
 
     private void ChooseNewHorizontalTarget()
@@ -152,5 +135,27 @@ public class HookRandomizer : MonoBehaviour
         float newX = _startPos.x + Random.Range(-horizontalRange, horizontalRange);
         _horizontalTarget = new Vector3(newX, transform.position.y, 0);
         _horizontalSpeed = Random.Range(horizontalSpeedMin, horizontalSpeedMax);
+    }
+
+    private void UpdateLine()
+    {
+        if (lineStart == null || _lineTransform == null) return;
+
+        // Line start volgt X van hook
+        Vector3 startPos = lineStart.position;
+        startPos.x = Mathf.Lerp(startPos.x, transform.position.x, Time.deltaTime * lineFollowSpeed);
+        lineStart.position = startPos;
+
+        // Line richting en schaal
+        Vector3 direction = transform.position - lineStart.position;
+        float distance = direction.magnitude;
+
+        _lineTransform.position = lineStart.position;
+        _lineTransform.localScale = new Vector3(
+            _lineTransform.localScale.x,
+            distance,
+            _lineTransform.localScale.z
+        );
+        _lineTransform.up = direction.normalized;
     }
 }
