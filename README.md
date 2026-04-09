@@ -47,3 +47,27 @@ Jaden:
 Vincent: 
 * Bezig met level design
 * Haak 
+
+**Day & Night Cycle door Luuk**
+
+De Day & Night Cycle bepaalt de duur van een level. Tijdens het spelen loopt er een timer die een volledige dag voorstelt.
+Een visuele balk laat zien hoeveel tijd er nog over is. Deze balk loopt geleidelijk leeg en verandert van kleur van geel naar blauw, zodat de speler duidelijke feedback krijgt over de resterende tijd.
+Wanneer de timer is afgelopen, is de dag voltooid en hebben de spelers het level gewonnen.
+![DayNightCycle](readme-assets/Day&NightCycle.gif)
+```mermaid
+classDiagram
+class DayNightCycle {
+    - float cycleDuration
+    - Color startColor
+    - Color endColor
+
+    - Image _image
+    - Scrollbar _scrollBar
+    - float _timer
+    - bool _hasTriggered
+
+    + Start()
+    + Update()
+    - UpdateScroller()
+}
+```
