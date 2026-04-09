@@ -129,53 +129,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2478583390194134613, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
   m_PrefabInstance: {fileID: 8394100927787417026}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &312318664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 312318665}
-  - component: {fileID: 312318666}
-  m_Layer: 0
-  m_Name: Phone Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &312318665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312318664}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1377888762}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &312318666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312318664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420aaa9a60b414c428a86471aef82aa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneInputManager
-  enableDebugLogs: 1
-  serverListener: {fileID: 1176698420}
-  lobbyManager: {fileID: 1630455829}
 --- !u!1 &395413263
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,17 +657,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5811976297764035238, guid: 034a184380d9caf499843284d4a70b61, type: 3}
   m_PrefabInstance: {fileID: 1176698418}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1176698420 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8144691982298848866, guid: 034a184380d9caf499843284d4a70b61, type: 3}
-  m_PrefabInstance: {fileID: 1176698418}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7214e8182613f4099e62a32e1f516e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ServerListener
 --- !u!114 &1176698422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2105981254300916019, guid: 034a184380d9caf499843284d4a70b61, type: 3}
@@ -769,7 +711,6 @@ Transform:
   - {fileID: 1507386804}
   - {fileID: 4081009874156051113}
   - {fileID: 1176698419}
-  - {fileID: 312318665}
   - {fileID: 1630455831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
