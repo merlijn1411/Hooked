@@ -6,7 +6,7 @@ public class HookDropManager : MonoBehaviour
     public static HookDropManager Instance;
 
     private int _currentDrops = 0;
-    private const int _MaxDrops = 2;
+    private const int _maxDrops = 2;
 
     void Awake()
     {
@@ -15,7 +15,7 @@ public class HookDropManager : MonoBehaviour
 
     public IEnumerator RequestDrop()
     {
-        while (_currentDrops >= _MaxDrops)
+        while (_currentDrops >= _maxDrops)
             yield return null;
 
         _currentDrops++;
