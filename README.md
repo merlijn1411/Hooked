@@ -38,11 +38,12 @@ Merlijn:
 Delysha:
 * Hook System
 * WarningIndecator
+* HookDrop
 
 Davey:
 * Player Input
-* Multiplayer 
-
+* Multiplayer
+  
 Luuk: 
 * MainMenu
 * WinLooseCondition
