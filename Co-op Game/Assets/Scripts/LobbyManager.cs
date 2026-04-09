@@ -127,8 +127,6 @@ public class LobbyManager : MonoBehaviour
     public void StartGame()
     {
         if (startGameButton != null && !startGameButton.interactable) return;
-
-        Debug.Log("🚀 the Host has started the game!");
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 }
