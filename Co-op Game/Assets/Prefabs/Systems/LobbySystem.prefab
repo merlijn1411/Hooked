@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e7e92ff9d947448ac03d132c89368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
+  playerSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  players: []
 --- !u!114 &3272598222315451892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,3 +64,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyInputHandler
   lobbyManager: {fileID: 191075647355090621}
+  cursor: {fileID: 0}
+  cursorSpeed: 500

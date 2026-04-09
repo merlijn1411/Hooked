@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private Transform SpawnPoint;
+     
     private Dictionary<string, PlayerMovement> players = new Dictionary<string, PlayerMovement>();
 
     // Voeg float x en float y toe aan parameters met een standaardwaarde van 0
@@ -30,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnPlayer(string playerId)
     {
-        GameObject obj = Instantiate(playerPrefab, RandomSpawn(), Quaternion.identity);
+        GameObject obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity);
         PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
 
         players.Add(playerId, playerMovement);

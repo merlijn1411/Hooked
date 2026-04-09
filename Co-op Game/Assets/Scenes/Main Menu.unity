@@ -591,6 +591,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1377888762}
     m_Modifications:
+    - target: {fileID: 2105981254300916019, guid: 034a184380d9caf499843284d4a70b61, type: 3}
+      propertyPath: lobbyManager
+      value: 
+      objectReference: {fileID: 1630455829}
     - target: {fileID: 2840602235485425520, guid: 034a184380d9caf499843284d4a70b61, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -653,15 +657,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5811976297764035238, guid: 034a184380d9caf499843284d4a70b61, type: 3}
   m_PrefabInstance: {fileID: 1176698418}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1176698423 stripped
+--- !u!114 &1176698422 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3954183866383314277, guid: 034a184380d9caf499843284d4a70b61, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2105981254300916019, guid: 034a184380d9caf499843284d4a70b61, type: 3}
   m_PrefabInstance: {fileID: 1176698418}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc3bd388e5f0364e9297194dfc15bfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 420aaa9a60b414c428a86471aef82aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneInputManager
 --- !u!114 &1308229213 stripped
@@ -707,6 +711,7 @@ Transform:
   - {fileID: 1507386804}
   - {fileID: 4081009874156051113}
   - {fileID: 1176698419}
+  - {fileID: 1630455831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1468887368 stripped
@@ -749,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2573e030ea7a4469b7201622e9fe84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QRCodeGenerator
-  phoneInputManager: {fileID: 1176698423}
+  phoneInputManager: {fileID: 1176698422}
   image: {fileID: 1308229213}
 --- !u!4 &1507386804
 Transform:
@@ -914,6 +919,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e7e92ff9d947448ac03d132c89368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
+--- !u!4 &1630455831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4214317749680343008, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+  m_PrefabInstance: {fileID: 2751632446999445354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1767268483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1436,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1377888762}
     m_Modifications:
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: cursor
@@ -1478,15 +1488,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4214317749680343008, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4214317749680343008, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4214317749680343008, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4214317749680343008, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1783,4 +1793,3 @@ SceneRoots:
   - {fileID: 712434173}
   - {fileID: 2046872914}
   - {fileID: 1377888762}
-  - {fileID: 2751632446999445354}

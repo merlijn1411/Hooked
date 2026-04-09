@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5811976297764035238}
-  - component: {fileID: 3954183866383314277}
-  - component: {fileID: 8017989794033579828}
+  - component: {fileID: 2105981254300916019}
   - component: {fileID: 3933581293102064660}
+  - component: {fileID: 8144691982298848866}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3954183866383314277
+--- !u!114 &2105981254300916019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,24 +43,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2840602235485425520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc3bd388e5f0364e9297194dfc15bfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 420aaa9a60b414c428a86471aef82aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneInputManager
-  enableDebugLogs: 0
-  serverListener: {fileID: 8017989794033579828}
---- !u!114 &8017989794033579828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2840602235485425520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b88a69569300744b441367371b99a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ServerListener
-  phoneInputManager: {fileID: 3954183866383314277}
+  enableDebugLogs: 1
+  serverListener: {fileID: 8144691982298848866}
+  lobbyManager: {fileID: 0}
 --- !u!114 &3933581293102064660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,3 +61,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72468981f8ce3cf48a3875282a2c753b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputRouter
+--- !u!114 &8144691982298848866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840602235485425520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7214e8182613f4099e62a32e1f516e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ServerListener
+  phoneInputManager: {fileID: 2105981254300916019}
