@@ -37,11 +37,13 @@ Merlijn:
 
 Delysha:
 * Hook System
+* WarningIndecator
+* HookDrop
 
 Davey:
 * Player Input
-* Multiplayer 
-
+* Multiplayer
+  
 Luuk: 
 * MainMenu
 * WinLooseCondition
@@ -65,3 +67,68 @@ Jaden:
 Vincent: 
 * Bezig met level design
 * Haak 
+
+**Day & Night Cycle door Luuk**
+
+De Day & Night Cycle bepaalt de duur van een level. Tijdens het spelen loopt er een timer die een volledige dag voorstelt.
+Een visuele balk laat zien hoeveel tijd er nog over is. Deze balk loopt geleidelijk leeg en verandert van kleur van geel naar blauw, zodat de speler duidelijke feedback krijgt over de resterende tijd.
+Wanneer de timer is afgelopen, is de dag voltooid en hebben de spelers het level gewonnen.
+![DayNightCycle](readme-assets/Day&NightCycle.gif)
+```mermaid
+classDiagram
+class DayNightCycle {
+    - float cycleDuration
+    - Color startColor
+    - Color endColor
+
+    - Image _image
+    - Scrollbar _scrollBar
+    - float _timer
+    - bool _hasTriggered
+
+    + Start()
+    + Update()
+    - UpdateScroller()
+}
+```
+**Health Systeem door Luuk**
+
+Het Health Systeem houdt bij hoeveel levens de spelers nog hebben tijdens een level. Wanneer een speler schade oploopt, wordt het aantal levens verminderd.
+De resterende levens worden visueel weergegeven in de UI, zodat spelers altijd kunnen zien hoeveel health er nog over is. Op dit moment wordt hiervoor tijdelijke art gebruikt, die later vervangen kan worden door definitieve visuals.
+![Health-System](readme-assets/HealthSystem.gif)
+```mermaid
+classDiagram
+class PlayersHealth {
+    - Image[] heartsAliveImages
+    - Image[] heartsDeadImages
+    - int damage
+    - int hearts
+
+    - Start()
+    + TakingDamage()
+    - UpdateUI()
+    - PlayerHaveDied()
+}
+```
+**Win & Lose Condition door Luuk**
+
+De Win & Lose Condition bepaalt of de spelers een level winnen of verliezen.
+De spelers verliezen wanneer alle levens op zijn. In dat geval wordt het level opnieuw gestart. De spelers winnen wanneer de Day & Night Cycle is voltooid en de dag succesvol is overleefd.
+Dit systeem zorgt voor een duidelijk doel binnen elk level: overleven totdat de tijd op is zonder alle levens te verliezen.
+```mermaid
+classDiagram
+class WinEvent {
+    + Action OnPlayersWon
+    + TriggerWin()
+}
+
+class WinListener {
+    - ParticleSystem confettiEffect
+
+    - OnEnable()
+    - OnDisable()
+    - OnWin()
+}
+
+WinEvent --> WinListener : triggers event
+```
