@@ -5,12 +5,16 @@ using ZXing.QrCode;
 
 public class QRCodeGenerator : MonoBehaviour
 {
-    [SerializeField] private string url;
+    [SerializeField] private PhoneInputManager phoneInputManager; 
     [SerializeField] private RawImage image;
+
     private void Start()
     {
-        var myQR = generateQR(url);
+        // Pak het opgeslagen adres van de PhoneInputManager
+        string url = phoneInputManager.ServerURL.Replace("ws://", "http://");
 
+        var myQR = generateQR(url);
+        
         image.texture = myQR;
     }
     
@@ -33,6 +37,4 @@ public class QRCodeGenerator : MonoBehaviour
         };
         return writer.Write(textForEncoding);
     }
-
-    
 }
