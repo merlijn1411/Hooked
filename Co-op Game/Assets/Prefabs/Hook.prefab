@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5864002464204548381}
   - component: {fileID: 6256823813284390545}
   - component: {fileID: -1702089301495363886}
+  - component: {fileID: -3671141098371991532}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Untagged
@@ -130,7 +131,7 @@ MonoBehaviour:
   minSpeed: 3
   maxSpeed: 5
   minY: 4
-  maxY: 13
+  maxY: 15
   verticalCooldown: 1
   horizontalRange: 2
   horizontalSpeedMin: 0.5
@@ -153,3 +154,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
   playersHealth: {fileID: 0}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
+--- !u!114 &-3671141098371991532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625426538328288255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c022230df475ada44a9c3db34ff8d65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HookWarningIndecator
+  indicatorPrefab: {fileID: 7025482266050819792, guid: 3eeb3ec75d38faa4a87d910f6c877b67, type: 3}
+  warningTime: 1
+  groundY: 10
