@@ -37,6 +37,8 @@ Merlijn:
 
 Delysha:
 * Hook System
+* WarningIndecator
+* HookDrop
 
 Davey:
 * Player Input
