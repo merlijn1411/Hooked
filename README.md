@@ -76,3 +76,17 @@ class DayNightCycle {
 Het Health Systeem houdt bij hoeveel levens de spelers nog hebben tijdens een level. Wanneer een speler schade oploopt, wordt het aantal levens verminderd.
 De resterende levens worden visueel weergegeven in de UI, zodat spelers altijd kunnen zien hoeveel health er nog over is. Op dit moment wordt hiervoor tijdelijke art gebruikt, die later vervangen kan worden door definitieve visuals.
 ![Health-System](readme-assets/HealthSystem.gif)
+```mermaid
+classDiagram
+class PlayersHealth {
+    - Image[] heartsAliveImages
+    - Image[] heartsDeadImages
+    - int damage
+    - int hearts
+
+    - Start()
+    + TakingDamage()
+    - UpdateUI()
+    - PlayerHaveDied()
+}
+```
