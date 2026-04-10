@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float stepSize = 1f;
 
-    [SerializeField] private List<SpriteRenderer> spriteRenderers;
-
     private Rigidbody2D _rb2D;
     
     private float _currentX = 0f;
@@ -64,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
     private void SpriteFlip()
     {
         _lastPosition = transform.position;
-        var hasFlipped = Velocity.x > 0.01f ? true : false;
-        foreach (var rend in spriteRenderers)
-        {
-            rend.flipX = hasFlipped;
-        }
+        var left = new Vector3(-.3f, .3f, 1);
+        var right = new Vector3(.3f, .3f, 1);
+        var flip = Velocity.x > 0.01f ? left : right;
+        
+        transform.localScale = new Vector3(flip.x, flip.y, 1);
     }
 }

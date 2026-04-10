@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: lobbyManager
       value: 
       objectReference: {fileID: 1630455829}
+    - target: {fileID: 2105981254300916019, guid: 034a184380d9caf499843284d4a70b61, type: 3}
+      propertyPath: enableDebugLogs
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2840602235485425520, guid: 034a184380d9caf499843284d4a70b61, type: 3}
       propertyPath: m_Name
       value: GameManager
