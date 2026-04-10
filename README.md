@@ -135,8 +135,13 @@ class WinListener {
 
 WinEvent --> WinListener : triggers event
 ```
-![Player input](readme-assets/)
+
 **Player input door Davey en merlijn**
+
+
+![Player input](readme-assets/)
+
+
 Het Player Input systeem regelt hoe input van spelers vanaf hun telefoon wordt ontvangen, verwerkt en toegepast binnen de Unity game. Dit systeem maakt gebruik van een client-server architectuur waarbij input via een server wordt doorgestuurd naar de game.
 
 Wanneer een speler een actie uitvoert op zijn telefoon (zoals bewegen of een knop indrukken), wordt deze input verstuurd naar de server in de vorm van een JSON-bericht. De server voegt hier een unieke playerId aan toe en stuurt het bericht door naar de Unity applicatie.
@@ -152,8 +157,13 @@ Wanneer de game zich in de gameplay bevindt, wordt de input doorgestuurd naar de
 Door gebruik te maken van deze structuur wordt de input losgekoppeld van specifieke gameplay logica. Dit maakt het systeem flexibel en uitbreidbaar, omdat dezelfde input op verschillende manieren geïnterpreteerd kan worden afhankelijk van de context van de game.
 
 
-![Lobby input](readme-assets/LobbyInput-Hooked.gif)
+
 **Lobby input door Davey en Luuk**
+
+
+![Lobby input](readme-assets/LobbyInput-Hooked.gif)
+
+
 De lobby is de wachtruimte waarin spelers samenkomen voordat de game start. Wanneer spelers verbinding maken met de game via de QR-code, worden zij toegevoegd aan de lobby.
 
 De eerste speler die de lobby betreedt, wordt automatisch aangewezen als host. De host heeft extra functionaliteiten, zoals het bedienen van een cursor om menu-opties te selecteren, bijvoorbeeld het kiezen van een map of het starten van de game.
@@ -165,8 +175,13 @@ De game kan alleen gestart worden wanneer alle spelers de status ‘ready’ heb
 Wanneer een speler de lobby verlaat, wordt deze automatisch verwijderd uit de spelerslijst en wordt de lobby opnieuw geüpdatet.
 
 
-![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
+
 **Hook Touch Effect door Luuk**
+
+
+![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
+
+
 Het Hook Touch Effect zorgt ervoor dat wanneer een speler een haak raakt, er een particle effect wordt afgespeeld en het team een leven verliest. Dit systeem geeft directe visuele feedback bij schade en is gekoppeld aan het health systeem, zodat spelers worden gestraft voor het raken van obstakels.
 
 ```mermaid
