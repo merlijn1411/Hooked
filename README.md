@@ -179,10 +179,11 @@ Wanneer een speler de lobby verlaat, wordt deze automatisch verwijderd uit de sp
 **Hook Touch Effect door Luuk**
 
 
+Het Hook Touch Effect zorgt ervoor dat wanneer een speler een haak raakt, er een particle effect wordt afgespeeld en het team een leven verliest. Dit systeem geeft directe visuele feedback bij schade en is gekoppeld aan het health systeem, zodat spelers worden gestraft voor het raken van obstakels.
+
+
 ![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
 
-
-Het Hook Touch Effect zorgt ervoor dat wanneer een speler een haak raakt, er een particle effect wordt afgespeeld en het team een leven verliest. Dit systeem geeft directe visuele feedback bij schade en is gekoppeld aan het health systeem, zodat spelers worden gestraft voor het raken van obstakels.
 
 ```mermaid
 classDiagram
