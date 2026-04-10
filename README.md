@@ -150,7 +150,7 @@ Wanneer de game zich in de lobby bevindt, wordt de input doorgestuurd naar de Lo
 Wanneer de game zich in de gameplay bevindt, wordt de input doorgestuurd naar de GameplayInputHandler. Deze handler vertaalt de input naar acties van de speler, zoals bewegen. De input wordt hierbij gekoppeld aan de juiste speler op basis van de playerId.
 
 Door gebruik te maken van deze structuur wordt de input losgekoppeld van specifieke gameplay logica. Dit maakt het systeem flexibel en uitbreidbaar, omdat dezelfde input op verschillende manieren geïnterpreteerd kan worden afhankelijk van de context van de game.
-```
+
 
 ![Lobby input](readme-assets/LobbyInput-Hooked.gif)
 **Lobby input door Davey en Luuk**
@@ -163,7 +163,7 @@ Elke speler in de lobby heeft een ‘ready’ status. Spelers kunnen zichzelf op
 De game kan alleen gestart worden wanneer alle spelers de status ‘ready’ hebben. Indien één of meerdere spelers nog niet klaar zijn, kan de host de game niet starten.
 
 Wanneer een speler de lobby verlaat, wordt deze automatisch verwijderd uit de spelerslijst en wordt de lobby opnieuw geüpdatet.
-```
+
 
 ![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
 **Hook Touch Effect door Luuk**
