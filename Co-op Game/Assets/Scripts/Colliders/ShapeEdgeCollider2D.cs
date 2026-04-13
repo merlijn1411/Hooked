@@ -4,7 +4,8 @@ using Unity.VisualScripting;
 
 public class ShapeEdgeCollider2D : MonoBehaviour
 {
-    [SerializeField] private float radius;
+    [SerializeField] private SpriteRenderer charRenderer;
+    [SerializeField] private float radius = 0.05f;
     [SerializeField] private bool needsConvert;
     
     private EdgeCollider2D _edgeCollider2D;
@@ -26,7 +27,7 @@ public class ShapeEdgeCollider2D : MonoBehaviour
     {
         _edgeCollider2D = GetComponent<EdgeCollider2D>();
         
-        var sprite = GetComponent<SpriteRenderer>().sprite;
+        var sprite = charRenderer.sprite;
         
         if (sprite == null) return;
         var points = new List<Vector2>();
