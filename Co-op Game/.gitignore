@@ -16,6 +16,9 @@
 *.blend1
 *.blend1.meta
 
+# Virtual Environment files do not need to be commmited.
+venv/ 
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
