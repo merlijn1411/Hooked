@@ -1,11 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
     [SerializeField] private float stepSize = 1f;
-
-    private SpriteRenderer _spriteRenderer;
 
     private Rigidbody2D _rb2D;
     
@@ -18,11 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb2D = GetComponent<Rigidbody2D>();
     }
-
-
     
     public void InteractieA()
     {
@@ -47,13 +43,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(_currentX, _currentY, 0); 
+        var movement = new Vector3(_currentX, _currentY, 0); 
         
         if (movement.sqrMagnitude > 0)
         {
             SetVelocity();
-            // transform.Translate(movement * speed * Time.deltaTime);
-            _rb2D.MovePosition(transform.position + (movement + Velocity) * Time.fixedDeltaTime);
+            _rb2D.MovePosition(transform.position + (movement + Velocity) * speed * Time.fixedDeltaTime);
         }
         
         SpriteFlip();
@@ -67,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
     private void SpriteFlip()
     {
         _lastPosition = transform.position;
-        var hasFlipped = Velocity.x > 0.01f ? true : false;
-        _spriteRenderer.flipX = hasFlipped;
+        var left = new Vector3(-.3f, .3f, 1);
+        var right = new Vector3(.3f, .3f, 1);
+        var flip = Velocity.x > 0.01f ? left : right;
         
+        transform.localScale = new Vector3(flip.x, flip.y, 1);
     }
 }
