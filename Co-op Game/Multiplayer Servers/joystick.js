@@ -1,9 +1,14 @@
 function circle(pos, radius, color) {
-    context.beginPath();
-    context.fillStyle = color;
-    context.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-    context.fill();
-    context.closePath();
+    if (!context) return;
+    try {
+        context.beginPath();
+        context.fillStyle = color;
+        context.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+        context.fill();
+        context.closePath();
+    } catch (err) {
+        console.error('❌ Circle draw error:', err);
+    }
 }
 
 class Joystick {
@@ -16,6 +21,7 @@ class Joystick {
         this.ondrag = false;
         this.touchPos = new vector2(0, 0);
         this.activeTouchId = null;
+        console.log('🕹️ Joystick initialized:', { x, y, radius, handleRadius });
         this.listener();
     }
     isInsideStartArea(point) {

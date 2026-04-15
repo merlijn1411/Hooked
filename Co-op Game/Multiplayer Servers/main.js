@@ -1,4 +1,9 @@
-const canvas  = document.createElement('canvas'), context = canvas.getContext('2d');
+const canvas  = document.createElement('canvas');
+const context = canvas.getContext('2d');
+if (!context) {
+    console.error('❌ Canvas 2D context is not supported on this device');
+    document.body.style.background = '#101010';
+}
 document.body.append(canvas);
 
 const statusEl = document.getElementById('connectionStatus');
@@ -39,14 +44,25 @@ function joystickConfigForScreen() {
 }
 
 function createJoystick() {
-    const cfg = joystickConfigForScreen();
-    return new Joystick(cfg.x, cfg.y, cfg.radius, cfg.handleRadius);
+    try {
+        if (!context) {
+            console.warn('⚠️ Joystick requires canvas context, skipping initialization');
+            return null;
+        }
+        const cfg = joystickConfigForScreen();
+        return new Joystick(cfg.x, cfg.y, cfg.radius, cfg.handleRadius);
+    } catch (err) {
+        console.error('❌ Failed to create joystick:', err);
+        return null;
+    }
 }
 
 function resizeCanvas() {
     width = canvas.width = innerWidth;
     height = canvas.height = innerHeight;
-    joystick = createJoystick();
+    if (joystick) {
+        joystick = createJoystick();
+    }
 }
 
 let joystick = createJoystick();
@@ -54,9 +70,13 @@ let joystick = createJoystick();
 addEventListener('resize', resizeCanvas);
 
 setInterval(() => {
-    backgroud();
+    if (context) {
+        backgroud();
+    }
 
-    joystick.update();
+    if (joystick) {
+        joystick.update();
+    }
 
 }, 1000 / FPS);
 
