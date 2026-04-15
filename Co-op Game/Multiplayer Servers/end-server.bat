@@ -1,2 +1,3 @@
 @echo off
-taskkill /IM server.exe /F /T
+taskkill /IM server.exe /F
+exit

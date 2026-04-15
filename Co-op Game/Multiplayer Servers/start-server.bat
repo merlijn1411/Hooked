@@ -2,4 +2,3 @@
 
 server.exe
 
-pause
