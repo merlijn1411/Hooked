@@ -8,9 +8,10 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-let players = {}; // playerId → websocket
+let players = {}; 
+let sessions = {}; 
 const MAX_PLAYERS = 4;
-const LOG_HISTORY_PER_PLAYER = 10;
+const LOG_HISTORY_PER_PLAYER = 15;
 const logHistory = [];
 
 function getLogHistoryLimit() {
@@ -69,36 +70,71 @@ wss.on("connection", (ws) => {
             if (data.type === "register") {
                 ws.clientType = data.clientType;
 
-            if (ws.clientType === "controller") {
+                if (ws.clientType === "controller") {
+                    const sessionId = typeof data.sessionId === "string" && data.sessionId.trim() !== ""
+                        ? data.sessionId.trim()
+                        : null;
 
-                if (Object.keys(players).length >= MAX_PLAYERS) {
-                    ws.send(JSON.stringify({ type: "full" }));
-                    ws.close();
+                    if (sessionId && sessions[sessionId]) {
+                        const existingPlayerId = sessions[sessionId];
+                        const existingWs = players[existingPlayerId];
+
+                        if (existingWs && existingWs !== ws) {
+                            try {
+                                existingWs.close(4001, "Superseded by a newer controller connection");
+                            }
+                            catch {
+                                existingWs.terminate();
+                            }
+                        }
+
+                        ws.playerId = existingPlayerId;
+                        ws.sessionId = sessionId;
+                        players[existingPlayerId] = ws;
+
+                        logMessage("🔄 Player reconnected:", ws.playerId);
+
+                        ws.send(JSON.stringify({
+                            type: "welcome",
+                            playerId: ws.playerId
+                        }));
+
+                        return;
+                    }
+
+                    if (Object.keys(players).length >= MAX_PLAYERS) {
+                        ws.send(JSON.stringify({ type: "full" }));
+                        ws.close(4003, "Server full");
+                        return;
+                    }
+
+                    ws.playerId = uuidv4();
+                    ws.sessionId = sessionId;
+                    players[ws.playerId] = ws;
+                    if (sessionId) {
+                        sessions[sessionId] = ws.playerId;
+                    }
+
+                    logMessage("🎮 Player joined:", ws.playerId);
+
+                    ws.send(JSON.stringify({
+                        type: "welcome",
+                        playerId: ws.playerId
+                    }));
+
+                    broadcastToUnity({
+                        type: "player_joined",
+                        playerId: ws.playerId,
+                        count: Object.keys(players).length
+                    });
                     return;
                 }
 
-                ws.playerId = uuidv4();
-                players[ws.playerId] = ws;
+                if (ws.clientType === "unity") {
+                    logMessage("🖥️ Unity connected");
+                }
 
-                logMessage("🎮 Player joined:", ws.playerId);
-
-                ws.send(JSON.stringify({
-                    type: "welcome",
-                    playerId: ws.playerId
-                }));
-
-                broadcastToUnity({
-                    type: "player_joined",
-                    playerId: ws.playerId,
-                    count: Object.keys(players).length
-                });
-            }
-
-            if (ws.clientType === "unity") {
-                logMessage("🖥️ Unity connected");
-            }
-
-            return;
+                return;
             }
 
             if (ws.clientType === "controller" && data.type === "input") {
@@ -129,7 +165,7 @@ wss.on("connection", (ws) => {
 
     ws.on("close", () => {
 
-        if (ws.clientType === "controller" && ws.playerId) {
+        if (ws.clientType === "controller" && ws.playerId && players[ws.playerId] === ws) {
             delete players[ws.playerId];
 
             logMessage("❌ Player disconnected:", ws.playerId);
