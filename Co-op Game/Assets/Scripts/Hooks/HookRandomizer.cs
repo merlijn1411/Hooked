@@ -38,7 +38,7 @@ public class HookRandomizer : MonoBehaviour
 
     private HookWarningIndecator _warning;
 
-    void Start()
+    private void Start()
     {
         _startPos = transform.position;
         _verticalSpeed = Random.Range(minSpeed, maxSpeed);
@@ -59,6 +59,15 @@ public class HookRandomizer : MonoBehaviour
     {
         Move();
         UpdateLine();
+    }
+
+    private void HookRandomFacing()
+    {
+        var random = Random.Range(1, 10);
+        Debug.Log(random);
+        var faceX = random <= 5 ? transform.localScale.x : -transform.localScale.x;
+        Debug.Log(faceX);
+        transform.localScale = new Vector3(faceX, transform.localScale.y);
     }
 
     private void Move()
@@ -115,6 +124,7 @@ public class HookRandomizer : MonoBehaviour
 
     private IEnumerator DropRoutine()
     {
+        HookRandomFacing();
         // 🔒 WACHT OP MAX 2
         if (HookDropManager.Instance != null)
             yield return HookDropManager.Instance.RequestDrop();
@@ -142,13 +152,13 @@ public class HookRandomizer : MonoBehaviour
         if (lineStart == null || _lineTransform == null) return;
 
         // Line start volgt X van hook
-        Vector3 startPos = lineStart.position;
+        var startPos = lineStart.position;
         startPos.x = Mathf.Lerp(startPos.x, transform.position.x, Time.deltaTime * lineFollowSpeed);
         lineStart.position = startPos;
 
         // Line richting en schaal
-        Vector3 direction = transform.position - lineStart.position;
-        float distance = direction.magnitude;
+        var direction = transform.position - lineStart.position;
+        var distance = direction.magnitude;
 
         _lineTransform.position = lineStart.position;
         _lineTransform.localScale = new Vector3(
