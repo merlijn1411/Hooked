@@ -17,7 +17,7 @@ public class PlayersHealth : MonoBehaviour
         for(int i = 0;i < heartsDeadImages.Length;i++)
         {
             heartsDeadImages[i].enabled = false;
-        }    
+        }
     }
 
     public void TakingDamage()

@@ -15,9 +15,9 @@ public class Snoekbaar : MonoBehaviour
     private bool isMoving;
     private float moveDirection;
 
-    private void Awake()
+    public void SetSnoek(SpawnSnoekbaar snoekbaar)
     {
-        snoekbaarScript = FindAnyObjectByType<SpawnSnoekbaar>();
+        snoekbaarScript = snoekbaar;
     }
 
     private void Start()

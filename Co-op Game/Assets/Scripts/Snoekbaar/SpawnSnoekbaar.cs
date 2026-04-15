@@ -20,6 +20,8 @@ public class SpawnSnoekbaar : MonoBehaviour
         Vector3 worldPos = cam.ViewportToWorldPoint(viewportPos);
 
         var snoek = Instantiate(snoekbaar, worldPos, Quaternion.identity);
+        var snoekScript = snoek.GetComponent<Snoekbaar>();
+        snoekScript.SetSnoek(this);
         
         if (!SpawnLeft)
         {
