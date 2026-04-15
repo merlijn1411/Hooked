@@ -50,10 +50,15 @@ function logMessage(...parts) {
     }
 }
 
-app.use(express.static(__dirname));
+
+const basePath = process.pkg
+  ? path.dirname(process.execPath)
+  : __dirname;
+
+app.use(express.static(path.join(basePath, "public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(basePath, "public", "index.html"));
 });
 
 logMessage("✅ Server running on port 3000");
