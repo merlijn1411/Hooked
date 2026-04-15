@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 3572456326632078847}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.0699997, z: 0}
+  m_LocalPosition: {x: 0, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -134,7 +134,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4044553324558872869}
   - component: {fileID: 6256823813284390545}
-  - component: {fileID: -1702089301495363886}
   - component: {fileID: -3671141098371991532}
   m_Layer: 0
   m_Name: Hook
@@ -152,10 +151,11 @@ Transform:
   m_GameObject: {fileID: 4625426538328288255}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.35, y: 13.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3118661747890365080}
   - {fileID: 4453179045041623289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
   minSpeed: 3
   maxSpeed: 5
-  minY: 4
-  maxY: 15
+  minY: -2
+  maxY: 8
   warningDuration: 4
   horizontalRange: 2
   horizontalSpeedMin: 0.5
@@ -182,20 +182,6 @@ MonoBehaviour:
   lineStart: {fileID: 0}
   linePrefab: {fileID: 2655797758632893023, guid: 45d1e84a55d746c4da483da0641e101b, type: 3}
   lineFollowSpeed: 5
---- !u!114 &-1702089301495363886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4625426538328288255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
-  playersHealth: {fileID: 0}
-  hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
 --- !u!114 &-3671141098371991532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +196,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HookWarningIndecator
   indicatorPrefab: {fileID: 7025482266050819792, guid: 3eeb3ec75d38faa4a87d910f6c877b67, type: 3}
   groundY: 10
+--- !u!1 &4853051014401752727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3118661747890365080}
+  m_Layer: 0
+  m_Name: LineEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3118661747890365080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853051014401752727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4044553324558872869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7122137457277276364
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +238,7 @@ GameObject:
   - component: {fileID: 1730604338188825177}
   - component: {fileID: 8584967595762468557}
   - component: {fileID: 8944268955379284669}
+  - component: {fileID: 7605861236192283128}
   - component: {fileID: 2795103617684897381}
   m_Layer: 0
   m_Name: Second Part
@@ -318,6 +336,20 @@ MonoBehaviour:
   charRenderer: {fileID: 8584967595762468557}
   radius: 0.05
   needsConvert: 0
+--- !u!114 &7605861236192283128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122137457277276364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
+  playersHealth: {fileID: 0}
+  hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
 --- !u!68 &2795103617684897381
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -348,7 +380,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
