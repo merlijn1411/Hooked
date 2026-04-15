@@ -1,3 +1,5 @@
 @echo off
 
-node server.js
+server.exe
+
+pause
