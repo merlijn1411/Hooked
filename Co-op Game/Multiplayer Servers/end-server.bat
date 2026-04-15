@@ -1,3 +1,2 @@
 @echo off
-
-taskkill /F /IM node.exe /T
+taskkill /IM server.exe /F /T
