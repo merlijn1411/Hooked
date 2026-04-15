@@ -22,6 +22,9 @@ public class Snoekbaar : MonoBehaviour
 
     private void Start()
     {
+        Vector3 pos = transform.position;
+        pos.z = 0f;
+        transform.position = pos;
 
         var snoekbaarSpawnLeft = snoekbaarScript.SpawnLeft;
 
