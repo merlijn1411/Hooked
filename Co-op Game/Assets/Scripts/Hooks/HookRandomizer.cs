@@ -141,21 +141,25 @@ public class HookRandomizer : MonoBehaviour
     {
         if (lineStart == null || _lineTransform == null) return;
 
-        // Line start volgt X van hook
         Vector3 startPos = lineStart.position;
         startPos.x = Mathf.Lerp(startPos.x, transform.position.x, Time.deltaTime * lineFollowSpeed);
         lineStart.position = startPos;
 
-        // Line richting en schaal
+ 
         Vector3 direction = transform.position - lineStart.position;
         float distance = direction.magnitude;
 
         _lineTransform.position = lineStart.position;
-        _lineTransform.localScale = new Vector3(
-            _lineTransform.localScale.x,
-            distance,
-            _lineTransform.localScale.z
-        );
         _lineTransform.up = direction.normalized;
+
+        SpriteRenderer sr = _lineTransform.GetComponent<SpriteRenderer>();
+
+        if (sr != null)
+        {
+        
+            sr.drawMode = SpriteDrawMode.Tiled;
+
+            sr.size = new Vector2(sr.size.x, distance);
+        }
     }
 }
