@@ -132,12 +132,12 @@ TextureImporter:
       name: Haak_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 23
-        width: 274
-        height: 1044
+        x: 193
+        y: 409
+        width: 193
+        height: 659
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,23 +151,45 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Haak_1
+      name: Haak_2
       rect:
         serializedVersion: 2
-        x: 310
-        y: 336
-        width: 10
-        height: 73
+        x: 0
+        y: 3
+        width: 193
+        height: 355
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 11095c4236ecd33d0800000000000000
-      internalID: -3225194832913395695
+      spriteID: 844b826a77c18da46acea0fe14d932a3
+      internalID: 2013755440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Haak_3
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 3
+        width: 193
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36def288c6d21154e9f56e6c6b5147a3
+      internalID: 193835019
       vertices: []
       indices: 
       edges: []
@@ -176,7 +198,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 664a57e92a70ab849b8f00d472b97309
     internalID: 0
     vertices: []
     indices: 
@@ -184,10 +206,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":193.0,"y":355.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
       Haak_0: -2068510203800357060
       Haak_1: -3225194832913395695
+      Haak_2: 2013755440
+      Haak_3: 193835019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
