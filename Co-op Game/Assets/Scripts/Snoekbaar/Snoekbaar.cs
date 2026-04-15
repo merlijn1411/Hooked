@@ -9,9 +9,11 @@ public class Snoekbaar : MonoBehaviour
     [Header("Snoekbaar variabelen")]
     [SerializeField] private float ShootSnoekbaarTime;
     [SerializeField] private float snoekbaarSpeed;
+    [SerializeField] private float destroySnoekbaar;
 
     private SpawnSnoekbaar snoekbaarScript;
     private bool isMoving;
+    private float moveDirection;
 
     private void Awake()
     {
@@ -27,15 +29,17 @@ public class Snoekbaar : MonoBehaviour
         {
             Instantiate(scaredFishesEffect, transform.position, Quaternion.Euler(new Vector3(0, 0, -180)));
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            ShootSnoekbaarRoutine();
+            moveDirection = 1f;
+            StartCoroutine(ShootSnoekbaarRoutine());
         }
         else
         {
             Instantiate(scaredFishesEffect, transform.position, Quaternion.identity);
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            ShootSnoekbaarRoutine();
+            moveDirection = -1f;
+            StartCoroutine(ShootSnoekbaarRoutine());
         }
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, destroySnoekbaar);
     }
 
     private void Update()
@@ -52,6 +56,6 @@ public class Snoekbaar : MonoBehaviour
     private void MoveSnoekbaar()
     {
         if (!isMoving) return;
-        transform.position += new Vector3(snoekbaarSpeed, 0, 0);
+        transform.position += new Vector3(moveDirection * snoekbaarSpeed * Time.deltaTime, 0, 0);
     }
 }

@@ -109,7 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Snoekbaar
   scaredFishesEffect: {fileID: 8648894625289478821, guid: 13492a02492742f4995a91896f97328b, type: 3}
   ShootSnoekbaarTime: 2
-  snoekbaarSpeed: 1500
+  snoekbaarSpeed: 15
+  destroySnoekbaar: 5
 --- !u!1001 &7715336023346572395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 13caa176f79388a4dbcad596805b0ae0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 13caa176f79388a4dbcad596805b0ae0, type: 3}
       propertyPath: m_LocalPosition.x
