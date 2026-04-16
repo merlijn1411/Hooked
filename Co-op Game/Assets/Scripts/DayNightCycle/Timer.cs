@@ -25,7 +25,6 @@ public class Timer : MonoBehaviour
     private void UpdateScroller()
     {
         _timer -= Time.deltaTime;
-        Debug.Log(_timer);
         if (_timer < 0 && !_hasTriggered)
         {
             _hasTriggered = true;
