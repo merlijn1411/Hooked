@@ -33,15 +33,14 @@ public class Snoekbaar : MonoBehaviour
             Instantiate(scaredFishesEffect, transform.position, Quaternion.Euler(new Vector3(0, 0, -180)));
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
             moveDirection = 1f;
-            StartCoroutine(ShootSnoekbaarRoutine());
         }
         else
         {
             Instantiate(scaredFishesEffect, transform.position, Quaternion.identity);
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
             moveDirection = -1f;
-            StartCoroutine(ShootSnoekbaarRoutine());
         }
+        StartCoroutine(ShootSnoekbaarRoutine());
         Destroy(gameObject, destroySnoekbaar);
     }
 
