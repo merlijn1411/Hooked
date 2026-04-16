@@ -10,6 +10,7 @@ const wss = new WebSocket.Server({ server });
 
 let players = {}; 
 let sessions = {}; 
+let playerIndices = {};
 const MAX_PLAYERS = 4;
 const LOG_HISTORY_PER_PLAYER = 15;
 const logHistory = [];
@@ -23,6 +24,18 @@ function trimLogHistory() {
     while (logHistory.length > getLogHistoryLimit()) {
         logHistory.shift();
     }
+}
+
+function getAvailablePlayerIndex() {
+    const usedIndices = new Set(Object.values(playerIndices));
+
+    for (let index = 0; index < MAX_PLAYERS; index++) {
+        if (!usedIndices.has(index)) {
+            return index;
+        }
+    }
+
+    return -1;
 }
 
 function formatLogPart(part) {
@@ -83,6 +96,9 @@ wss.on("connection", (ws) => {
                     if (sessionId && sessions[sessionId]) {
                         const existingPlayerId = sessions[sessionId];
                         const existingWs = players[existingPlayerId];
+                        const existingPlayerIndex = typeof playerIndices[existingPlayerId] === "number"
+                            ? playerIndices[existingPlayerId]
+                            : getAvailablePlayerIndex();
 
                         if (existingWs && existingWs !== ws) {
                             try {
@@ -94,14 +110,17 @@ wss.on("connection", (ws) => {
                         }
 
                         ws.playerId = existingPlayerId;
+                        ws.playerIndex = existingPlayerIndex;
                         ws.sessionId = sessionId;
                         players[existingPlayerId] = ws;
+                        playerIndices[existingPlayerId] = existingPlayerIndex;
 
                         logMessage("🔄 Player reconnected:", ws.playerId);
 
                         ws.send(JSON.stringify({
                             type: "welcome",
-                            playerId: ws.playerId
+                            playerId: ws.playerId,
+                            playerIndex: ws.playerIndex
                         }));
 
                         return;
@@ -114,22 +133,31 @@ wss.on("connection", (ws) => {
                     }
 
                     ws.playerId = uuidv4();
+                    ws.playerIndex = getAvailablePlayerIndex();
+                    if (ws.playerIndex === -1) {
+                        ws.send(JSON.stringify({ type: "full" }));
+                        ws.close(4003, "Server full");
+                        return;
+                    }
                     ws.sessionId = sessionId;
                     players[ws.playerId] = ws;
+                    playerIndices[ws.playerId] = ws.playerIndex;
                     if (sessionId) {
                         sessions[sessionId] = ws.playerId;
                     }
 
-                    logMessage("🎮 Player joined:", ws.playerId);
+                    logMessage("🎮 Player joined:", ws.playerId, "index:", ws.playerIndex);
 
                     ws.send(JSON.stringify({
                         type: "welcome",
-                        playerId: ws.playerId
+                        playerId: ws.playerId,
+                        playerIndex: ws.playerIndex
                     }));
 
                     broadcastToUnity({
                         type: "player_joined",
                         playerId: ws.playerId,
+                        playerIndex: ws.playerIndex,
                         count: Object.keys(players).length
                     });
                     return;
@@ -148,6 +176,7 @@ wss.on("connection", (ws) => {
                 const unityInput = {
                     type: "input",
                     playerId: ws.playerId,
+                    playerIndex: ws.playerIndex,
                     action: data.action
                 };
 
@@ -172,19 +201,22 @@ wss.on("connection", (ws) => {
 
         if (ws.clientType === "controller" && ws.playerId && players[ws.playerId] === ws) {
             delete players[ws.playerId];
+            delete playerIndices[ws.playerId];
 
-            logMessage("❌ Player disconnected:", ws.playerId);
+            logMessage("❌ Player disconnected:", ws.playerId, "index:", ws.playerIndex);
             trimLogHistory();
 
             broadcastToUnity({
                 type: "player_left",
                 playerId: ws.playerId,
+                playerIndex: ws.playerIndex,
                 count: Object.keys(players).length
             });
 
             broadcastToUnity({
                 type: "disconnect",
-                playerId: ws.playerId
+                playerId: ws.playerId,
+                playerIndex: ws.playerIndex
             });
         }
 
