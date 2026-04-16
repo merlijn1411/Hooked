@@ -9,7 +9,6 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private Image filledImage;
     private float _timer;
-    private int count = 0;
 
     private void Start()
     {
