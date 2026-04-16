@@ -10,8 +10,13 @@ public class HookTouchEffect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player")) return; 
+        if (!collision.CompareTag("Player")) return;
         Instantiate(hitEffect, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         playersHealth.TakingDamage();
+    }
+
+    public void SetHealth(PlayersHealth pHealth)
+    {
+        playersHealth = pHealth;
     }
 }

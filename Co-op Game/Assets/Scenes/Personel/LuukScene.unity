@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSnoekbaar
   SpawnLeft: 0
   snoekbaar: {fileID: 3597179486655943289, guid: 61b5bf08e06d490448a309acc6ba0c2e, type: 3}
+  hookTouchEffect: {fileID: 1712619886}
 --- !u!4 &1244951067
 Transform:
   m_ObjectHideFlags: 0
