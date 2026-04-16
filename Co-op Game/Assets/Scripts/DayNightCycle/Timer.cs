@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,28 +10,31 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private Image filledImage;
     private float _timer;
+    private bool _hasTriggered = false;
 
     private void Start()
     {
         _timer = cycleDuration;
-        StartCoroutine(UpdateScroller());
     }
 
-    private IEnumerator UpdateScroller()
+    private void Update()
     {
-        yield return new WaitForSeconds(0);
+        UpdateScroller();
+    }
+
+    private void UpdateScroller()
+    {
         _timer -= Time.deltaTime;
         Debug.Log(_timer);
-        if (_timer < 0)
+        if (_timer < 0 && !_hasTriggered)
         {
-            StopCoroutine(UpdateScroller());
+            _hasTriggered = true;
             WinEvent.TriggerWin();
+            return;
         }
 
-        if (!(_timer > 0)) yield break;
+        if (!(_timer > 0)) return;
         var currentTime = _timer / cycleDuration;
         filledImage.fillAmount = currentTime;
-        yield return StartCoroutine(UpdateScroller());
-
     }
 }
