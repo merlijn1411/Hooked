@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Co-op Game/Assets/Graphics/animatie/Groene vis/VisGroenFlinch 1.controller.meta
+guid: ca42c84869178454e9119618864ba2ee
+NativeFormatImporter:
+========
 guid: 6b587a9b3c6f0d54482fea61e2707d31
 folderAsset: yes
 DefaultImporter:
+>>>>>>>> develop:Co-op Game/Assets/Graphics/Background.meta
   externalObjects: {}
+  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
