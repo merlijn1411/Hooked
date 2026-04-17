@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
     private Dictionary<string, bool> readyStates = new Dictionary<string, bool>();
 
-    public List<TextMeshProUGUI> playerSlots;
+    [Header("Player Slots (Images)")]
+    public List<Image> playerImages;
+    
     public List<string> players = new List<string>();
 
     [Header("UI Elements")]
@@ -52,28 +53,31 @@ public class LobbyManager : MonoBehaviour
 
     void UpdateUI()
     {
-        for (int i = 0; i < playerSlots.Count; i++)
+        for (int i = 0; i < playerImages.Count; i++)
         {
             if (i < players.Count)
             {
                 string playerId = players[i];
                 bool isReady = readyStates.ContainsKey(playerId) && readyStates[playerId];
                 
+                playerImages[i].gameObject.SetActive(true);
+
+                Color imgColor = playerImages[i].color;
+                
                 if (isReady)
                 {
-                    playerSlots[i].text = "Player " + (i + 1) + " (Ready!)";
-                    playerSlots[i].color = Color.green;
+                    imgColor.a = 1.0f;
                 }
                 else
                 {
-                    playerSlots[i].text = "Player " + (i + 1);
-                    playerSlots[i].color = Color.white;
+                    imgColor.a = 0.5f;
                 }
+                
+                playerImages[i].color = imgColor;
             }
             else
             {
-                playerSlots[i].text = "Waiting...";
-                playerSlots[i].color = Color.white; 
+                playerImages[i].gameObject.SetActive(false);
             }
         }
     }
@@ -127,6 +131,13 @@ public class LobbyManager : MonoBehaviour
     public void StartGame()
     {
         if (startGameButton != null && !startGameButton.interactable) return;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        
+        string sceneToLoad = "MainScene"; // Fallback
+        if (LevelManger.Instance != null)
+        {
+            sceneToLoad = LevelManger.Instance.GetSelectedLevelName();
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 }
