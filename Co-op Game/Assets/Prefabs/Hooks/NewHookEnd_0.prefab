@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3544395584552792825}
   - component: {fileID: 7562128774979370650}
   - component: {fileID: 2499345951752775664}
+  - component: {fileID: -8514939387652645653}
+  - component: {fileID: 2311493230952034348}
   m_Layer: 0
   m_Name: NewHookEnd_0
   m_TagString: Untagged
@@ -28,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.69, y: 10.3, z: 0}
-  m_LocalScale: {x: 0.6, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,3 +116,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8514939387652645653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735624492112496722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c022230df475ada44a9c3db34ff8d65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HookWarningIndecator
+  indicatorPrefab: {fileID: 7025482266050819792, guid: 3eeb3ec75d38faa4a87d910f6c877b67, type: 3}
+  groundY: -1.29
+--- !u!114 &2311493230952034348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735624492112496722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92f7c4ee3cc6104eab1f1ebed8377cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
+  minSpeed: 1
+  maxSpeed: 3
+  minY: -1.29
+  maxY: 9
+  warningDuration: 4
+  horizontalRange: 2
+  horizontalSpeedMin: 0.5
+  horizontalSpeedMax: 2
+  lineStart: {fileID: 0}
+  linePrefab: {fileID: 0}
+  hookTop: {fileID: 0}
