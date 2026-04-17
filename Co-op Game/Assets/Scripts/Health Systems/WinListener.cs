@@ -4,7 +4,7 @@ public class WinListener : MonoBehaviour
 {
     [SerializeField] private ParticleSystem confettiEffect;
 
-    private void OnEnable()
+    private void Start()
     {
         WinEvent.OnPlayersWon += OnWin;
     }
