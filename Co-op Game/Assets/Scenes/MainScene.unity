@@ -1070,6 +1070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3197396137342388905, guid: d772c581c213a914bb57664466b694af, type: 3}
+      propertyPath: radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4150067719809312149, guid: d772c581c213a914bb57664466b694af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1110,6 +1114,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7692178353129141605, guid: d772c581c213a914bb57664466b694af, type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692178353129141605, guid: d772c581c213a914bb57664466b694af, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
       propertyPath: m_Name
       value: Sack
@@ -1117,7 +1129,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1384254527}
   m_SourcePrefab: {fileID: 100100000, guid: d772c581c213a914bb57664466b694af, type: 3}
 --- !u!1001 &1097184378
 PrefabInstance:
@@ -1251,6 +1266,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 848974393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1384254522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
+  m_PrefabInstance: {fileID: 1057060524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1384254526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150067719809312149, guid: d772c581c213a914bb57664466b694af, type: 3}
+  m_PrefabInstance: {fileID: 1057060524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1384254527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384254522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5496574fe5ffbd744a0dd7afa33ddb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteCollideStretch
+  spriteSkin: {fileID: 2140438703}
+  stretchStrength: 0.2
+  influenceRadius: 1
+  returnSpeed: 5
 --- !u!1 &1794758741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1705,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 848974393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2140438703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 533962073183599578, guid: d772c581c213a914bb57664466b694af, type: 3}
+  m_PrefabInstance: {fileID: 1057060524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteSkin
 --- !u!1001 &3571195723246665988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,7 +1771,7 @@ PrefabInstance:
     - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
       propertyPath: SpawnPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1384254526}
     - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
       propertyPath: playerPrefab
       value: 
