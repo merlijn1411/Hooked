@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShapeEdgeCollider2D
   charRenderer: {fileID: 2805480250978940803}
   radius: 0.05
-  needsConvert: 0
+  needsConvert: 1
 --- !u!68 &473339609352780578
 EdgeCollider2D:
   m_ObjectHideFlags: 0
