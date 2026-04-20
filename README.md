@@ -52,6 +52,7 @@ Luuk:
 * PlayersHeath
 * DayNightCycle
 * HookedTouchedEffect
+* Snoekbaars
 
 Tirza: 
 * startscherm
@@ -203,3 +204,12 @@ class ParticleSystem
 HookTouchEffect --> PlayersHealth : deals damage
 HookTouchEffect --> ParticleSystem : spawns effect
 ```
+
+**Snoekbaar door Luuk**
+
+De Snoekbaars komt vanaf de linker- of rechterkant van het scherm en probeert de spelers (vissen) te raken.
+
+Voordat de snoekbaars verschijnt, wordt er een visuele waarschuwing gegeven. Kleine vissen zwemmen snel weg vanaf de kant waar de snoekbaars vandaan zal komen. Hierdoor weten spelers dat er gevaar aankomt en hebben ze kort de tijd om te reageren.
+
+Wanneer de snoekbaars over het scherm beweegt, moeten spelers hem ontwijken. Als een speler geraakt wordt, verliest het team een leven.
+![Snoekbaars](readme-assets/snoekbaars-showcase.gif)
