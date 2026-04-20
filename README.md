@@ -52,6 +52,7 @@ Luuk:
 * PlayersHeath
 * DayNightCycle
 * HookedTouchedEffect
+* Snoekbaars
 
 Tirza: 
 * startscherm
@@ -202,4 +203,57 @@ class ParticleSystem
 
 HookTouchEffect --> PlayersHealth : deals damage
 HookTouchEffect --> ParticleSystem : spawns effect
+```
+
+**Snoekbaar door Luuk**
+
+De Snoekbaars komt vanaf de linker- of rechterkant van het scherm en probeert de spelers (vissen) te raken.
+Voordat de snoekbaars verschijnt, wordt er een visuele waarschuwing gegeven. Kleine vissen zwemmen snel weg vanaf de kant waar de snoekbaars vandaan zal komen. Hierdoor weten spelers dat er gevaar aankomt en hebben ze kort de tijd om te reageren.
+Wanneer de snoekbaars over het scherm beweegt, moeten spelers hem ontwijken. Als een speler geraakt wordt, verliest het team een leven.
+![Snoekbaars](readme-assets/snoekbaars-showcase.gif)
+
+```mermaid
+classDiagram
+class SnoekbaarTimer {
+    - float maxTime
+    - float minTime
+    - SpawnSnoekbaar _spawnSnoekBaarScript
+    - Start()
+    - RandomStartRoutine()
+}
+
+class SpawnSnoekbaar {
+    + bool SpawnLeft
+    - GameObject snoekbaar
+    - PlayersHealth hookTouchEffect
+    + SpawningSnoekbaar()
+}
+
+class Snoekbaar {
+    - ParticleSystem scaredFishesEffectLeft
+    - ParticleSystem scaredFishesEffectRight
+    - float ShootSnoekbaarTime
+    - float snoekbaarSpeed
+    - float destroySnoekbaar
+    - SpawnSnoekbaar _snoekbaarScript
+    - bool _isMoving
+    - float _moveDirection
+    + SetSnoek(SpawnSnoekbaar snoekbaar)
+    - Start()
+    - Update()
+    - ShootSnoekbaarRoutine()
+    - MoveSnoekbaar()
+}
+
+class HookTouchEffect {
+    + SetHealth(PlayersHealth playersHealth)
+}
+
+class PlayersHealth
+
+SnoekbaarTimer --> SpawnSnoekbaar : calls spawn
+SpawnSnoekbaar --> Snoekbaar : instantiates
+SpawnSnoekbaar --> HookTouchEffect : sets health
+SpawnSnoekbaar --> PlayersHealth : uses
+Snoekbaar --> SpawnSnoekbaar : reads SpawnLeft
 ```

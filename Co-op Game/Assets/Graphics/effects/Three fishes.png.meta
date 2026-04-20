@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 99e7d017ecb05134fbf9793c9e69e69a
+guid: e571b4404f8a9744aa02a6021d6aac97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9011561803576382983
-    second: fih a_0
+      213: -3540165389434470083
+    second: Three fishes_0
+  - first:
+      213: 3791890822792416368
+    second: Three fishes_1
+  - first:
+      213: -7456993544532569698
+    second: Three fishes_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,23 +132,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fih a_0
+      name: Three fishes_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 16
-        width: 241
-        height: 108
+        x: 23
+        y: 49
+        width: 239
+        height: 106
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70616ad07bf7f0d70800000000000000
-      internalID: 9011561803576382983
+      spriteID: d3140acb55ecedec0800000000000000
+      internalID: -3540165389434470083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Three fishes_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 49
+        width: 239
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c0b9fec908f9430800000000000000
+      internalID: 3791890822792416368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Three fishes_2
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 49
+        width: 239
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9151cd41ef638890800000000000000
+      internalID: -7456993544532569698
       vertices: []
       indices: 
       edges: []
@@ -151,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 55454e33b2c1ac84ca2f1775d97c2720
     internalID: 0
     vertices: []
     indices: 
@@ -159,9 +209,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      fih a_0: 9011561803576382983
+      Three fishes_0: -3540165389434470083
+      Three fishes_1: 3791890822792416368
+      Three fishes_2: -7456993544532569698
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
