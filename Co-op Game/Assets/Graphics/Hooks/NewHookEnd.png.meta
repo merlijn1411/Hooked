@@ -132,12 +132,12 @@ TextureImporter:
       name: NewHookEnd_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 23
-        width: 269
-        height: 385
-      alignment: 9
-      pivot: {x: 0.9039604, y: 0.9949824}
+        x: 0
+        y: 0
+        width: 193
+        height: 814
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,6 +146,28 @@ TextureImporter:
       bones: []
       spriteID: 0177790b3414c6370800000000000000
       internalID: 8317094370827794192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewHookEnd_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 0
+        width: 193
+        height: 814
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f81ea25b73e0d4f8aacdfcba46c8e6
+      internalID: 2440592398940965167
       vertices: []
       indices: 
       edges: []
@@ -162,7 +184,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":193.0,"y":1068.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       NewHookEnd_0: 8317094370827794192
       NewHookEnd_1: 2440592398940965167

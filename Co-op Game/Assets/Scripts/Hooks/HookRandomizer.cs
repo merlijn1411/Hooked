@@ -69,7 +69,7 @@ public class HookRandomizer : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         Move();
         UpdateLine();
@@ -77,12 +77,11 @@ public class HookRandomizer : MonoBehaviour
 
     private void Move()
     {
-        Vector3 pos = transform.position;
+        var pos = transform.position;
+        pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
 
         if (!_isDropping)
         {
-            pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
-
             if (pos.y >= maxY)
             {
                 pos.y = maxY;
@@ -96,8 +95,6 @@ public class HookRandomizer : MonoBehaviour
         }
         else
         {
-            pos.y += _verticalDirection * _verticalSpeed * Time.deltaTime;
-
             if (pos.y <= minY)
             {
                 pos.y = minY;
@@ -138,7 +135,7 @@ public class HookRandomizer : MonoBehaviour
 
     private void ChooseNewHorizontalTarget()
     {
-        float newX = _startPos.x + Random.Range(-horizontalRange, horizontalRange);
+        var newX = _startPos.x + Random.Range(-horizontalRange, horizontalRange);
         _horizontalTarget = new Vector3(newX, transform.position.y, 0);
         _horizontalSpeed = Random.Range(horizontalSpeedMin, horizontalSpeedMax);
     }
