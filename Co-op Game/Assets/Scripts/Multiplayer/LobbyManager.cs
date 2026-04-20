@@ -26,6 +26,20 @@ public class LobbyManager : MonoBehaviour
 
     public void PlayerJoined(string playerId)
     {
+        if (players.Contains(playerId))
+        {
+            Debug.Log($"Speler {playerId} is al in de lobby. (Reconnect)");
+            
+            if (!readyStates.ContainsKey(playerId))
+            {
+                readyStates[playerId] = false;
+            }
+            
+            UpdateUI();
+            CheckAllReady();
+            return; 
+        }
+
         if (players.Count >= 4) return;
 
         players.Add(playerId);
