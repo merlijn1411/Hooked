@@ -5,6 +5,8 @@ public class HookTouchEffect : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private PlayersHealth playersHealth;
 
+    [SerializeField] private SnapMechanic snapMechanic;
+
     [Header("Effects")]
     [SerializeField] private ParticleSystem hitEffect;
 
@@ -13,6 +15,11 @@ public class HookTouchEffect : MonoBehaviour
         if (!collision.CompareTag("Player")) return;
         Instantiate(hitEffect, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         playersHealth.TakingDamage();
+
+        if (!playersHealth.HasLives())
+        {
+            StartCoroutine(snapMechanic.Snap(collision.transform));
+        }
     }
 
     public void SetHealth(PlayersHealth pHealth)

@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Co-op Game/Assets/Scripts/Snoekbaar.meta
 guid: 178f4eaf9105c2e4c86738e62afaf5ec
 folderAsset: yes
 DefaultImporter:
+========
+guid: 307b68ef248a88045b7e051faffcb91a
+PrefabImporter:
+>>>>>>>> develop:Co-op Game/Assets/Prefabs/Characters/Sack.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

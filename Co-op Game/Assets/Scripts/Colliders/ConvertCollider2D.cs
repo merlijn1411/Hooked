@@ -5,7 +5,7 @@ public class ConvertCollider2D : MonoBehaviour
     public void Convert(EdgeCollider2D edge)
     {
         if (edge == null) return;
-
+        
         var outer = edge.points;
         
         if (outer[0] != outer[^1])
@@ -26,6 +26,8 @@ public class ConvertCollider2D : MonoBehaviour
         
         System.Array.Reverse(inner);
         poly.SetPath(1, inner);
+
+        poly.isTrigger = edge.isTrigger;
         
         Destroy(edge);
     }
