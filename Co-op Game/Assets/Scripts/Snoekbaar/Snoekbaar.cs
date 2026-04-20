@@ -4,20 +4,21 @@ using System.Collections;
 public class Snoekbaar : MonoBehaviour
 {
     [Header("Particle System")]
-    [SerializeField] private ParticleSystem scaredFishesEffect;
+    [SerializeField] private ParticleSystem scaredFishesEffectLeft;
+    [SerializeField] private ParticleSystem scaredFishesEffectRight;
 
     [Header("Snoekbaar variabelen")]
     [SerializeField] private float ShootSnoekbaarTime;
     [SerializeField] private float snoekbaarSpeed;
     [SerializeField] private float destroySnoekbaar;
 
-    private SpawnSnoekbaar snoekbaarScript;
-    private bool isMoving;
-    private float moveDirection;
+    private SpawnSnoekbaar _snoekbaarScript;
+    private bool _isMoving;
+    private float _moveDirection;
 
     public void SetSnoek(SpawnSnoekbaar snoekbaar)
     {
-        snoekbaarScript = snoekbaar;
+        _snoekbaarScript = snoekbaar;
     }
 
     private void Start()
@@ -26,19 +27,19 @@ public class Snoekbaar : MonoBehaviour
         pos.z = 0f;
         transform.position = pos;
 
-        var snoekbaarSpawnLeft = snoekbaarScript.SpawnLeft;
+        var snoekbaarSpawnLeft = _snoekbaarScript.SpawnLeft;
 
         if (snoekbaarSpawnLeft)
         {
-            Instantiate(scaredFishesEffect, transform.position, Quaternion.Euler(new Vector3(0, 0, -180)));
+            Instantiate(scaredFishesEffectRight, transform.position, Quaternion.Euler(0,-180,0));
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            moveDirection = 1f;
+            _moveDirection = 1f;
         }
         else
         {
-            Instantiate(scaredFishesEffect, transform.position, Quaternion.identity);
+            Instantiate(scaredFishesEffectLeft, transform.position, Quaternion.identity);
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            moveDirection = -1f;
+            _moveDirection = -1f;
         }
         StartCoroutine(ShootSnoekbaarRoutine());
         Destroy(gameObject, destroySnoekbaar);
@@ -52,12 +53,12 @@ public class Snoekbaar : MonoBehaviour
     private IEnumerator ShootSnoekbaarRoutine()
     {
         yield return new WaitForSeconds(ShootSnoekbaarTime);
-        isMoving = true;
+        _isMoving = true;
     }
 
     private void MoveSnoekbaar()
     {
-        if (!isMoving) return;
-        transform.position += new Vector3(moveDirection * snoekbaarSpeed * Time.deltaTime, 0, 0);
+        if (!_isMoving) return;
+        transform.position += new Vector3(_moveDirection * snoekbaarSpeed * Time.deltaTime, 0, 0);
     }
 }

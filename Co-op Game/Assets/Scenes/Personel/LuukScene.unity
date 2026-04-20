@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208c83c13c33e8540928f5f3493f460a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnoekbaarTimer
-  maxTime: 5
-  minTime: 20
+  maxTime: 2
+  minTime: 5
 --- !u!1001 &1369616867
 PrefabInstance:
   m_ObjectHideFlags: 0

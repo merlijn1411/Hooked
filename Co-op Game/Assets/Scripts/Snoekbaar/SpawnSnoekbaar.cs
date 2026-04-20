@@ -7,6 +7,7 @@ public class SpawnSnoekbaar : MonoBehaviour
     [Header("Snoekbaar GameObject")]
     [SerializeField] private GameObject snoekbaar;
 
+    [Header("Hook Touch Effect")]
     [SerializeField] private PlayersHealth hookTouchEffect;
 
     public void SpawningSnoekbaar()
