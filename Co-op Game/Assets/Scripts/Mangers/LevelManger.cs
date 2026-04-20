@@ -13,8 +13,11 @@ public class LevelManger : MonoBehaviour
     [Header("All Levels")]
     [SerializeField] private string[] levels;
     
-    [Header("Level Buttons UI (om te schalen)")]
-    [SerializeField] private Transform[] levelButtons;
+    [Header("Level Buttons Container")]
+    [Tooltip("Drag the parent object that contains all the level buttons here")]
+    [SerializeField] private Transform levelButtonsContainer;
+
+    private Transform[] levelButtons;
 
     private int selectedLevelIndex = 0; 
 
@@ -29,6 +32,21 @@ public class LevelManger : MonoBehaviour
     private void Start()
     {
         levelSelectionUI.SetActive(false);
+
+        if (levelButtonsContainer != null)
+        {
+            levelButtons = new Transform[levelButtonsContainer.childCount];
+            for (int i = 0; i < levelButtonsContainer.childCount; i++)
+            {
+                levelButtons[i] = levelButtonsContainer.GetChild(i);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ No Level Buttons Container assigned in the inspector!");
+            levelButtons = new Transform[0];
+        }
+
         SelectLevel(selectedLevelIndex);
     }
 
@@ -48,18 +66,14 @@ public class LevelManger : MonoBehaviour
     {
         Application.Quit();
     }
-
-    // Roep deze functie aan op de OnClick van je level knoppen, in plaats van OpenLevel
     public void SelectLevel(int index)
     {
         if (index < 0 || index >= levels.Length) 
         { 
-            Debug.LogWarning($"SelectLevel: Index {index} is ongeldig!");
             return; 
         }
         
         selectedLevelIndex = index;
-        Debug.Log($"✅ Level geselecteerd: {levels[index]} (Index: {index})");
         
         if (levelButtons != null && levelButtons.Length > 0)
         {
@@ -73,28 +87,22 @@ public class LevelManger : MonoBehaviour
 
             if (index < levelButtons.Length && levelButtons[index] != null)
             {
-                // Schaal naar de geselecteerde grootte
+                // Scale to the selected size
                 levelButtons[index].localScale = new Vector3(0.8f, 0.8f, 0.8f); 
-                Debug.Log($"🎨 Knop/Image {index} is groter gemaakt!");
             }
             else
             {
-                Debug.LogWarning($"⚠️ Kan knop {index} niet schalen, deze is leeg in de LevelButtons array in de inspector.");
+                Debug.LogWarning($"⚠️ Cannot scale button {index}, it might not exist in the container.");
             }
-        }
-        else
-        {
-            Debug.LogError("❌ Je hebt nog geen Level Buttons toegevoegd aan de 'Level Buttons' array in de inspector van de LevelManger!");
         }
     }
 
-    // Haalt de naam op van de gekozen map voor de LobbyManager
     public string GetSelectedLevelName()
     {
         if (selectedLevelIndex >= 0 && selectedLevelIndex < levels.Length)
         {
             return levels[selectedLevelIndex];
         }
-        return "MainScene"; // Fallback indien er geen is
+        return "MainScene"; 
     }
 }

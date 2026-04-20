@@ -132,7 +132,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (startGameButton != null && !startGameButton.interactable) return;
         
-        string sceneToLoad = "MainScene"; // Fallback
+        string sceneToLoad = "MainScene"; 
         if (LevelManger.Instance != null)
         {
             sceneToLoad = LevelManger.Instance.GetSelectedLevelName();
