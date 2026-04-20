@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -17,7 +19,7 @@ public class PlayersHealth : MonoBehaviour
         for(int i = 0;i < heartsDeadImages.Length;i++)
         {
             heartsDeadImages[i].enabled = false;
-        }    
+        }
     }
 
     public void TakingDamage()
@@ -28,27 +30,27 @@ public class PlayersHealth : MonoBehaviour
 
     private void UpdateUI()
     {
-        switch (hearts)
+        if (hearts <= 0)
         {
-            case 2:
-                heartsAliveImages[0].enabled = false;
-                heartsDeadImages[0].enabled = true;
-                break;
-            case 1:
-                heartsAliveImages[1].enabled = false;
-                heartsDeadImages[1].enabled = true;
-                break;
-            case 0:
-                heartsAliveImages[2].enabled = false;
-                heartsDeadImages[2].enabled = true;
-                PlayerHaveDied();
-                break;
+            StartCoroutine(EndGame());
+            hearts = 0;
         }
+            
+        heartsAliveImages[hearts].enabled = false;
+        heartsDeadImages[hearts].enabled = true;
+        
+    }
+
+    public bool HasLives()
+    {
+        var hasLives = hearts > 0;
+        return hasLives;
     }
 
     //This function is called when te player has died and a resart menu can open. For now we just quickly resart the level.
-    private void PlayerHaveDied()
+    private IEnumerator EndGame()
     {
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

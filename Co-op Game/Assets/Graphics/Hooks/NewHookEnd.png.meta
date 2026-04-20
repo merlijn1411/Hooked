@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 99e7d017ecb05134fbf9793c9e69e69a
+guid: 948b785f618be474c9444c8ce48fc052
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9011561803576382983
-    second: fih a_0
+      213: 8317094370827794192
+    second: NewHookEnd_0
+  - first:
+      213: 2440592398940965167
+    second: NewHookEnd_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,23 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fih a_0
+      name: NewHookEnd_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 16
-        width: 241
-        height: 108
+        x: 0
+        y: 0
+        width: 193
+        height: 814
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70616ad07bf7f0d70800000000000000
-      internalID: 9011561803576382983
+      spriteID: 0177790b3414c6370800000000000000
+      internalID: 8317094370827794192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewHookEnd_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 0
+        width: 193
+        height: 814
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f81ea25b73e0d4f8aacdfcba46c8e6
+      internalID: 2440592398940965167
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d0cde14055a23f94ab6cf3a841e72c24
     internalID: 0
     vertices: []
     indices: 
@@ -159,9 +184,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":193.0,"y":1068.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      fih a_0: 9011561803576382983
+      NewHookEnd_0: 8317094370827794192
+      NewHookEnd_1: 2440592398940965167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
