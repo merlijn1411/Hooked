@@ -137,6 +137,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1831833972}
     - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: minSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: lineStart
       value: 
       objectReference: {fileID: 1187637324}
@@ -268,6 +276,14 @@ PrefabInstance:
       propertyPath: playersHealth
       value: 
       objectReference: {fileID: 1831833972}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: minSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: lineStart
       value: 
@@ -1147,6 +1163,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1831833972}
     - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: minSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: lineStart
       value: 
       objectReference: {fileID: 371934883}
@@ -1581,6 +1605,14 @@ PrefabInstance:
       propertyPath: playersHealth
       value: 
       objectReference: {fileID: 1831833972}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: minSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2311493230952034348, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: lineStart
       value: 
