@@ -30,11 +30,14 @@ public class PlayersHealth : MonoBehaviour
 
     private void UpdateUI()
     {
+        if (hearts <= 0)
+        {
+            StartCoroutine(EndGame());
+            hearts = 0;
+        }
+            
         heartsAliveImages[hearts].enabled = false;
         heartsDeadImages[hearts].enabled = true;
-
-        if (hearts == 0)
-            StartCoroutine(EndGame());
         
     }
 
