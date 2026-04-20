@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpawnSnoekbaar : MonoBehaviour
 {
-    public bool SpawnLeft;
+    public bool SpawnLeft { get; private set; }
 
     [Header("Snoekbaar GameObject")]
     [SerializeField] private GameObject snoekbaar;

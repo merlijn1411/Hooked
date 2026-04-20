@@ -15,7 +15,7 @@ public class SnoekbaarTimer : MonoBehaviour
         StartCoroutine(RandomStartRoutine());
     }
 
-    IEnumerator RandomStartRoutine()
+    private IEnumerator RandomStartRoutine()
     {
         float delay = Random.Range(minTime, maxTime);
         yield return new WaitForSeconds(delay);

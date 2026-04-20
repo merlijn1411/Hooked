@@ -29,18 +29,13 @@ public class Snoekbaar : MonoBehaviour
 
         var snoekbaarSpawnLeft = _snoekbaarScript.SpawnLeft;
 
-        if (snoekbaarSpawnLeft)
-        {
-            Instantiate(scaredFishesEffectRight, transform.position, Quaternion.Euler(0,-180,0));
-            transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            _moveDirection = 1f;
-        }
-        else
-        {
-            Instantiate(scaredFishesEffectLeft, transform.position, Quaternion.identity);
-            transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
-            _moveDirection = -1f;
-        }
+        var effect = snoekbaarSpawnLeft ? scaredFishesEffectRight : scaredFishesEffectLeft;
+        var rotation = snoekbaarSpawnLeft ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
+        _moveDirection = snoekbaarSpawnLeft ? 1f : -1f;
+
+        Instantiate(effect, transform.position, rotation);
+        transform.rotation = Quaternion.Euler(0, -180, 0);
+
         StartCoroutine(ShootSnoekbaarRoutine());
         Destroy(gameObject, destroySnoekbaar);
     }
