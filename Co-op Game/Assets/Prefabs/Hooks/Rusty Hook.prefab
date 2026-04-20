@@ -313,8 +313,8 @@ MonoBehaviour:
   horizontalRange: 2
   horizontalSpeedMin: 0.5
   horizontalSpeedMax: 2
-  lineStart: {fileID: 0}
-  linePrefab: {fileID: 6103555529917233456, guid: 72726e2bb022bd44ca1d47e33c1c5095, type: 3}
+  lineStart: {fileID: 4412731470690847623}
+  linePrefab: {fileID: 6103555529917233456, guid: a9a542612ee6b50459b786e6747fcce2, type: 3}
   hookTop: {fileID: 4412731470690847623}
 --- !u!1 &9085923847713447090
 GameObject:
