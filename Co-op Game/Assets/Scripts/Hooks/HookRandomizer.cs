@@ -42,7 +42,7 @@ public class HookRandomizer : MonoBehaviour
 
     private HookWarningIndecator _warning;
 
-    void Start()
+    private void Start()
     {
         _startPos = transform.position;
         _verticalSpeed = Random.Range(minSpeed, maxSpeed);
@@ -73,6 +73,15 @@ public class HookRandomizer : MonoBehaviour
     {
         Move();
         UpdateLine();
+    }
+
+    private void HookRandomFacing()
+    {
+        var random = Random.Range(1, 10);
+        Debug.Log(random);
+        var faceX = random <= 5 ? transform.localScale.x : -transform.localScale.x;
+        Debug.Log(faceX);
+        transform.localScale = new Vector3(faceX, transform.localScale.y);
     }
 
     private void Move()
@@ -121,6 +130,8 @@ public class HookRandomizer : MonoBehaviour
 
     private IEnumerator DropRoutine()
     {
+        HookRandomFacing();
+        // 🔒 WACHT OP MAX 2
         if (HookDropManager.Instance != null)
             yield return HookDropManager.Instance.RequestDrop();
 
