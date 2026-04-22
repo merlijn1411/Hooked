@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1afad0715e12e7e479220e6993a38b86
+guid: 42bd9e28da670a44cb310680c0878225
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5553460962037083906
-    second: Schelp_0
+      213: 7605422557452617252
+    second: Level3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Schelp_0
+      name: Level3_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 45
-        width: 228
-        height: 236
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20f283c425bd11d40800000000000000
-      internalID: 5553460962037083906
+      spriteID: 426c4bf4583eb8960800000000000000
+      internalID: 7605422557452617252
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Schelp_0: 5553460962037083906
+      Level3_0: 7605422557452617252
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
