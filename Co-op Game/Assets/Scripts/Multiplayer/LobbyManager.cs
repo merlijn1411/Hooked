@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
-    private Dictionary<string, bool> readyStates = new Dictionary<string, bool>();
+    private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
 
     [Header("Player Slots (Images)")]
-    public List<Image> playerImages;
+    public List<Image> PlayerImages;
     
     public List<string> players = new List<string>();
 
@@ -30,9 +30,9 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log($"Speler {playerId} is al in de lobby. (Reconnect)");
             
-            if (!readyStates.ContainsKey(playerId))
+            if (!_readyStates.ContainsKey(playerId))
             {
-                readyStates[playerId] = false;
+                _readyStates[playerId] = false;
             }
             
             UpdateUI();
@@ -44,9 +44,9 @@ public class LobbyManager : MonoBehaviour
 
         players.Add(playerId);
         
-        if (!readyStates.ContainsKey(playerId))
+        if (!_readyStates.ContainsKey(playerId))
         {
-            readyStates[playerId] = false;
+            _readyStates[playerId] = false;
         }
 
         UpdateUI();
@@ -56,9 +56,9 @@ public class LobbyManager : MonoBehaviour
     public void PlayerLeft(string playerId)
     {
         players.Remove(playerId);
-        if (readyStates.ContainsKey(playerId))
+        if (_readyStates.ContainsKey(playerId))
         {
-            readyStates.Remove(playerId);
+            _readyStates.Remove(playerId);
         }
 
         UpdateUI();
@@ -67,16 +67,16 @@ public class LobbyManager : MonoBehaviour
 
     void UpdateUI()
     {
-        for (int i = 0; i < playerImages.Count; i++)
+        for (int i = 0; i < PlayerImages.Count; i++)
         {
             if (i < players.Count)
             {
                 string playerId = players[i];
-                bool isReady = readyStates.ContainsKey(playerId) && readyStates[playerId];
+                bool isReady = _readyStates.ContainsKey(playerId) && _readyStates[playerId];
                 
-                playerImages[i].gameObject.SetActive(true);
+                PlayerImages[i].gameObject.SetActive(true);
 
-                Color imgColor = playerImages[i].color;
+                Color imgColor = PlayerImages[i].color;
                 
                 if (isReady)
                 {
@@ -87,11 +87,11 @@ public class LobbyManager : MonoBehaviour
                     imgColor.a = 0.5f;
                 }
                 
-                playerImages[i].color = imgColor;
+                PlayerImages[i].color = imgColor;
             }
             else
             {
-                playerImages[i].gameObject.SetActive(false);
+                PlayerImages[i].gameObject.SetActive(false);
             }
         }
     }
@@ -106,14 +106,14 @@ public class LobbyManager : MonoBehaviour
 
     void ToggleReady(string playerId)
     {
-        if (!readyStates.ContainsKey(playerId))
+        if (!_readyStates.ContainsKey(playerId))
         {
-            readyStates[playerId] = false;
+            _readyStates[playerId] = false;
         }
 
-        readyStates[playerId] = !readyStates[playerId];
+        _readyStates[playerId] = !_readyStates[playerId];
 
-        Debug.Log($"✅ Player {playerId} ready: {readyStates[playerId]}");
+        Debug.Log($"✅ Player {playerId} ready: {_readyStates[playerId]}");
 
         UpdateUI();        
         CheckAllReady();
@@ -123,7 +123,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (startGameButton == null) return;
 
-        if (readyStates.Count == 0 || players.Count == 0)
+        if (_readyStates.Count == 0 || players.Count == 0)
         {
             startGameButton.interactable = false;
             return;
@@ -131,7 +131,7 @@ public class LobbyManager : MonoBehaviour
 
         foreach (var playerId in players)
         {
-            if (!readyStates.ContainsKey(playerId) || !readyStates[playerId])
+            if (!_readyStates.ContainsKey(playerId) || !_readyStates[playerId])
             {
                 startGameButton.interactable = false;
                 return;
