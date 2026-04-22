@@ -1115,15 +1115,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[1]'
-      value: Menu-UI
+      value: GAME2
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[2]'
-      value: JadeScene
+      value: GAME3
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[3]'
-      value: Lobby-art
+      value: GAME4
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[4]'
