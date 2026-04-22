@@ -916,7 +916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2801078419853491610, guid: 689b075e847f0814b83b4e5b53884dcc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4576417098035527227, guid: 689b075e847f0814b83b4e5b53884dcc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -997,6 +997,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: PlayerImages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: playerImages.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1016,6 +1020,22 @@ PrefabInstance:
       propertyPath: 'playerSlots.Array.data[3]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8394100927787417030}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8394100927787417029}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8394100927787417028}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8394100927787417027}
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: 'playerImages.Array.data[0]'
       value: 
@@ -1115,11 +1135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[1]'
-      value: GAME2
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[2]'
-      value: GAME3
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[3]'
@@ -1470,6 +1490,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SelectLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3745647457573854391, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6986465995100762522, guid: a6d41b4490f1f77439562496662d502a, type: 3}
+    - target: {fileID: 3962954713391611960, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6549727445796623346, guid: 0445a93acd2d7fc448633e2f2f28e373, type: 3}
     - target: {fileID: 4066535672421034808, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 639
@@ -1598,6 +1626,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6727764300114849652, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1368630223411050563, guid: 0ab354b0cc9cce94490099b06283f1c7, type: 3}
     - target: {fileID: 6728748401511518886, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -334
