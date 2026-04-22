@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
-    private Dictionary<string, bool> readyStates = new Dictionary<string, bool>();
+    private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
 
-    public List<TextMeshProUGUI> playerSlots;
+    [Header("Player Slots (Images)")]
+    public List<Image> PlayerImages;
+    
     public List<string> players = new List<string>();
 
     [Header("UI Elements")]
@@ -25,13 +26,27 @@ public class LobbyManager : MonoBehaviour
 
     public void PlayerJoined(string playerId)
     {
+        if (players.Contains(playerId))
+        {
+            Debug.Log($"Speler {playerId} is al in de lobby. (Reconnect)");
+            
+            if (!_readyStates.ContainsKey(playerId))
+            {
+                _readyStates[playerId] = false;
+            }
+            
+            UpdateUI();
+            CheckAllReady();
+            return; 
+        }
+
         if (players.Count >= 4) return;
 
         players.Add(playerId);
         
-        if (!readyStates.ContainsKey(playerId))
+        if (!_readyStates.ContainsKey(playerId))
         {
-            readyStates[playerId] = false;
+            _readyStates[playerId] = false;
         }
 
         UpdateUI();
@@ -41,9 +56,9 @@ public class LobbyManager : MonoBehaviour
     public void PlayerLeft(string playerId)
     {
         players.Remove(playerId);
-        if (readyStates.ContainsKey(playerId))
+        if (_readyStates.ContainsKey(playerId))
         {
-            readyStates.Remove(playerId);
+            _readyStates.Remove(playerId);
         }
 
         UpdateUI();
@@ -52,28 +67,31 @@ public class LobbyManager : MonoBehaviour
 
     void UpdateUI()
     {
-        for (int i = 0; i < playerSlots.Count; i++)
+        for (int i = 0; i < PlayerImages.Count; i++)
         {
             if (i < players.Count)
             {
                 string playerId = players[i];
-                bool isReady = readyStates.ContainsKey(playerId) && readyStates[playerId];
+                bool isReady = _readyStates.ContainsKey(playerId) && _readyStates[playerId];
+                
+                PlayerImages[i].gameObject.SetActive(true);
+
+                Color imgColor = PlayerImages[i].color;
                 
                 if (isReady)
                 {
-                    playerSlots[i].text = "Player " + (i + 1) + " (Ready!)";
-                    playerSlots[i].color = Color.green;
+                    imgColor.a = 1.0f;
                 }
                 else
                 {
-                    playerSlots[i].text = "Player " + (i + 1);
-                    playerSlots[i].color = Color.white;
+                    imgColor.a = 0.5f;
                 }
+                
+                PlayerImages[i].color = imgColor;
             }
             else
             {
-                playerSlots[i].text = "Waiting...";
-                playerSlots[i].color = Color.white; 
+                PlayerImages[i].gameObject.SetActive(false);
             }
         }
     }
@@ -88,14 +106,14 @@ public class LobbyManager : MonoBehaviour
 
     void ToggleReady(string playerId)
     {
-        if (!readyStates.ContainsKey(playerId))
+        if (!_readyStates.ContainsKey(playerId))
         {
-            readyStates[playerId] = false;
+            _readyStates[playerId] = false;
         }
 
-        readyStates[playerId] = !readyStates[playerId];
+        _readyStates[playerId] = !_readyStates[playerId];
 
-        Debug.Log($"✅ Player {playerId} ready: {readyStates[playerId]}");
+        Debug.Log($"✅ Player {playerId} ready: {_readyStates[playerId]}");
 
         UpdateUI();        
         CheckAllReady();
@@ -105,7 +123,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (startGameButton == null) return;
 
-        if (readyStates.Count == 0 || players.Count == 0)
+        if (_readyStates.Count == 0 || players.Count == 0)
         {
             startGameButton.interactable = false;
             return;
@@ -113,7 +131,7 @@ public class LobbyManager : MonoBehaviour
 
         foreach (var playerId in players)
         {
-            if (!readyStates.ContainsKey(playerId) || !readyStates[playerId])
+            if (!_readyStates.ContainsKey(playerId) || !_readyStates[playerId])
             {
                 startGameButton.interactable = false;
                 return;
@@ -127,6 +145,13 @@ public class LobbyManager : MonoBehaviour
     public void StartGame()
     {
         if (startGameButton != null && !startGameButton.interactable) return;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        
+        string sceneToLoad = "MainScene"; 
+        if (LevelManger.Instance != null)
+        {
+            sceneToLoad = LevelManger.Instance.GetSelectedLevelName();
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 }

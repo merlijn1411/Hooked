@@ -80,10 +80,10 @@ public class PhoneInputManager : MonoBehaviour
 
                 InputRouter.Instance.HandleInput(msg.playerId, msg.action, msg.x, msg.y);
             }
-            else if (msg.type == "player_joined")
+            else if (msg.type == "player_joined" || msg.type == "welcome") 
             {
                 if (enableDebugLogs)
-                    Debug.Log($"👥 Player joined: {msg.playerId}");
+                    Debug.Log($"👥 Player joined/reconnected: {msg.playerId}");
                 
                 if (lobbyManager != null)
                 {
