@@ -40,7 +40,7 @@ public class FileManager : MonoBehaviour
         return JsonUtility.FromJson<GameFile>(json);
     }
 
-    private static void DeleteJson()
+    public static void DeleteJson()
     {
         var path = Path.Combine(Application.persistentDataPath, "data.json");
         if (File.Exists(path)) File.Delete(path);
