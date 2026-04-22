@@ -9,16 +9,16 @@ public class SpearRandomizer : MonoBehaviour
         public GameObject Prefab;
 
         public Transform Top;
-        public Transform Bottom;
 
-        public float BottomClampX = 2f; // 🔥 half width van border
-        public float BottomClampY = 1f; // 🔥 half height van border
+        public Transform BottomLeft;
+        public Transform BottomMiddle;
+        public Transform BottomRight;
 
         public float RotationZ;
     }
 
-    public SpearData LeftToRight;   // ↘ 30.39
-    public SpearData RightToLeft;    // ↙ -31.2
+    public SpearData LeftToRight;   // ↘ (Middle + Right)
+    public SpearData RightToLeft;    // ↙ (Left + Middle)
 
     public float Speed = 8f;
     public float WaitTime = 1f;
@@ -38,9 +38,9 @@ public class SpearRandomizer : MonoBehaviour
 
         while (true)
         {
-            SpearData data = useLeftToRight ? LeftToRight : RightToLeft;
+            SpearData spearData = useLeftToRight ? LeftToRight : RightToLeft;
 
-            yield return HandleSpear(data);
+            yield return HandleSpear(spearData, useLeftToRight);
 
             useLeftToRight = !useLeftToRight;
 
@@ -48,13 +48,13 @@ public class SpearRandomizer : MonoBehaviour
         }
     }
 
-    private IEnumerator HandleSpear(SpearData data)
+    private IEnumerator HandleSpear(SpearData spearData, bool leftToRight)
     {
-        Vector2 topPos = data.Top.position;
-        Vector2 bottomPos = GetClampedBottom(data);
+        Vector2 topPos = spearData.Top.position;
+        Vector2 bottomPos = GetDirectionalBottom(spearData, leftToRight);
 
-        _currentSpear = Instantiate(data.Prefab, topPos, Quaternion.identity);
-        _currentSpear.transform.rotation = Quaternion.Euler(0f, 0f, data.RotationZ);
+        _currentSpear = Instantiate(spearData.Prefab, topPos, Quaternion.identity);
+        _currentSpear.transform.rotation = Quaternion.Euler(0f, 0f, spearData.RotationZ);
 
         _rigidbody = _currentSpear.GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = 0;
@@ -72,30 +72,51 @@ public class SpearRandomizer : MonoBehaviour
         Destroy(_currentSpear);
     }
 
-    private Vector2 GetClampedBottom(SpearData data)
+    private Vector2 GetDirectionalBottom(SpearData data, bool leftToRight)
     {
-        Vector2 basePos = data.Bottom.position;
+        Vector2 left = data.BottomLeft.position;
+        Vector2 middle = data.BottomMiddle.position;
+        Vector2 right = data.BottomRight.position;
 
-        float offsetX = Random.Range(-data.BottomClampX, data.BottomClampX);
-        float offsetY = Random.Range(-data.BottomClampY, data.BottomClampY);
-
-        Vector2 result = new Vector2(basePos.x + offsetX, basePos.y + offsetY);
-
-        // 🔥 clamp zodat hij altijd in border blijft (extra safety)
-        result.x = Mathf.Clamp(result.x, basePos.x - data.BottomClampX, basePos.x + data.BottomClampX);
-        result.y = Mathf.Clamp(result.y, basePos.y - data.BottomClampY, basePos.y + data.BottomClampY);
-
-        return result;
+        if (leftToRight)
+        {
+            // ↘ Middle + Right
+            return Random.value < 0.5f
+                ? Vector2.Lerp(middle, right, Random.value)
+                : right;
+        }
+        else
+        {
+            // ↙ Left + Middle
+            return Random.value < 0.5f
+                ? Vector2.Lerp(left, middle, Random.value)
+                : left;
+        }
     }
 
+    // 🔥 FIXED MOVEMENT (no jitter)
     private IEnumerator MoveTo(Vector2 targetPosition)
     {
-        while (Vector2.Distance(_currentSpear.transform.position, targetPosition) > 0.15f)
+        while (true)
         {
-            Vector2 direction = (targetPosition - (Vector2)_currentSpear.transform.position).normalized;
-            _rigidbody.linearVelocity = direction * Speed;
+            Vector2 currentPosition = _currentSpear.transform.position;
+            Vector2 direction = targetPosition - currentPosition;
 
-            yield return null;
+            float distance = direction.magnitude;
+
+            if (distance < 0.15f)
+                break;
+
+            direction.Normalize();
+
+            float moveStep = Speed * Time.fixedDeltaTime;
+
+            if (moveStep > distance)
+                moveStep = distance;
+
+            _rigidbody.linearVelocity = direction * (moveStep / Time.fixedDeltaTime);
+
+            yield return new WaitForFixedUpdate();
         }
 
         _rigidbody.linearVelocity = Vector2.zero;
