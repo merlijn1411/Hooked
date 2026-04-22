@@ -3,10 +3,10 @@ using UnityEngine;
 public class BubbelStream : MonoBehaviour
 {
     [Header("Force of stream")]
-    [SerializeField] float bubbleForce;
+    [SerializeField] private float bubbleForce;
 
     [Header("Before bubbelstream is destroyed")]
-    [SerializeField] float DestroyStreamTime;
+    [SerializeField] private float DestroyStreamTime;
 
     private void OnTriggerStay2D(Collider2D other)
     {
