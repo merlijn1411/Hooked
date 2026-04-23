@@ -202,6 +202,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 848974393}
     m_Modifications:
     - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4651011739549404065, guid: f06334202f23cde4fab93efc13892c49, type: 3}
+    - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: playersHealth
       value: 
       objectReference: {fileID: 1831833972}
@@ -341,6 +345,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 848974393}
     m_Modifications:
+    - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4651011739549404065, guid: f06334202f23cde4fab93efc13892c49, type: 3}
     - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: playersHealth
       value: 
@@ -1228,6 +1236,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 848974393}
     m_Modifications:
     - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4651011739549404065, guid: f06334202f23cde4fab93efc13892c49, type: 3}
+    - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: playersHealth
       value: 
       objectReference: {fileID: 1831833972}
@@ -1670,6 +1682,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 848974393}
     m_Modifications:
+    - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4651011739549404065, guid: f06334202f23cde4fab93efc13892c49, type: 3}
     - target: {fileID: 16901739429898080, guid: bde39fc06b8408041ac1120d6a86ce42, type: 3}
       propertyPath: playersHealth
       value: 
