@@ -916,7 +916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2801078419853491610, guid: 689b075e847f0814b83b4e5b53884dcc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4576417098035527227, guid: 689b075e847f0814b83b4e5b53884dcc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -997,6 +997,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: PlayerImages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: playerImages.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1016,6 +1020,22 @@ PrefabInstance:
       propertyPath: 'playerSlots.Array.data[3]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8394100927787417030}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8394100927787417029}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8394100927787417028}
+    - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
+      propertyPath: 'PlayerImages.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8394100927787417027}
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: 'playerImages.Array.data[0]'
       value: 

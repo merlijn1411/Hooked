@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
 
     private Rigidbody2D _rb2D;
+    private UIManager _uiManager;
     
     private float _currentX = 0f;
     private float _currentY = 0f;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        _uiManager = FindObjectOfType<UIManager>();
     }
     
     public void InteractieA()
@@ -31,7 +33,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void InteractieY()
     {
-        Debug.Log("Interact Y!");
+        if (_uiManager != null)
+        {
+            _uiManager.PauseGame();
+        }
+        else
+        {
+            Debug.LogWarning("UIManager is niet gevonden in de scene.");
+        }
     }
     
     public void MoveWithJoystick(float x, float y)
