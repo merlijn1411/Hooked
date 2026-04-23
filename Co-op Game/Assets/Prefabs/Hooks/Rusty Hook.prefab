@@ -309,7 +309,7 @@ MonoBehaviour:
   maxSpeed: 5
   minY: -1.29
   maxY: 9
-  warningDuration: 4
+  warningDuration: 2
   horizontalRange: 2
   horizontalSpeedMin: 0.5
   horizontalSpeedMax: 2

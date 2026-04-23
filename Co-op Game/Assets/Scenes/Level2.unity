@@ -138,11 +138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598728185426289504, guid: 1e069c3d9e0866c49a794b41eae00d4f, type: 3}
       propertyPath: maxTime
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3598728185426289504, guid: 1e069c3d9e0866c49a794b41eae00d4f, type: 3}
       propertyPath: minTime
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4919462462667551013, guid: 1e069c3d9e0866c49a794b41eae00d4f, type: 3}
       propertyPath: hookTouchEffect
