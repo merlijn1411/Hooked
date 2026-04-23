@@ -78,9 +78,7 @@ public class HookRandomizer : MonoBehaviour
     private void HookRandomFacing()
     {
         var random = Random.Range(1, 10);
-        Debug.Log(random);
         var faceX = random <= 5 ? transform.localScale.x : -transform.localScale.x;
-        Debug.Log(faceX);
         transform.localScale = new Vector3(faceX, transform.localScale.y);
     }
 

@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
 
     private Rigidbody2D _rb2D;
-    private UIManager _uiManager;
+    private Pausemenu _uiManager;
     
     private float _currentX = 0f;
     private float _currentY = 0f;
+
+    public float CurrentX => _currentX;
+    public float CurrentY => _currentY;
 
     public Vector3 Velocity { get; private set; }
 
@@ -18,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
-        _uiManager = FindObjectOfType<UIManager>();
+        _uiManager = FindObjectOfType<Pausemenu>();
     }
     
     public void InteractieA()
@@ -28,18 +31,29 @@ public class PlayerMovement : MonoBehaviour
     
     public void InteractieB()
     {
-        Debug.Log("Interact B!");
+        if (_uiManager != null && _uiManager.IsPaused)
+        {
+            _uiManager.ClickAtCursor();
+        }
+        else
+        {
+            Debug.Log("Interact B!");
+        }
     }
 
     public void InteractieY()
     {
         if (_uiManager != null)
         {
-            _uiManager.PauseGame();
-        }
-        else
-        {
-            Debug.LogWarning("UIManager is niet gevonden in de scene.");
+            // Toggle het pauzemenu met de Y knop
+            if (_uiManager.IsPaused)
+            {
+                _uiManager.ResumeGame();
+            }
+            else
+            {
+                _uiManager.PauseGame(this);
+            }
         }
     }
     
