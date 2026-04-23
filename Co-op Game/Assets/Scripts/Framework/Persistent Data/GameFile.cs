@@ -1,33 +1,67 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 
 [Serializable]
 public class GameFile
 {
+    public int UnlockedLevel;
     public List<ExternalFiles> ImportantFiles = new List<ExternalFiles>();
 
-    public void Add(int id, SpriteRenderer spriteRenderer, Animator animator)
-    {
-        var newFile = new ExternalFiles
-        {
-            ID = id,
-            Index = ImportantFiles.Count,
-            PlayerSpriteRenderer = spriteRenderer,
-            PlayerAnimator = animator
-        };
+    private Dictionary<string, ExternalVariables> dict;
 
-        ImportantFiles.Add(newFile);
+    public void BuildDictionary()
+    {
+        dict = new Dictionary<string, ExternalVariables>();
+        foreach (var e in ImportantFiles)
+        {
+            dict[e.key] = e.Value;
+        }
+    }
+    
+    public void Add(string id, ExternalVariables playerCharacter, int level)
+    {
+        if (dict == null)
+            BuildDictionary();
+        
+        dict[id] = playerCharacter;
+        
+        var index = ImportantFiles.FindIndex(e => e.key == id);
+
+        UnlockedLevel += level;
+        
+        if (index >= 0)
+        {
+            ImportantFiles[index] = new ExternalFiles
+            {
+                key = id,
+                Value = playerCharacter
+            };
+        }
+        else
+        {
+            ImportantFiles.Add(new ExternalFiles
+            {
+                key = id,
+                Value = playerCharacter
+            });
+        }
+        
     }
 }
 
 [Serializable]
 public class ExternalFiles
 {
-    public int ID;
+    public string key;
+    public ExternalVariables Value;
+    
+}
+
+[Serializable]
+public class ExternalVariables
+{
     public int Index;
-    public int level;
-    public SpriteRenderer PlayerSpriteRenderer;
-    public Animator PlayerAnimator;
+    public string ID;
 }
