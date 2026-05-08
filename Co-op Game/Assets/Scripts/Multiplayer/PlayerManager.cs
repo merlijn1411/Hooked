@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnPlayer(string playerId)
     {
-        GameObject obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity);
+        GameObject obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
         PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
 
         players.Add(playerId, playerMovement);
