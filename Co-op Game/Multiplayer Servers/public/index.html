@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Controller</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <div class="hud">
+        <h1 class="title">Phone Controller</h1>
+        <div id="connectionStatus" class="status status--connecting">Verbinden...</div>
+        <div class="buttons">
+            <button class="btn-Y" onclick="sendInput('Y')">Y</button>
+            <button class="btn-A" onclick="sendInput('A')">A</button>
+            <button class="btn-B" onclick="sendInput('B')">B</button>
+        </div>
+    </div>
+    <script src="./vector.js"></script>
+    <script src="./joystick.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

@@ -42,13 +42,17 @@ Delysha:
 
 Davey:
 * Player Input
+* Player Movement
 * Multiplayer
+* Lobby Systeem 
   
 Luuk: 
 * MainMenu
 * WinLooseCondition
 * PlayersHeath
 * DayNightCycle
+* HookedTouchedEffect
+* Snoekbaars
 
 Tirza: 
 * startscherm
@@ -131,4 +135,159 @@ class WinListener {
 }
 
 WinEvent --> WinListener : triggers event
+```
+
+**Player input door Davey en merlijn**
+
+
+![Player input](readme-assets/)
+
+
+Het Player Input systeem regelt hoe input van spelers vanaf hun telefoon wordt ontvangen, verwerkt en toegepast binnen de Unity game. Dit systeem maakt gebruik van een client-server architectuur waarbij input via een server wordt doorgestuurd naar de game.
+
+Wanneer een speler een actie uitvoert op zijn telefoon (zoals bewegen of een knop indrukken), wordt deze input verstuurd naar de server in de vorm van een JSON-bericht. De server voegt hier een unieke playerId aan toe en stuurt het bericht door naar de Unity applicatie.
+
+Binnen Unity wordt deze input ontvangen door de PhoneInputManager. Omdat netwerkverkeer op een andere thread binnenkomt, wordt de input eerst opgeslagen in een queue. In de Update() loop van Unity wordt deze queue uitgelezen, zodat de input veilig verwerkt kan worden op de main thread.
+
+Na het uitlezen van de input wordt deze doorgestuurd naar de InputRouter. De InputRouter fungeert als een centraal punt dat bepaalt welk systeem de input moet verwerken. Dit is afhankelijk van de huidige staat van de game.
+
+Wanneer de game zich in de lobby bevindt, wordt de input doorgestuurd naar de LobbyInputHandler. In deze situatie wordt de input gebruikt voor het besturen van een cursor en het interacten met UI-elementen, zoals het selecteren van een map of het klaarzetten van spelers.
+
+Wanneer de game zich in de gameplay bevindt, wordt de input doorgestuurd naar de GameplayInputHandler. Deze handler vertaalt de input naar acties van de speler, zoals bewegen. De input wordt hierbij gekoppeld aan de juiste speler op basis van de playerId.
+
+Door gebruik te maken van deze structuur wordt de input losgekoppeld van specifieke gameplay logica. Dit maakt het systeem flexibel en uitbreidbaar, omdat dezelfde input op verschillende manieren geïnterpreteerd kan worden afhankelijk van de context van de game.
+
+
+
+**Lobby input door Davey en Luuk**
+
+
+![Lobby input](readme-assets/LobbyInput-Hooked.gif)
+
+
+De lobby is de wachtruimte waarin spelers samenkomen voordat de game start. Wanneer spelers verbinding maken met de game via de QR-code, worden zij toegevoegd aan de lobby.
+
+De eerste speler die de lobby betreedt, wordt automatisch aangewezen als host. De host heeft extra functionaliteiten, zoals het bedienen van een cursor om menu-opties te selecteren, bijvoorbeeld het kiezen van een map of het starten van de game.
+
+Elke speler in de lobby heeft een ‘ready’ status. Spelers kunnen zichzelf op ‘ready’ zetten via hun telefoon. Deze status wordt visueel weergegeven in de lobby, zodat alle spelers kunnen zien wie klaar is.
+
+De game kan alleen gestart worden wanneer alle spelers de status ‘ready’ hebben. Indien één of meerdere spelers nog niet klaar zijn, kan de host de game niet starten.
+
+Wanneer een speler de lobby verlaat, wordt deze automatisch verwijderd uit de spelerslijst en wordt de lobby opnieuw geüpdatet.
+
+
+
+**Hook Touch Effect door Luuk**
+
+
+Het Hook Touch Effect zorgt ervoor dat wanneer een speler een haak raakt, er een particle effect wordt afgespeeld en het team een leven verliest. Dit systeem geeft directe visuele feedback bij schade en is gekoppeld aan het health systeem, zodat spelers worden gestraft voor het raken van obstakels.
+
+
+![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
+
+
+```mermaid
+classDiagram
+class HookTouchEffect {
+    - PlayersHealth playersHealth
+    - ParticleSystem hitEffect
+
+    - OnTriggerEnter2D(Collider2D collision)
+}
+
+class PlayersHealth {
+    + TakingDamage()
+}
+
+class ParticleSystem
+
+HookTouchEffect --> PlayersHealth : deals damage
+HookTouchEffect --> ParticleSystem : spawns effect
+```
+
+**Snoekbaar door Luuk**
+
+De Snoekbaars komt vanaf de linker- of rechterkant van het scherm en probeert de spelers (vissen) te raken.
+Voordat de snoekbaars verschijnt, wordt er een visuele waarschuwing gegeven. Kleine vissen zwemmen snel weg vanaf de kant waar de snoekbaars vandaan zal komen. Hierdoor weten spelers dat er gevaar aankomt en hebben ze kort de tijd om te reageren.
+Wanneer de snoekbaars over het scherm beweegt, moeten spelers hem ontwijken. Als een speler geraakt wordt, verliest het team een leven.
+![Snoekbaars](readme-assets/snoekbaars-showcase.gif)
+
+```mermaid
+classDiagram
+class SnoekbaarTimer {
+    - float maxTime
+    - float minTime
+    - SpawnSnoekbaar _spawnSnoekBaarScript
+    - Start()
+    - RandomStartRoutine()
+}
+
+class SpawnSnoekbaar {
+    + bool SpawnLeft
+    - GameObject snoekbaar
+    - PlayersHealth hookTouchEffect
+    + SpawningSnoekbaar()
+}
+
+class Snoekbaar {
+    - ParticleSystem scaredFishesEffectLeft
+    - ParticleSystem scaredFishesEffectRight
+    - float ShootSnoekbaarTime
+    - float snoekbaarSpeed
+    - float destroySnoekbaar
+    - SpawnSnoekbaar _snoekbaarScript
+    - bool _isMoving
+    - float _moveDirection
+    + SetSnoek(SpawnSnoekbaar snoekbaar)
+    - Start()
+    - Update()
+    - ShootSnoekbaarRoutine()
+    - MoveSnoekbaar()
+}
+
+class HookTouchEffect {
+    + SetHealth(PlayersHealth playersHealth)
+}
+
+class PlayersHealth
+
+SnoekbaarTimer --> SpawnSnoekbaar : calls spawn
+SpawnSnoekbaar --> Snoekbaar : instantiates
+SpawnSnoekbaar --> HookTouchEffect : sets health
+SpawnSnoekbaar --> PlayersHealth : uses
+Snoekbaar --> SpawnSnoekbaar : reads SpawnLeft
+```
+
+## Bubbel stream door Luuk
+
+De bubbel stream is een nieuw obstakel in de game. In tegenstelling tot andere obstakels veroorzaakt deze geen damage, maar duwt hij de speler omhoog wanneer je erin terechtkomt.
+Dit kan ervoor zorgen dat spelers de controle over hun beweging verliezen en uit positie raken.
+![Bubble Stream](readme-assets/bubbelstream-showcase.gif)
+
+```mermaid
+classDiagram
+class BubbelStreamTimer {
+    - float maxTime
+    - float minTime
+    - BubbelStreamSpawner _bubbelStreamSpawnerScript
+    + Start()
+    - RandomStartRoutine()
+}
+
+class BubbelStreamSpawner {
+    - GameObject bubbelStream
+    + SpawnBubbelStream()
+}
+
+class BubbelStream {
+    - float bubbleForce
+    - float DestroyStreamTime
+    - OnTriggerStay2D(Collider2D other)
+}
+
+class Rigidbody2D
+
+BubbelStreamTimer --> BubbelStreamSpawner : calls spawn
+BubbelStreamSpawner --> BubbelStream : instantiates
+BubbelStream --> Rigidbody2D : applies upward force
 ```
