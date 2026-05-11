@@ -3,15 +3,34 @@ using UnityEngine;
 
 public class FileManager : MonoBehaviour
 {
-    private GameFile _saveGameFile;
+    [SerializeField] private GameFile _saveGameFile = new GameFile();
+    
+    public static FileManager Instance;
     private void Awake()
     {
+        Instance = this;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        _saveGameFile = Load();
+    }
+
+    /// <summary>
+    /// Writing the file with existing objects or creating new ones, argument level is between 0 and 1. Only use 1 when you have completed an new level.
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="playerCharacter"></param>
+    /// <param name="level"></param>
+    public void WriteFile(int key, ExternalVariables playerCharacter, int level)
+    {
+        _saveGameFile = Load();
+        _saveGameFile.Add($"Player{key}", playerCharacter, level);
         SaveToJson(_saveGameFile);
-        var file = Load();
-        Debug.Log(file);
     }
     
-    private static void SaveToJson(GameFile gameFile)
+    public static void SaveToJson(GameFile gameFile)
     {
         var pad = Path.Combine(Application.persistentDataPath, "data.json");
         
