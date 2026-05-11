@@ -6,11 +6,9 @@ using System.Collections.Generic;
 public class Pausemenu : MonoBehaviour
 {
     [Header("UI Panels")]
-    [Tooltip("Drag the Pause Menu UI Panel here from the hierarchy")]
     [SerializeField] private GameObject pauseMenuPanel;
 
     [Header("Cursor Settings")]
-    [Tooltip("Sleep de Image van je virtuele cursor hier in")]
     [SerializeField] private RectTransform virtualCursor;
     [SerializeField] private float cursorSpeed = 800f;
 
@@ -79,13 +77,11 @@ public class Pausemenu : MonoBehaviour
 
     public void ClickAtCursor()
     {
-        Debug.Log("Simulating click at cursor position: " + virtualCursor.anchoredPosition);
-
         if (virtualCursor == null || EventSystem.current == null) return;
 
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
-            position = virtualCursor.position
+            position = virtualCursor.position 
         };
 
         List<RaycastResult> results = new List<RaycastResult>();
@@ -95,13 +91,17 @@ public class Pausemenu : MonoBehaviour
         {
             foreach (RaycastResult result in results)
             {
+                if (result.gameObject == virtualCursor.gameObject)
+                {
+                    continue;
+                }
+
                 Button clickedButton = result.gameObject.GetComponentInParent<Button>();
 
                 if (clickedButton != null && clickedButton.interactable)
                 {
-                    Debug.Log("🖱️ Cursor clicked button: " + clickedButton.gameObject.name);
                     clickedButton.onClick.Invoke();
-                    break;
+                    break; 
                 }
             }
         }
