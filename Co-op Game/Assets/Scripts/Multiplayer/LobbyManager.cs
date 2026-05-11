@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
+    [SerializeField] private CharacterDatabase characterDatabase;
+    
     private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
 
     [Header("Player Slots (Images)")]
@@ -14,6 +17,7 @@ public class LobbyManager : MonoBehaviour
     [Header("UI Elements")]
     public Button startGameButton;
 
+   
     private void Start()
     {
         if (startGameButton != null)
@@ -24,8 +28,14 @@ public class LobbyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void PlayerJoined(string playerId)
+    public void PlayerJoined(string playerId, int playerIndex)
     {
+        FileManager.Instance.WriteFile(playerIndex, new ExternalVariables
+            {
+                ID = playerId,
+                Index = playerIndex
+        }, 0);
+        
         if (players.Contains(playerId))
         {
             Debug.Log($"Speler {playerId} is al in de lobby. (Reconnect)");
@@ -77,15 +87,10 @@ public class LobbyManager : MonoBehaviour
                 PlayerImages[i].gameObject.SetActive(true);
 
                 Color imgColor = PlayerImages[i].color;
+
+                var readtAlpha = isReady ? 1.0f : 0.5f; 
                 
-                if (isReady)
-                {
-                    imgColor.a = 1.0f;
-                }
-                else
-                {
-                    imgColor.a = 0.5f;
-                }
+                imgColor.a = readtAlpha;
                 
                 PlayerImages[i].color = imgColor;
             }
@@ -154,4 +159,5 @@ public class LobbyManager : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
+    
 }
