@@ -77,31 +77,25 @@ public class Pausemenu : MonoBehaviour
 
     public void ClickAtCursor()
     {
-        if (virtualCursor == null || EventSystem.current == null) return;
-
+        Canvas canvas = pauseMenuPanel.GetComponentInParent<Canvas>();
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
-            position = virtualCursor.position 
+            position = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, virtualCursor.position)
         };
 
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
-
+        
         if (results.Count > 0)
         {
             foreach (RaycastResult result in results)
             {
-                if (result.gameObject == virtualCursor.gameObject)
-                {
-                    continue;
-                }
-
-                Button clickedButton = result.gameObject.GetComponentInParent<Button>();
+                Button clickedButton = result.gameObject.GetComponent<Button>();
 
                 if (clickedButton != null && clickedButton.interactable)
                 {
                     clickedButton.onClick.Invoke();
-                    break; 
+                    return;
                 }
             }
         }
