@@ -1135,11 +1135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[1]'
-      value: GAME2
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[2]'
-      value: GAME3
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 6318067397712867620, guid: 2b1bd495ba88c3240bbc11c7773dd438, type: 3}
       propertyPath: 'levels.Array.data[3]'
@@ -1490,6 +1490,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SelectLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3745647457573854391, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6986465995100762522, guid: a6d41b4490f1f77439562496662d502a, type: 3}
+    - target: {fileID: 3962954713391611960, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6549727445796623346, guid: 0445a93acd2d7fc448633e2f2f28e373, type: 3}
     - target: {fileID: 4066535672421034808, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 639
@@ -1618,6 +1626,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6727764300114849652, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1368630223411050563, guid: 0ab354b0cc9cce94490099b06283f1c7, type: 3}
     - target: {fileID: 6728748401511518886, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -334

@@ -257,3 +257,37 @@ SpawnSnoekbaar --> HookTouchEffect : sets health
 SpawnSnoekbaar --> PlayersHealth : uses
 Snoekbaar --> SpawnSnoekbaar : reads SpawnLeft
 ```
+
+## Bubbel stream door Luuk
+
+De bubbel stream is een nieuw obstakel in de game. In tegenstelling tot andere obstakels veroorzaakt deze geen damage, maar duwt hij de speler omhoog wanneer je erin terechtkomt.
+Dit kan ervoor zorgen dat spelers de controle over hun beweging verliezen en uit positie raken.
+![Bubble Stream](readme-assets/bubbelstream-showcase.gif)
+
+```mermaid
+classDiagram
+class BubbelStreamTimer {
+    - float maxTime
+    - float minTime
+    - BubbelStreamSpawner _bubbelStreamSpawnerScript
+    + Start()
+    - RandomStartRoutine()
+}
+
+class BubbelStreamSpawner {
+    - GameObject bubbelStream
+    + SpawnBubbelStream()
+}
+
+class BubbelStream {
+    - float bubbleForce
+    - float DestroyStreamTime
+    - OnTriggerStay2D(Collider2D other)
+}
+
+class Rigidbody2D
+
+BubbelStreamTimer --> BubbelStreamSpawner : calls spawn
+BubbelStreamSpawner --> BubbelStream : instantiates
+BubbelStream --> Rigidbody2D : applies upward force
+```

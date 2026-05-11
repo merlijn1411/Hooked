@@ -109,7 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 1
   stepSize: 1
-  spriteRenderer: {fileID: 0}
 --- !u!114 &-4593063299524981696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067fe38fce4d684bb5da863505cb926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShapeCollider
+  charRenderer: {fileID: 0}
   radius: 0.05
   needsConvert: 1
 --- !u!50 &7986974400025125065
