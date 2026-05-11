@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: ffaa00eef4943fc4ab203c75b4f7643c
+guid: 638cdb59cd85edc47b823f76b339179f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2068510203800357060
-    second: Haak_0
+      213: 2896122167170543578
+    second: IMG_2594-1_0
+  - first:
+      213: -8165575597253724568
+    second: IMG_2594-1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Haak_0
+      name: IMG_2594-1_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 55
-        width: 221
-        height: 332
+        x: 68
+        y: 23
+        width: 250
+        height: 392
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c377538ddec2b43e0800000000000000
-      internalID: -2068510203800357060
+      spriteID: adfa55844c7113820800000000000000
+      internalID: 2896122167170543578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_2594-1_1
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 336
+        width: 10
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 866f713e14c0eae80800000000000000
+      internalID: -8165575597253724568
       vertices: []
       indices: 
       edges: []
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Haak_0: -2068510203800357060
+      IMG_2594-1_0: 2896122167170543578
+      IMG_2594-1_1: -8165575597253724568
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

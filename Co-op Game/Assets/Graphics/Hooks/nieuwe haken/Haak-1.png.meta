@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ec8bd6d354ed7044a090004887f5393
+guid: 4886492ba8cbf91489c60588ff164a14
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4624989101024474907
-    second: Haak tip 1_0
+      213: 1814256871144339422
+    second: Haak-1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Haak tip 1_0
+      name: Haak-1_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 62
-        width: 99
-        height: 154
+        x: 87
+        y: 55
+        width: 185
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e80267baecb0dfb0800000000000000
-      internalID: -4624989101024474907
+      spriteID: ed7bedf03098d2910800000000000000
+      internalID: 1814256871144339422
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Haak tip 1_0: -4624989101024474907
+      Haak-1_0: 1814256871144339422
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
