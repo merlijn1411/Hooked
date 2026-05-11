@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WebSocketSharp;
 using System.Collections.Concurrent;
 using System.Net;
@@ -18,7 +19,11 @@ public class PhoneInputManager : MonoBehaviour
     private PlayerManager _playerManager;
     public LobbyManager lobbyManager;
 
+    private int _playerCounter = -1;
+    
     public string ServerURL { get; private set; }
+
+    private Action OnPlayerReaction;
 
     private void Awake()
     {
@@ -30,6 +35,7 @@ public class PhoneInputManager : MonoBehaviour
     {
         _ws = new WebSocket(ServerURL);
         _playerManager = GetComponent<PlayerManager>();
+        OnPlayerReaction += FileManager.Instance.Refresh;
         
         _ws.OnOpen += (sender, e) =>
         {
@@ -72,6 +78,7 @@ public class PhoneInputManager : MonoBehaviour
             InputMessage msg = JsonUtility.FromJson<InputMessage>(command);
 
             if (msg == null) continue;
+            if (lobbyManager == null) return;
 
             if (msg.type == "input")
             {
@@ -80,23 +87,31 @@ public class PhoneInputManager : MonoBehaviour
 
                 InputRouter.Instance.HandleInput(msg.playerId, msg.action, msg.x, msg.y);
             }
-            else if (msg.type == "player_joined" || msg.type == "welcome") 
+            else if (msg.type == "player_joined" || msg.type == "welcome")
             {
+                OnPlayerReaction.Invoke();
                 if (enableDebugLogs)
                     Debug.Log($"👥 Player joined/reconnected: {msg.playerId}");
                 
                 if (lobbyManager != null)
                 {
-                    lobbyManager.PlayerJoined(msg.playerId);
+                    _playerCounter += 1;
+                    Debug.Log(_playerCounter);
+                    lobbyManager.PlayerJoined(msg.playerId, _playerCounter);
                 }
+                
+                
             }
             else if (msg.type == "player_left" || msg.type == "disconnect")
             {
+                OnPlayerReaction.Invoke();
+                
                 if (enableDebugLogs)
                     Debug.Log($"👋 Player left: {msg.playerId}");
-
+                
                 if (lobbyManager != null)
                 {
+                    _playerCounter -= 1;  
                     lobbyManager.PlayerLeft(msg.playerId);
                 }
 
@@ -122,5 +137,10 @@ public class PhoneInputManager : MonoBehaviour
     private void OnEnable()
     {
         serverListener.EnableLogs(enableDebugLogs);
+    }
+
+    private void OnDisable()
+    {
+        OnPlayerReaction -= FileManager.Instance.Refresh;
     }
 }

@@ -170,7 +170,7 @@ wss.on("connection", (ws) => {
                 return;
             }
 
-            if (ws.clientType === "controller" && data.type === "input") {
+            if (ws.clientType === "controller" || data.type === "input") {
                 logMessage(`📩 Input from ${ws.playerId}:`, data);
 
                 const unityInput = {
