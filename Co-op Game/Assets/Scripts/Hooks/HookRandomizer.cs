@@ -4,20 +4,24 @@ using UnityEngine;
 public class HookRandomizer : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float minSpeed = 1f;
-    [SerializeField] private float maxSpeed = 3f;
+    [SerializeField] private float minSpeed;
+    [SerializeField] private float maxSpeed;
 
     [Header("Vertical Settings")]
-    [SerializeField] private float minY = -1.29f;
-    [SerializeField] private float maxY = 9f;
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
 
     [Header("Drop Timing")]
-    [SerializeField] private float warningDuration = 4f;
+    [SerializeField] private float warningDuration;
 
     [Header("Horizontal Settings")]
-    [SerializeField] private float horizontalRange = 2f;
-    [SerializeField] private float horizontalSpeedMin = 0.5f;
-    [SerializeField] private float horizontalSpeedMax = 2f;
+    [SerializeField] private float horizontalRange;
+    [SerializeField] private float horizontalSpeedMin;
+    [SerializeField] private float horizontalSpeedMax;
+
+    [Header("Random Drop Delay")]
+    [SerializeField] private float minRandomDropDelay;
+    [SerializeField] private float maxRandomDropDelay;
 
     [Header("Line Settings")]
     [SerializeField] private Transform lineStart;
@@ -78,9 +82,7 @@ public class HookRandomizer : MonoBehaviour
     private void HookRandomFacing()
     {
         var random = Random.Range(1, 10);
-        Debug.Log(random);
         var faceX = random <= 5 ? transform.localScale.x : -transform.localScale.x;
-        Debug.Log(faceX);
         transform.localScale = new Vector3(faceX, transform.localScale.y);
     }
 
@@ -112,6 +114,8 @@ public class HookRandomizer : MonoBehaviour
                 _verticalDirection = 1f;
                 _isWaiting = false;
 
+                _verticalSpeed = Random.Range(minSpeed, maxSpeed);
+
                 HookDropManager.Instance?.DropFinished();
                 ChooseNewHorizontalTarget();
             }
@@ -131,7 +135,10 @@ public class HookRandomizer : MonoBehaviour
     private IEnumerator DropRoutine()
     {
         HookRandomFacing();
-        // 🔒 WACHT OP MAX 2
+
+        float randomDelay = Random.Range(minRandomDropDelay, maxRandomDropDelay);
+        yield return new WaitForSeconds(randomDelay);
+
         if (HookDropManager.Instance != null)
             yield return HookDropManager.Instance.RequestDrop();
 

@@ -305,17 +305,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92f7c4ee3cc6104eab1f1ebed8377cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
-  minSpeed: 3
-  maxSpeed: 5
+  minSpeed: 5
+  maxSpeed: 12
   minY: -1.29
   maxY: 9
-  warningDuration: 3
+  warningDuration: 2
   horizontalRange: 2
   horizontalSpeedMin: 0.5
   horizontalSpeedMax: 2
   lineStart: {fileID: 4412731470690847623}
   linePrefab: {fileID: 6103555529917233456, guid: a9a542612ee6b50459b786e6747fcce2, type: 3}
   hookTop: {fileID: 4412731470690847623}
+  minRandomDropDelay: 0
+  maxRandomDropDelay: 3
 --- !u!1 &9085923847713447090
 GameObject:
   m_ObjectHideFlags: 0
