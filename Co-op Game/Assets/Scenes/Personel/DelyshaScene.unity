@@ -150,37 +150,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 688540303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &24505805
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 24505806}
-  m_Layer: 0
-  m_Name: middle bottom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &24505806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24505805}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.00283, y: -6.46624, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 688540303}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &103260292
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +244,6 @@ Transform:
   - {fileID: 4288168}
   - {fileID: 526100826}
   - {fileID: 103260293}
-  - {fileID: 24505806}
   - {fileID: 2118912033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -309,22 +277,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpearRandomizer
   LeftToRight:
-    Prefab: {fileID: 1501929115475250331, guid: db566564ca5222d45a2c864c00f53e2c, type: 3}
+    Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 4288168}
-    BottomLeft: {fileID: 103260293}
-    BottomMiddle: {fileID: 24505806}
-    BottomRight: {fileID: 2118912033}
-    RotationZ: 30.39
+    BottomTarget: {fileID: 2118912033}
+    RotationZ: 60
   RightToLeft:
-    Prefab: {fileID: 1501929115475250331, guid: db566564ca5222d45a2c864c00f53e2c, type: 3}
+    Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 526100826}
-    BottomLeft: {fileID: 103260293}
-    BottomMiddle: {fileID: 24505806}
-    BottomRight: {fileID: 2118912033}
-    RotationZ: -31.2
-  Speed: 15
+    BottomTarget: {fileID: 103260293}
+    RotationZ: -60
+  DownSpeed: 60
+  UpSpeed: 4
+  PeekTime: 0.15
   WaitTime: 1
-  DelayBetweenSpawns: 2
+  DelayBetweenSpawns: 5
 --- !u!4 &1106966219
 Transform:
   m_ObjectHideFlags: 0
