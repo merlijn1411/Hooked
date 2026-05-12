@@ -35,26 +35,20 @@ public class PlayerMovement : MonoBehaviour
         {
             _uiManager.ClickAtCursor();
         }
-        else
-        {
-            Debug.Log("Interact B!");
-        }
     }
 
     public void InteractieY()
     {
-        if (_uiManager != null)
+       
+        if (_uiManager.IsPaused)
         {
-            // Toggle het pauzemenu met de Y knop
-            if (_uiManager.IsPaused)
-            {
-                _uiManager.ResumeGame();
-            }
-            else
-            {
-                _uiManager.PauseGame(this);
-            }
+            _uiManager.ResumeGame();
         }
+        else
+        {
+            _uiManager.PauseGame(this);
+        }
+        
     }
     
     public void MoveWithJoystick(float x, float y)
