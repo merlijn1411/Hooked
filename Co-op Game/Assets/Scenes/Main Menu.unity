@@ -124,17 +124,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8083029571003808222, guid: a793345e906c3f045a9d0ab035664221, type: 3}
   m_PrefabInstance: {fileID: 3018620440875518793}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &235727857 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8169537764345345707, guid: a793345e906c3f045a9d0ab035664221, type: 3}
-  m_PrefabInstance: {fileID: 3018620440875518793}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86006d65685c51d43bd22d68c5067178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterDataBase
 --- !u!1 &238177913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1527199846374581375, guid: 59afe37e1c3afc244bda31c118210fdd, type: 3}
@@ -1012,7 +1001,7 @@ PrefabInstance:
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: characterDatabase
       value: 
-      objectReference: {fileID: 235727857}
+      objectReference: {fileID: 0}
     - target: {fileID: 191075647355090621, guid: b784ce1b2ca2d764083e0ad9b60089fe, type: 3}
       propertyPath: playerSlots.Array.size
       value: 4
@@ -1202,7 +1191,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8169537764345345707, guid: a793345e906c3f045a9d0ab035664221, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -5,17 +5,13 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform SpawnPoint;
-     
+    [SerializeField] private CharacterDatabase characterDatabase;
+    
     private Dictionary<string, PlayerMovement> players = new Dictionary<string, PlayerMovement>();
 
     // Voeg float x en float y toe aan parameters met een standaardwaarde van 0
     public void HandlePlayerInput(string playerId, string action, float x = 0f, float y = 0f)
     {
-        if (!players.ContainsKey(playerId))
-        {
-            SpawnPlayer(playerId);
-        }
-
         var playerMovement = players[playerId];
 
         // Bestaande acties
@@ -30,13 +26,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void SpawnPlayer(string playerId)
+    public void SpawnPlayer(ExternalFiles playerFile)
     {
-        var obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
+        var obj = Instantiate(characterDatabase.GetByIndex(playerFile.Value.Index), SpawnPoint.position, 
+            Quaternion.identity, SpawnPoint);
         var playerMovement = obj.GetComponent<PlayerMovement>();
 
-        players.Add(playerId, playerMovement);
-        Debug.Log("✅ Spawned playerMovement: " + playerId);
+        players.Add(playerFile.Value.ID, playerMovement);
+        Debug.Log("✅ Spawned playerMovement: " + playerFile.Value.ID);
     }
 
     public void RemovePlayer(string playerId)

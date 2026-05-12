@@ -1,9 +1,10 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FileManager : MonoBehaviour
 {
-    [SerializeField] private GameFile _saveGameFile = new GameFile();
+    [SerializeField] private GameFile saveGameFile = new GameFile();
     
     public static FileManager Instance;
     private void Awake()
@@ -14,7 +15,7 @@ public class FileManager : MonoBehaviour
 
     public void Refresh()
     {
-        _saveGameFile = Load();
+        saveGameFile = Load();
     }
 
     /// <summary>
@@ -25,9 +26,9 @@ public class FileManager : MonoBehaviour
     /// <param name="level"></param>
     public void WriteFile(int key, ExternalVariables playerCharacter, int level)
     {
-        _saveGameFile = Load();
-        _saveGameFile.Add($"Player{key}", playerCharacter, level);
-        SaveToJson(_saveGameFile);
+        saveGameFile = Load();
+        saveGameFile.Add($"Player{key}", playerCharacter, level);
+        SaveToJson(saveGameFile);
     }
     
     public static void SaveToJson(GameFile gameFile)
@@ -41,7 +42,7 @@ public class FileManager : MonoBehaviour
         Debug.Log("Opgeslagen op: " + pad);
     }
     
-    public static GameFile Load()
+    public GameFile Load()
     {
         var path = Path.Combine(Application.persistentDataPath, "data.json");
 
