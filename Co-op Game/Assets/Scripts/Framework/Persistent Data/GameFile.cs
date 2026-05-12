@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class GameFile
 {
-    public int UnlockedLevel;
+    public int UnlockedLevel = 1;
     public List<ExternalFiles> ImportantFiles = new List<ExternalFiles>();
 
     private Dictionary<string, ExternalVariables> dict;

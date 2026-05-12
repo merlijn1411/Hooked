@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class LevelManger : MonoBehaviour
 {
@@ -36,7 +34,7 @@ public class LevelManger : MonoBehaviour
         if (levelButtonsContainer != null)
         {
             _levelButtons = new Transform[levelButtonsContainer.childCount];
-            for (int i = 0; i < levelButtonsContainer.childCount; i++)
+            for (var i = 0; i < levelButtonsContainer.childCount; i++)
             {
                 _levelButtons[i] = levelButtonsContainer.GetChild(i);
             }
@@ -77,7 +75,7 @@ public class LevelManger : MonoBehaviour
         
         if (_levelButtons != null && _levelButtons.Length > 0)
         {
-            for (int i = 0; i < _levelButtons.Length; i++)
+            for (var i = 0; i < _levelButtons.Length; i++)
             {
                 if (_levelButtons[i] != null)
                 {
