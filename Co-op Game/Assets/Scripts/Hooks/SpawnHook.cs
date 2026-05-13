@@ -10,7 +10,14 @@ public class SpawnHook : MonoBehaviour
     {
         for (int i = 0; i < startingPoints.Length; i++)
         {
-            Instantiate(hook, startingPoints[i].transform.position, Quaternion.identity);
+            GameObject spawnedHook = Instantiate(hook, startingPoints[i].transform.position, Quaternion.identity);
+
+            HookLine hookLine = spawnedHook.GetComponent<HookLine>();
+
+            if (hookLine != null)
+            {
+                hookLine.SetLineStart(startingPoints[i].transform);
+            }
         }
     }
 }

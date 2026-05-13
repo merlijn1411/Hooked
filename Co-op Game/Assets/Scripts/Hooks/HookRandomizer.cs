@@ -23,17 +23,6 @@ public class HookRandomizer : MonoBehaviour
     [SerializeField] private float minRandomDropDelay;
     [SerializeField] private float maxRandomDropDelay;
 
-    [Header("Line Settings")]
-    [SerializeField] private Transform lineStart;
-    [SerializeField] private GameObject linePrefab;
-    [SerializeField] private Transform hookTop;
-
-    private GameObject _lineInstance;
-    private Transform _lineTransform;
-    private SpriteRenderer _lineRenderer;
-
-    private float _lineWidth; 
-
     private float _verticalSpeed;
     private float _verticalDirection = 1f;
 
@@ -54,29 +43,11 @@ public class HookRandomizer : MonoBehaviour
         ChooseNewHorizontalTarget();
 
         _warning = GetComponent<HookWarningIndecator>();
-
-        if (linePrefab != null && lineStart != null)
-        {
-            _lineInstance = Instantiate(linePrefab, lineStart.position, Quaternion.identity);
-            _lineTransform = _lineInstance.transform;
-
-            _lineRenderer = _lineTransform.GetComponent<SpriteRenderer>();
-
-            if (_lineRenderer != null)
-            {
-                _lineRenderer.drawMode = SpriteDrawMode.Tiled;
-
-                _lineWidth = _lineRenderer.size.x;
-
-                _lineWidth *= _lineTransform.localScale.x;
-            }
-        }
     }
 
     private void Update()
     {
         Move();
-        UpdateLine();
     }
 
     private void HookRandomFacing()
@@ -156,30 +127,5 @@ public class HookRandomizer : MonoBehaviour
         var newX = _startPos.x + Random.Range(-horizontalRange, horizontalRange);
         _horizontalTarget = new Vector3(newX, transform.position.y, 0);
         _horizontalSpeed = Random.Range(horizontalSpeedMin, horizontalSpeedMax);
-    }
-
-
-    private void UpdateLine()
-    {
-        if (lineStart == null || _lineTransform == null || hookTop == null) return;
-
-        Vector3 startPos = new Vector3(transform.position.x, lineStart.position.y, 0);
-        lineStart.position = startPos;
-
-        Vector3 endPos = hookTop.position;
-        Vector3 direction = endPos - startPos;
-        float distance = direction.magnitude;
-
-        if (distance <= 0.001f) return;
-
-        _lineTransform.position = startPos;
-        _lineTransform.up = direction.normalized;
-
-        if (_lineRenderer != null)
-        {
-            _lineRenderer.drawMode = SpriteDrawMode.Tiled;
-
-            _lineRenderer.size = new Vector2(_lineWidth, distance);
-        }
     }
 }
