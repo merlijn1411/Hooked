@@ -47,12 +47,12 @@ public class HookLine : MonoBehaviour
     {
         if (lineStart == null || _lineTransform == null || hookTop == null) return;
 
-        Vector3 startPos = new Vector3(transform.position.x, lineStart.position.y, 0);
+        var startPos = new Vector3(transform.position.x, lineStart.position.y, 0);
         lineStart.position = startPos;
 
-        Vector3 endPos = hookTop.position;
-        Vector3 direction = endPos - startPos;
-        float distance = direction.magnitude;
+        var endPos = hookTop.position;
+        var direction = endPos - startPos;
+        var distance = direction.magnitude;
 
         if (distance <= 0.001f) return;
 

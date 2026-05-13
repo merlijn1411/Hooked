@@ -8,7 +8,7 @@ public class SpawnHook : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < startingPoints.Length; i++)
+        for (var i = 0; i < startingPoints.Length; i++)
         {
             GameObject spawnedHook = Instantiate(hook, startingPoints[i].transform.position, Quaternion.identity);
 
