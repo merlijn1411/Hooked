@@ -280,13 +280,13 @@ MonoBehaviour:
     Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 4288168}
     BottomTarget: {fileID: 2118912033}
-    RotationZ: 50
+    RotationZ: 55
   rightToLeft:
     Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 526100826}
     BottomTarget: {fileID: 103260293}
-    RotationZ: -50
-  downSpeed: 14
+    RotationZ: -55
+  downSpeed: 60
   upSpeed: 4
   peekTime: 0.15
   waitTime: 1
