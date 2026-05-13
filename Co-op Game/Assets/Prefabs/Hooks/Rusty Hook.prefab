@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
-  playersHealth: {fileID: 0}
   snapMechanic: {fileID: 4234489452501075536}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
 --- !u!1 &7735624492112496722
@@ -306,6 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92f7c4ee3cc6104eab1f1ebed8377cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
+  health: {fileID: 0}
+  hookTouchEffect: {fileID: 16901739429898080}
   minSpeed: 5
   maxSpeed: 12
   minY: -1.29
@@ -328,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45f894b8e0c0ec48a4c58d9fa26b0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookLine
-  lineStart: {fileID: 0}
   linePrefab: {fileID: 6103555529917233456, guid: a9a542612ee6b50459b786e6747fcce2, type: 3}
   hookTop: {fileID: 4412731470690847623}
 --- !u!1 &9085923847713447090

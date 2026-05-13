@@ -3,10 +3,10 @@ using UnityEngine;
 public class HookLine : MonoBehaviour
 {
     [Header("Line Settings")]
-    [SerializeField] private Transform lineStart;
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private Transform hookTop;
 
+    private Transform lineStart;
     private GameObject _lineInstance;
     private Transform _lineTransform;
     private SpriteRenderer _lineRenderer;

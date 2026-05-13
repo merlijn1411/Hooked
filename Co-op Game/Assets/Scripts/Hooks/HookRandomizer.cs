@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HookRandomizer : MonoBehaviour
 {
+
     [Header("Movement Settings")]
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
