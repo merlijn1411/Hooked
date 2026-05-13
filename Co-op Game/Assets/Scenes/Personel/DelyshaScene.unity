@@ -276,21 +276,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc5ae704f1513f48ab41a37a55f3ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpearRandomizer
-  LeftToRight:
+  leftToRight:
     Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 4288168}
     BottomTarget: {fileID: 2118912033}
-    RotationZ: 60
-  RightToLeft:
+    RotationZ: 45
+  rightToLeft:
     Prefab: {fileID: 5917598910029723973, guid: f9d9a820abc344c4f8cd7d70bec1f476, type: 3}
     Top: {fileID: 526100826}
     BottomTarget: {fileID: 103260293}
-    RotationZ: -60
-  DownSpeed: 60
-  UpSpeed: 4
-  PeekTime: 0.15
-  WaitTime: 1
-  DelayBetweenSpawns: 5
+    RotationZ: -45
+  downSpeed: 14
+  upSpeed: 4
+  peekTime: 0.15
+  waitTime: 1
+  delayBetweenSpawns: 0.5
 --- !u!4 &1106966219
 Transform:
   m_ObjectHideFlags: 0
