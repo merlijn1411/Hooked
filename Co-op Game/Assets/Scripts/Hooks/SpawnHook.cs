@@ -10,9 +10,9 @@ public class SpawnHook : MonoBehaviour
     {
         for (var i = 0; i < startingPoints.Length; i++)
         {
-            GameObject spawnedHook = Instantiate(hook, startingPoints[i].transform.position, Quaternion.identity);
+            var spawnedHook = Instantiate(hook, startingPoints[i].transform.position, Quaternion.identity);
 
-            HookLine hookLine = spawnedHook.GetComponent<HookLine>();
+            var hookLine = spawnedHook.GetComponent<HookLine>();
 
             if (hookLine != null)
             {
