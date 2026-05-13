@@ -175,13 +175,13 @@ MonoBehaviour:
   maxSpeed: 5
   minY: 4
   maxY: 15
-  warningDuration: 4
+  warningDuration: 3
   horizontalRange: 2
   horizontalSpeedMin: 0.5
   horizontalSpeedMax: 2
   lineStart: {fileID: 0}
   linePrefab: {fileID: 2655797758632893023, guid: 45d1e84a55d746c4da483da0641e101b, type: 3}
-  lineFollowSpeed: 5
+  hookTop: {fileID: 0}
 --- !u!114 &-3671141098371991532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
   playersHealth: {fileID: 0}
+  snapMechanic: {fileID: 0}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
 --- !u!68 &2795103617684897381
 EdgeCollider2D:

@@ -4,12 +4,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float stepSize = 1f;
 
     private Rigidbody2D _rb2D;
+    private Pausemenu _uiManager;
     
     private float _currentX = 0f;
     private float _currentY = 0f;
+
+    public float CurrentX => _currentX;
+    public float CurrentY => _currentY;
 
     public Vector3 Velocity { get; private set; }
 
@@ -18,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        _uiManager = FindObjectOfType<Pausemenu>();
     }
     
     public void InteractieA()
@@ -27,12 +31,24 @@ public class PlayerMovement : MonoBehaviour
     
     public void InteractieB()
     {
-        Debug.Log("Interact B!");
+        if (_uiManager != null && _uiManager.IsPaused)
+        {
+            _uiManager.ClickAtCursor();
+        }
     }
 
     public void InteractieY()
     {
-        Debug.Log("Interact Y!");
+       
+        if (_uiManager.IsPaused)
+        {
+            _uiManager.ResumeGame();
+        }
+        else
+        {
+            _uiManager.PauseGame(this);
+        }
+        
     }
     
     public void MoveWithJoystick(float x, float y)

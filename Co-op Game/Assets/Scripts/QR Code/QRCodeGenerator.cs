@@ -19,7 +19,7 @@ public class QRCodeGenerator : MonoBehaviour
     }
     
     private Texture2D generateQR(string text) {
-        var encoded = new Texture2D (256, 256);
+        var encoded = new Texture2D(256, 256, TextureFormat.RGBA32, false);
         var color32 = Encode(text, encoded.width, encoded.height);
         encoded.SetPixels32(color32);
         encoded.Apply();
@@ -35,6 +35,18 @@ public class QRCodeGenerator : MonoBehaviour
                 Width = width
             }
         };
-        return writer.Write(textForEncoding);
+        
+        var color32 = writer.Write(textForEncoding);
+        
+        // Loop through all pixels and make white ones transparent
+        for (int i = 0; i < color32.Length; i++)
+        {
+            if (color32[i].r == 255 && color32[i].g == 255 && color32[i].b == 255)
+            {
+                color32[i] = new Color32(255, 255, 255, 0);
+            }
+        }
+        
+        return color32;
     }
 }
