@@ -56,7 +56,7 @@ public class SpearRandomizer : MonoBehaviour
 
         _rigidbody = _currentSpear.GetComponent<Rigidbody2D>();
 
-        // 🔥 ONLY FIX: prevent initial physics "drop"
+
         _rigidbody.gravityScale = 0f;
         _rigidbody.linearVelocity = Vector2.zero;
         _rigidbody.angularVelocity = 0f;
@@ -95,7 +95,7 @@ public class SpearRandomizer : MonoBehaviour
         Destroy(_currentSpear);
     }
 
-    // 🔥 OLD WORKING MOVEMENT RESTORED (dit is de key fix)
+
     private IEnumerator MoveTo(Vector2 targetPosition)
     {
         _rigidbody.linearVelocity = Vector2.zero;
