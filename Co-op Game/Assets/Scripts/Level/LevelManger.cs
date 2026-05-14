@@ -16,6 +16,7 @@ public class LevelManger : MonoBehaviour
     [SerializeField] private Transform levelButtonsContainer;
 
     private Transform[] _levelButtons;
+    private Vector3[] _originalScales; 
 
     private int _selectedLevelIndex = 0; 
 
@@ -34,15 +35,19 @@ public class LevelManger : MonoBehaviour
         if (levelButtonsContainer != null)
         {
             _levelButtons = new Transform[levelButtonsContainer.childCount];
-            for (var i = 0; i < levelButtonsContainer.childCount; i++)
+            _originalScales = new Vector3[levelButtonsContainer.childCount];
+
+            for (int i = 0; i < levelButtonsContainer.childCount; i++)
             {
                 _levelButtons[i] = levelButtonsContainer.GetChild(i);
+                _originalScales[i] = _levelButtons[i].localScale; 
             }
         }
         else
         {
             Debug.LogWarning("⚠️ No Level Buttons Container assigned in the inspector!");
             _levelButtons = new Transform[0];
+            _originalScales = new Vector3[0];
         }
 
         SelectLevel(_selectedLevelIndex);
@@ -64,6 +69,7 @@ public class LevelManger : MonoBehaviour
     {
         Application.Quit();
     }
+    
     public void SelectLevel(int index)
     {
         if (index < 0 || index >= levels.Length) 
@@ -79,18 +85,13 @@ public class LevelManger : MonoBehaviour
             {
                 if (_levelButtons[i] != null)
                 {
-                    _levelButtons[i].localScale = Vector3.one;
+                    _levelButtons[i].localScale = _originalScales[i];
                 }
             }
 
             if (index < _levelButtons.Length && _levelButtons[index] != null)
             {
-                // Scale to the selected size
                 _levelButtons[index].localScale = new Vector3(0.8f, 0.8f, 0.8f); 
-            }
-            else
-            {
-                Debug.LogWarning($"⚠️ Cannot scale button {index}, it might not exist in the container.");
             }
         }
     }

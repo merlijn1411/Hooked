@@ -3,12 +3,18 @@ using UnityEngine;
 public class HookTouchEffect : MonoBehaviour
 {
     [Header("Scripts")]
-    [SerializeField] private PlayersHealth playersHealth;
 
     [SerializeField] private SnapMechanic snapMechanic;
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem hitEffect;
+
+    private PlayersHealth playersHealth;
+
+    private void Awake()
+    {
+        playersHealth = FindAnyObjectByType<PlayersHealth>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
