@@ -124,7 +124,7 @@ public class LobbyManager : MonoBehaviour
         CheckAllReady();
     }
 
-    private void CheckAllReady()
+    void CheckAllReady()
     {
         if (startGameButton == null) return;
 
