@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Co-op Game/Assets/Graphics/Fishes/Groene Vis.meta
 guid: f4a05f68dbd36a84fb0565eff98a1ab8
+========
+guid: ee88a3acd41a40742a1827eabcd9bcf0
+>>>>>>>> develop:Co-op Game/Assets/Graphics/Fishes/Paarse Vis.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
