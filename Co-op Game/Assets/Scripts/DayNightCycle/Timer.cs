@@ -8,12 +8,18 @@ public class Timer : MonoBehaviour
     [Header("Change Cycle settings")]
     [Tooltip("The Seconds how long this timer is.")][SerializeField] private float cycleDuration;
 
+    [Header("Images")]
     [SerializeField] private Image filledImage;
+
+    [Header("Animator")]
+    [SerializeField] private Animator winLoseAnimator;
+
     private float _timer;
     private bool _hasTriggered = false;
 
     private void Start()
     {
+        winLoseAnimator.enabled = false;
         _timer = cycleDuration;
     }
 
@@ -28,6 +34,7 @@ public class Timer : MonoBehaviour
         if (_timer < 0 && !_hasTriggered)
         {
             _hasTriggered = true;
+            winLoseAnimator.enabled = true;
             WinEvent.TriggerWin();
             return;
         }
