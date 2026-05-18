@@ -3,7 +3,6 @@ using UnityEngine;
 public class HookTouchEffect : MonoBehaviour
 {
     [Header("Scripts")]
-
     [SerializeField] private SnapMechanic snapMechanic;
 
     [Header("Effects")]
