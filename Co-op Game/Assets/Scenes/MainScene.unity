@@ -176,6 +176,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5195915477150392240, guid: 8c9151bb3e3199a47a0ff926b70c8fc8, type: 3}
   m_PrefabInstance: {fileID: 4786544667090021360}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &136844549 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5630284960734168588, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
+  m_PrefabInstance: {fileID: 1594730877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &197276771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -962,6 +967,11 @@ MonoBehaviour:
   stretchStrength: 0.2
   influenceRadius: 1
   returnSpeed: 5
+--- !u!95 &1432909633 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9118176530816065869, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
+  m_PrefabInstance: {fileID: 1594730877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1486815386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,13 +1738,17 @@ PrefabInstance:
       value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
+      propertyPath: wonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 11254aff6a3942d43834a71c51b03785, type: 3}
+    - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: cycleDuration
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: winLoseAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432909633}
     - target: {fileID: 5076584843398363422, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2012,7 +2026,7 @@ PrefabInstance:
     - target: {fileID: 6725481253504234355, guid: e67c3f4102417b440bfbd1a613332e8d, type: 3}
       propertyPath: loseAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 136844549}
     - target: {fileID: 6773172013062778659, guid: e67c3f4102417b440bfbd1a613332e8d, type: 3}
       propertyPath: m_Name
       value: HealthSystem

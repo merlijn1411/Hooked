@@ -17,6 +17,9 @@ public class PlayersHealth : MonoBehaviour
     [Header("Animations")]
     [SerializeField] private Animator loseAnimator;
 
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip lostSound;
+
     private void Start()
     {
         loseAnimator.enabled = false;
@@ -55,6 +58,7 @@ public class PlayersHealth : MonoBehaviour
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(3);
+        SoundManager.Instance.PlaySoundFXClip(lostSound, transform, 1f);
         loseAnimator.enabled = true;
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

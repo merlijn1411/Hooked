@@ -1433,6 +1433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinLoseScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 6114742751937456837, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 06f22a35c4997c24bb577f1f0ffcd542, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1441,6 +1445,16 @@ PrefabInstance:
 --- !u!224 &1502916287 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 843530906816926572, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
+  m_PrefabInstance: {fileID: 1502916286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1502916288 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5630284960734168588, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
+  m_PrefabInstance: {fileID: 1502916286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1502916289 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9118176530816065869, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
   m_PrefabInstance: {fileID: 1502916286}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1745049028
@@ -1639,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 7226540192237718818, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
       propertyPath: loseAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1502916288}
     - target: {fileID: 7837651537208968100, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2044,13 +2058,17 @@ PrefabInstance:
       value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
+      propertyPath: wonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 11254aff6a3942d43834a71c51b03785, type: 3}
+    - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: cycleDuration
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: winLoseAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1502916289}
     - target: {fileID: 3963974370276276245, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
