@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -144,13 +145,23 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (startGameButton != null && !startGameButton.interactable) return;
+        StartCoroutine(ChangeScene());
+    }
+
+    private IEnumerator ChangeScene()
+    {
+        if (startGameButton != null && !startGameButton.interactable) yield return null;
         
         string sceneToLoad = "MainScene"; 
         if (LevelManger.Instance != null)
         {
             sceneToLoad = LevelManger.Instance.GetSelectedLevelName();
         }
+        
+        SceneTransitionManager.Instance.LoadScene();
+
+        var duration = SceneTransitionManager.Instance.transitionInDuration;
+        yield return new WaitForSeconds(duration);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
