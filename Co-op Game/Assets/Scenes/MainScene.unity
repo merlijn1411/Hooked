@@ -1381,9 +1381,21 @@ PrefabInstance:
       value: PlaySystem
       objectReference: {fileID: 0}
     - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2936360791137029008, guid: 9aa527001b0214a49a32d7fcdbff9960, type: 3}
+    - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
       propertyPath: SpawnPoint
       value: 
       objectReference: {fileID: 1384254526}
+    - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1384254526}
+    - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
+      propertyPath: playerLoader
+      value: 
+      objectReference: {fileID: 3571195723246665991}
     - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
       propertyPath: playerPrefab
       value: 

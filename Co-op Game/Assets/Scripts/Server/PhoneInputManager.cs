@@ -75,7 +75,7 @@ public class PhoneInputManager : MonoBehaviour
     {
         while (_messageQueue.TryDequeue(out string command))
         {
-            InputMessage msg = JsonUtility.FromJson<InputMessage>(command);
+            var msg = JsonUtility.FromJson<InputMessage>(command);
 
             if (msg == null) continue;
             if (lobbyManager == null) return;
@@ -84,7 +84,7 @@ public class PhoneInputManager : MonoBehaviour
             {
                 if (enableDebugLogs)
                     Debug.Log($"🎮 Player {msg.playerId} did {msg.action} (x: {msg.x}, y: {msg.y})");
-
+                
                 InputRouter.Instance.HandleInput(msg.playerId, msg.action, msg.x, msg.y);
             }
             else if (msg.type == "player_joined" || msg.type == "welcome")

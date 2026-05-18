@@ -43,7 +43,7 @@ public class FileManager : MonoBehaviour
         SaveToJson(saveGameFile);
     }
     
-    public static void SaveToJson(GameFile gameFile)
+    private static void SaveToJson(GameFile gameFile)
     {
         var pad = Path.Combine(Application.persistentDataPath, "data.json");
         
@@ -51,7 +51,7 @@ public class FileManager : MonoBehaviour
         
         File.WriteAllText(pad, json);
 
-        Debug.Log("Opgeslagen op: " + pad);
+        //Debug.Log("Opgeslagen op: " + pad);
     }
     
     public GameFile Load()
