@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
   snapMechanic: {fileID: 4234489452501075536}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
+  hookDamageClip: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
 --- !u!1 &7735624492112496722
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,8 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92f7c4ee3cc6104eab1f1ebed8377cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
-  health: {fileID: 0}
-  hookTouchEffect: {fileID: 16901739429898080}
   minSpeed: 5
   maxSpeed: 12
   minY: -1.29

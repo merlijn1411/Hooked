@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
-  playersHealth: {fileID: 0}
   snapMechanic: {fileID: 9107834237839827300}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
+  hookDamageClip: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
 --- !u!61 &3245212696201469884
 BoxCollider2D:
   m_ObjectHideFlags: 0
