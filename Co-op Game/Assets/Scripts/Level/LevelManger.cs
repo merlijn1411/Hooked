@@ -91,7 +91,7 @@ public class LevelManger : MonoBehaviour
 
             if (index < _levelButtons.Length && _levelButtons[index] != null)
             {
-                _levelButtons[index].localScale = new Vector3(0.8f, 0.8f, 0.8f); 
+                _levelButtons[index].localScale = new Vector3(1f, 0.8f, 0.8f); 
             }
         }
     }
