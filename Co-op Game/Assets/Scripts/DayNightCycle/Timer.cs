@@ -14,10 +14,6 @@ public class Timer : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator winLoseAnimator;
 
-    [Header("Audio Clip")]
-    [SerializeField] private AudioClip wonSound;
-
-
     private float _timer;
     private bool _hasTriggered = false;
 
@@ -39,7 +35,6 @@ public class Timer : MonoBehaviour
         {
             _hasTriggered = true;
             winLoseAnimator.enabled = true;
-            SoundManager.Instance.PlaySoundFXClip(wonSound, transform, 1f);
             WinEvent.TriggerWin();
             return;
         }
