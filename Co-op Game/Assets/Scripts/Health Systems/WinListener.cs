@@ -17,7 +17,8 @@ public class WinListener : MonoBehaviour
     //In this function you can choose what happens when the players win.
     private void OnWin()
     {
-        Debug.Log("You Won!");
         Instantiate(confettiEffect);
+        FileManager.Instance.UpdateUnlockedLevels("Positive");
     }
+    
 }

@@ -31,6 +31,18 @@ public class FileManager : MonoBehaviour
         SaveToJson(saveGameFile);
     }
     
+    /// <summary>
+    /// Updates the current amount of unlocked levels, to increase the number type "Positive". To Decrease the number type anything but "Positive"
+    /// </summary>
+    /// <param name="status"></param>
+    public void UpdateUnlockedLevels(string status)
+    {
+        saveGameFile = Load();
+        var level = status == "Positive" ? +1 : -1;
+        saveGameFile.UnlockedLevel = level;
+        SaveToJson(saveGameFile);
+    }
+    
     public static void SaveToJson(GameFile gameFile)
     {
         var pad = Path.Combine(Application.persistentDataPath, "data.json");
