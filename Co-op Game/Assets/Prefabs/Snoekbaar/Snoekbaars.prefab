@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3245212696201469884}
   - component: {fileID: 4679373621707914871}
   - component: {fileID: 9107834237839827300}
+  - component: {fileID: 8210510205965895141}
   m_Layer: 0
   m_Name: Snoekbaars
   m_TagString: Untagged
@@ -126,6 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be40a49aed960c409c966f86dc9ab16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnapMechanic
+--- !u!114 &8210510205965895141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597179486655943289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29891f97448366c4c9c9ae6a1377f2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroySelf
 --- !u!1001 &7715336023346572395
 PrefabInstance:
   m_ObjectHideFlags: 0

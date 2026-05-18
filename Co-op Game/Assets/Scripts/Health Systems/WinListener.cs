@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class WinListener : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem confettiEffect;
 
     private void OnEnable()
     {
@@ -17,7 +18,12 @@ public class WinListener : MonoBehaviour
     //In this function you can choose what happens when the players win.
     private void OnWin()
     {
-        Debug.Log("You Won!");
-        Instantiate(confettiEffect);
+        StartCoroutine(LoadSceneRoutine());
+    }
+
+    private IEnumerator LoadSceneRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Main Menu");
     }
 }

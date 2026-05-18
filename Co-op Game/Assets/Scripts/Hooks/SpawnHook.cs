@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class SpawnHook : MonoBehaviour
-{
+{  
     [Header("GameObjects")]
     [SerializeField] private GameObject[] startingPoints;
     [SerializeField] private GameObject hook;

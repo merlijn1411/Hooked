@@ -14,9 +14,13 @@ public class PlayersHealth : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int hearts;
 
+    [Header("Animations")]
+    [SerializeField] private Animator loseAnimator;
+
     private void Start()
     {
-        for(int i = 0;i < heartsDeadImages.Length;i++)
+        loseAnimator.enabled = false;
+        for (int i = 0;i < heartsDeadImages.Length;i++)
         {
             heartsDeadImages[i].enabled = false;
         }
@@ -50,6 +54,8 @@ public class PlayersHealth : MonoBehaviour
     //This function is called when te player has died and a resart menu can open. For now we just quickly resart the level.
     private IEnumerator EndGame()
     {
+        yield return new WaitForSeconds(3);
+        loseAnimator.enabled = true;
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
