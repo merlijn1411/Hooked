@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
             SpawnPlayer(playerId);
         }
 
-        PlayerMovement playerMovement = players[playerId];
+        var playerMovement = players[playerId];
 
         // Bestaande acties
         if (action == "Y") playerMovement.InteractieY();
@@ -32,8 +32,8 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnPlayer(string playerId)
     {
-        GameObject obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
-        PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
+        var obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
+        var playerMovement = obj.GetComponent<PlayerMovement>();
 
         players.Add(playerId, playerMovement);
         Debug.Log("✅ Spawned playerMovement: " + playerId);
@@ -48,10 +48,5 @@ public class PlayerManager : MonoBehaviour
         players.Remove(playerId);
 
         Debug.Log("🗑️ Removed playerMovement: " + playerId);
-    }
-
-    Vector3 RandomSpawn()
-    {
-        return new Vector3(Random.Range(-4, 4), 0, 0);
     }
 }
