@@ -27,7 +27,6 @@ public class FileManager : MonoBehaviour
     public void RemovePlayer()
     {
         saveGameFile = Load();
-        
     }
     
     /// <summary>

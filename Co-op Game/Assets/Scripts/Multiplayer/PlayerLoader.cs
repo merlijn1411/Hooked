@@ -17,7 +17,7 @@ public class PlayerLoader : MonoBehaviour
 
         foreach (var player in players)
         {
-            // playerManager.SpawnPlayer(player);
+            playerManager.SpawnPlayer(player);
         }
     }
 }

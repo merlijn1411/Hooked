@@ -1270,6 +1270,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6746100584257134266, guid: a793345e906c3f045a9d0ab035664221, type: 3}
   m_PrefabInstance: {fileID: 49871440806902920}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001652064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5031825519509877480, guid: a793345e906c3f045a9d0ab035664221, type: 3}
+  m_PrefabInstance: {fileID: 49871440806902920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86006d65685c51d43bd22d68c5067178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
 --- !u!95 &2026484778 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6114742751937456837, guid: a9be5abf3005bce46ab25e3f6b9fb3ba, type: 3}
@@ -1591,6 +1602,10 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 2936360791137029008, guid: 9aa527001b0214a49a32d7fcdbff9960, type: 3}
+    - target: {fileID: 6735955902799805460, guid: 10240fbe2039034409cad0c445a53eee, type: 3}
+      propertyPath: characterDatabase
+      value: 
+      objectReference: {fileID: 2001652064}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

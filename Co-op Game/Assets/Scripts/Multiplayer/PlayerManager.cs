@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private CharacterDatabase characterDatabase;
     [SerializeField] private Transform SpawnPoint;
      
-    private Dictionary<string, PlayerMovement> players = new Dictionary<string, PlayerMovement>();
+    private Dictionary<string, PlayerMovement> _players = new Dictionary<string, PlayerMovement>();
 
     // Voeg float x en float y toe aan parameters met een standaardwaarde van 0
     public void HandlePlayerInput(string playerId, string action, float x = 0f, float y = 0f)
     {
-        if (!players.ContainsKey(playerId))
+        if (!_players.ContainsKey(playerId))
         {
-            SpawnPlayer(playerId);
+            Debug.LogWarning($"{playerId} komt niet overeen met ");
         }
 
-        var playerMovement = players[playerId];
+        var playerMovement = _players[playerId];
 
         // Bestaande acties
         if (action == "Y") playerMovement.InteractieY();
@@ -30,23 +30,23 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void SpawnPlayer(string playerId)
+    public void SpawnPlayer(ExternalFiles player)
     {
-        
-        var obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
+        var playerValue = player.Value;
+        var obj = Instantiate(characterDatabase.GetByIndex(playerValue.Index), SpawnPoint.position, Quaternion.identity, SpawnPoint);
         var playerMovement = obj.GetComponent<PlayerMovement>();
 
-        players.Add(playerId, playerMovement);
-        Debug.Log("✅ Spawned playerMovement: " + playerId);
+        _players.Add(playerValue.ID, playerMovement);
+        Debug.Log("✅ Spawned playerMovement: " + playerValue.ID);
     }
 
     public void RemovePlayer(string playerId)
     {
-        if (!players.ContainsKey(playerId)) return;
+        if (!_players.ContainsKey(playerId)) return;
 
-        PlayerMovement playerMovement = players[playerId];
+        var playerMovement = _players[playerId];
         Destroy(playerMovement.gameObject);
-        players.Remove(playerId);
+        _players.Remove(playerId);
 
         Debug.Log("🗑️ Removed playerMovement: " + playerId);
     }
