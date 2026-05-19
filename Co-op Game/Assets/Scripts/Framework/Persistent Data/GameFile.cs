@@ -1,20 +1,18 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class GameFile
 {
     public int UnlockedLevel;
-    public List<ExternalFiles> ImportantFiles = new List<ExternalFiles>();
+    public List<ExternalFiles> PlayerInfo = new List<ExternalFiles>();
 
     private Dictionary<string, ExternalVariables> dict;
 
     public void BuildDictionary()
     {
         dict = new Dictionary<string, ExternalVariables>();
-        foreach (var e in ImportantFiles)
+        foreach (var e in PlayerInfo)
         {
             dict[e.key] = e.Value;
         }
@@ -27,13 +25,13 @@ public class GameFile
         
         dict[id] = playerCharacter;
         
-        var index = ImportantFiles.FindIndex(e => e.key == id);
+        var index = PlayerInfo.FindIndex(e => e.key == id);
 
         UnlockedLevel += level;
         
         if (index >= 0)
         {
-            ImportantFiles[index] = new ExternalFiles
+            PlayerInfo[index] = new ExternalFiles
             {
                 key = id,
                 Value = playerCharacter
@@ -41,7 +39,7 @@ public class GameFile
         }
         else
         {
-            ImportantFiles.Add(new ExternalFiles
+            PlayerInfo.Add(new ExternalFiles
             {
                 key = id,
                 Value = playerCharacter
