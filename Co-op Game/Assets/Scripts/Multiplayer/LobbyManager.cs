@@ -24,7 +24,7 @@ public class LobbyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void PlayerJoined(string playerId)
+    public void PlayerJoined(string playerId, int playerIndex)
     {
         if (players.Contains(playerId))
         {
@@ -39,6 +39,13 @@ public class LobbyManager : MonoBehaviour
             CheckAllReady();
             return; 
         }
+        
+        FileManager.Instance.WritePlayer(playerIndex, new ExternalVariables
+        {
+            ID = playerId,
+            Index = playerIndex
+        });
+
 
         if (players.Count >= 4) return;
 

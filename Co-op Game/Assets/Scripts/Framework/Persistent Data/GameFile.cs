@@ -18,7 +18,7 @@ public class GameFile
         }
     }
     
-    public void Add(string id, ExternalVariables playerCharacter, int level)
+    public void AddPlayer(string id, ExternalVariables playerCharacter)
     {
         if (dict == null)
             BuildDictionary();
@@ -26,8 +26,6 @@ public class GameFile
         dict[id] = playerCharacter;
         
         var index = PlayerInfo.FindIndex(e => e.key == id);
-
-        UnlockedLevel += level;
         
         if (index >= 0)
         {
@@ -46,6 +44,16 @@ public class GameFile
             });
         }
         
+    }
+
+    public void DeletePlayer(string id)
+    {
+        dict.Remove(id);
+    }
+
+    public void AddUnlockedLevels(int unlockedLevels)
+    {
+        UnlockedLevel += unlockedLevels;
     }
 }
 

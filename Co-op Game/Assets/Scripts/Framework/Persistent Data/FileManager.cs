@@ -13,23 +13,28 @@ public class FileManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Writing the file with existing objects or creating new ones, argument level is between 0 and 1. Only use 1 when you have completed an new level.
+    /// Writing the file with existing objects or creating new ones
     /// </summary>
     /// <param name="key"></param>
     /// <param name="playerCharacter"></param>
-    /// <param name="level"></param>
-    public void WriteFile(int key, ExternalVariables playerCharacter, int level)
+    public void WritePlayer(int key, ExternalVariables playerCharacter)
     {
         saveGameFile = Load();
-        saveGameFile.Add($"Player{key}", playerCharacter, level);
+        saveGameFile.AddPlayer($"Player{key}", playerCharacter);
         SaveToJson(saveGameFile);
+    }
+
+    public void RemovePlayer()
+    {
+        saveGameFile = Load();
+        
     }
     
     /// <summary>
     /// Updates the current amount of unlocked levels, to increase the number type "Positive". To Decrease the number type anything but "Positive"
     /// </summary>
     /// <param name="status"></param>
-    public void UpdateUnlockedLevels(string status)
+    public void WriteUnlockedLevels(string status)
     {
         saveGameFile = Load();
         var level = status == "Positive" ? +1 : -1;

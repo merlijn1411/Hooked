@@ -30,8 +30,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void SpawnPlayer(string playerId)
+    public void SpawnPlayer(string playerId)
     {
+        
         var obj = Instantiate(playerPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
         var playerMovement = obj.GetComponent<PlayerMovement>();
 
