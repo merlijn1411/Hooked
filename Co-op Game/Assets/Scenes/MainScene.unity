@@ -1228,6 +1228,7 @@ Transform:
   - {fileID: 197276772}
   - {fileID: 1794758742}
   - {fileID: 101026710}
+  - {fileID: 2001652063}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1993673616 stripped
@@ -1266,10 +1267,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
   characters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5119754945583389586, guid: 67a6f0ea97aa8294bb57612546c6a0c6, type: 3}
+  - {fileID: 2936360791137029008, guid: 9aa527001b0214a49a32d7fcdbff9960, type: 3}
+  - {fileID: 2754576111318329534, guid: bae5f395cc08ec040a2624b2780f9308, type: 3}
+  - {fileID: 3285198360329774089, guid: 598e28422a9874648aa32409155b15e6, type: 3}
 --- !u!114 &2001652062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,12 +1294,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001652060}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1074.7338, y: -488.97318, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1907260974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2026484778 stripped
 Animator:
@@ -2019,4 +2020,3 @@ SceneRoots:
   - {fileID: 2062007861}
   - {fileID: 1907260974}
   - {fileID: 386864676}
-  - {fileID: 2001652063}

@@ -10,11 +10,6 @@ public class FileManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Refresh();
-    }
-
-    public void Refresh()
-    {
         saveGameFile = Load();
     }
 
