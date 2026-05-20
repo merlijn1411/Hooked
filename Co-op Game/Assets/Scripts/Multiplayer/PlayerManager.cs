@@ -33,7 +33,8 @@ public class PlayerManager : MonoBehaviour
     public void SpawnPlayer(ExternalFiles player)
     {
         var playerValue = player.Value;
-        var obj = Instantiate(characterDatabase.GetByIndex(playerValue.Index), SpawnPoint.position, Quaternion.identity, SpawnPoint);
+        var obj = Instantiate(characterDatabase.GetByIndex(playerValue.Index), RandomSpawn(), 
+            Quaternion.identity, SpawnPoint);
         var playerMovement = obj.GetComponent<PlayerMovement>();
 
         _players.Add(playerValue.ID, playerMovement);
@@ -49,5 +50,13 @@ public class PlayerManager : MonoBehaviour
         _players.Remove(playerId);
 
         Debug.Log("🗑️ Removed playerMovement: " + playerId);
+    }
+
+    private Vector3 RandomSpawn()
+    {
+        var randomRange = Random.Range(-.75f, .75f);
+        var PosX = SpawnPoint.position.x + randomRange;
+        var PosY = SpawnPoint.position.y + randomRange;
+        return new Vector3(PosX, PosY + randomRange, 0);
     }
 }
