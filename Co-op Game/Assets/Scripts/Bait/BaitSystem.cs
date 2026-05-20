@@ -18,14 +18,14 @@ public class BaitSystem : MonoBehaviour
     [SerializeField] private PlayersHealth playersHealth;
 
     [Header("Spawn Settings")]
-    [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private float minX = -8f;
-    [SerializeField] private float maxX = 8f;
-    [SerializeField] private float spawnY = 6f;
+    [SerializeField] private float spawnRate;
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+    [SerializeField] private float spawnY;
 
     [Header("Bait Settings")]
-    [SerializeField] private float fallSpeed = 2f;
-    [SerializeField] private float destroyY = -6f;
+    [SerializeField] private float fallSpeed;
+    [SerializeField] private float destroyY;
 
     private void Start()
     {
