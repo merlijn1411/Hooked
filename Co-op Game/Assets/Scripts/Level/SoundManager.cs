@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
 
         audioScource.Play();
 
-        float clipLenght = audioScource.clip.length;
+        var clipLenght = audioScource.clip.length;
 
         Destroy(audioScource.gameObject, clipLenght);
     }
