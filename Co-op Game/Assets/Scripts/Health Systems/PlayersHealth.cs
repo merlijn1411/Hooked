@@ -20,7 +20,8 @@ public class PlayersHealth : MonoBehaviour
     private void Start()
     {
         loseAnimator.enabled = false;
-        for (int i = 0;i < heartsDeadImages.Length;i++)
+
+        for (int i = 0; i < heartsDeadImages.Length; i++)
         {
             heartsDeadImages[i].enabled = false;
         }
@@ -32,6 +33,19 @@ public class PlayersHealth : MonoBehaviour
         UpdateUI();
     }
 
+    // NIEUW: heart teruggeven
+    public void AddHeart()
+    {
+        // Alleen als speler niet full hp heeft
+        if (hearts < heartsAliveImages.Length)
+        {
+            heartsAliveImages[hearts].enabled = true;
+            heartsDeadImages[hearts].enabled = false;
+
+            hearts++;
+        }
+    }
+
     private void UpdateUI()
     {
         if (hearts <= 0)
@@ -39,10 +53,9 @@ public class PlayersHealth : MonoBehaviour
             StartCoroutine(EndGame());
             hearts = 0;
         }
-            
+
         heartsAliveImages[hearts].enabled = false;
         heartsDeadImages[hearts].enabled = true;
-        
     }
 
     public bool HasLives()
@@ -51,12 +64,15 @@ public class PlayersHealth : MonoBehaviour
         return hasLives;
     }
 
-    //This function is called when te player has died and a resart menu can open. For now we just quickly resart the level.
+    //This function is called when the player has died and a restart menu can open.
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(3);
+
         loseAnimator.enabled = true;
+
         yield return new WaitForSeconds(5);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

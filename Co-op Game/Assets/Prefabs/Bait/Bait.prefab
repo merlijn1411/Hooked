@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8733934787543473051}
   - component: {fileID: 1366335227958925656}
-  - component: {fileID: -8801014673081597404}
+  - component: {fileID: 845415134830334141}
+  - component: {fileID: 5428283890093089891}
   m_Layer: 0
   m_Name: Bait
   m_TagString: Untagged
@@ -92,8 +93,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &-8801014673081597404
-BoxCollider2D:
+--- !u!58 &845415134830334141
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,14 +128,25 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.24, y: 1.91}
-    newSize: {x: 1.24, y: 1.91}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.24, y: 1.91}
-  m_EdgeRadius: 0
+  m_Radius: 0.955
+--- !u!114 &5428283890093089891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399210578366824295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacb8c9791996da438cc5ab3a46b91f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaitSystem
+  mode: 1
+  baitPrefab: {fileID: 0}
+  playersHealth: {fileID: 0}
+  spawnRate: 3
+  minX: -8
+  maxX: 8
+  spawnY: 6
+  fallSpeed: 2
+  destroyY: -6
