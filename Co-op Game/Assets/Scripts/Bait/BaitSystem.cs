@@ -2,7 +2,11 @@
 
 public class BaitSystem : MonoBehaviour
 {
-    public enum Mode { Spawner, Bait }
+    public enum Mode
+    {
+        Spawner,
+        Bait
+    }
 
     [Header("Mode")]
     [SerializeField] private Mode mode;
@@ -26,21 +30,18 @@ public class BaitSystem : MonoBehaviour
     private void Start()
     {
         if (mode == Mode.Spawner)
-        {
             InvokeRepeating(nameof(SpawnBait), 1f, spawnRate);
-        }
     }
 
     private void Update()
     {
-        if (mode != Mode.Bait) return;
+        if (mode != Mode.Bait)
+            return;
 
         transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
 
         if (transform.position.y < destroyY)
-        {
             Destroy(gameObject);
-        }
     }
 
     private void SpawnBait()
@@ -53,7 +54,6 @@ public class BaitSystem : MonoBehaviour
         BaitSystem baitScript = bait.GetComponent<BaitSystem>();
         baitScript.mode = Mode.Bait;
 
-        // BELANGRIJK: geef health reference door
         baitScript.playersHealth = playersHealth;
         baitScript.fallSpeed = fallSpeed;
         baitScript.destroyY = destroyY;
@@ -61,14 +61,14 @@ public class BaitSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (mode != Mode.Bait) return;
+        if (mode != Mode.Bait)
+            return;
 
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player"))
+            return;
 
         if (playersHealth != null)
-        {
             playersHealth.AddHeart();
-        }
 
         Destroy(gameObject);
     }
