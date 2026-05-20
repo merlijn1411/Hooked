@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7787718387904328089}
   - component: {fileID: 5266691355476837654}
   - component: {fileID: 5221499324578808086}
-  - component: {fileID: 7300053939062575147}
+  - component: {fileID: 5630284960734168588}
   m_Layer: 5
   m_Name: Lose
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &7300053939062575147
+--- !u!95 &5630284960734168588
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ Animator:
   m_GameObject: {fileID: 2785140156933525686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8847a25c7b2f67f4d848a5749e115d54, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06f22a35c4997c24bb577f1f0ffcd542, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6261243893186209830}
   - component: {fileID: 6616996724644962171}
   - component: {fileID: 122217942328647450}
-  - component: {fileID: 6114742751937456837}
+  - component: {fileID: 9118176530816065869}
   m_Layer: 5
   m_Name: Win
   m_TagString: Untagged
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &6114742751937456837
+--- !u!95 &9118176530816065869
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ Animator:
   m_GameObject: {fileID: 8377470249937309297}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8847a25c7b2f67f4d848a5749e115d54, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06f22a35c4997c24bb577f1f0ffcd542, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

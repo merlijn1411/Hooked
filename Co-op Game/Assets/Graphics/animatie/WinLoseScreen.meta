@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Co-op Game/Assets/Prefabs/Sounds.meta
+guid: 22e9516bbde465a4cb52da9d56cd9865
+========
 guid: 24eeb44e08434d14ca7aadbb9a6530ae
+>>>>>>>> develop:Co-op Game/Assets/Graphics/animatie/WinLoseScreen.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

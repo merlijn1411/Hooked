@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Co-op Game/Assets/Sounds/Music.meta
+guid: 14297f60a8ef92d408885c83906c8abd
+folderAsset: yes
+DefaultImporter:
+========
 guid: a9be5abf3005bce46ab25e3f6b9fb3ba
 PrefabImporter:
+>>>>>>>> develop:Co-op Game/Assets/Prefabs/UI Elements/WinLoseScreen.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
