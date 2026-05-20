@@ -4,6 +4,8 @@ using System.Collections;
 
 public class WinListener : MonoBehaviour
 {
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip wonSound;
 
     private void OnEnable()
     {
@@ -18,6 +20,7 @@ public class WinListener : MonoBehaviour
     //In this function you can choose what happens when the players win.
     private void OnWin()
     {
+        SoundManager.Instance.PlaySoundFXClip(wonSound, transform, 1f);
         StartCoroutine(LoadSceneRoutine());
     }
 

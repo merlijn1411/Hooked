@@ -8,6 +8,9 @@ public class HookTouchEffect : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private ParticleSystem hitEffect;
 
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip hookDamageClip;
+
     private PlayersHealth playersHealth;
 
     private void Awake()
@@ -19,6 +22,7 @@ public class HookTouchEffect : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
         Instantiate(hitEffect, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        SoundManager.Instance.PlaySoundFXClip(hookDamageClip, transform, 1f);
         playersHealth.TakingDamage();
 
         if (!playersHealth.HasLives())

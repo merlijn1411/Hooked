@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
   snapMechanic: {fileID: 4234489452501075536}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
+  hookDamageClip: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
 --- !u!1 &7735624492112496722
 GameObject:
   m_ObjectHideFlags: 0

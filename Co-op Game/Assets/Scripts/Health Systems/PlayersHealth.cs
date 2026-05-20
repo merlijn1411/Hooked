@@ -17,6 +17,11 @@ public class PlayersHealth : MonoBehaviour
     [Header("Animations")]
     [SerializeField] private Animator loseAnimator;
 
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip lostSound;
+
+    private bool _canPlay = true;
+
     private void Start()
     {
         loseAnimator.enabled = false;
@@ -41,8 +46,7 @@ public class PlayersHealth : MonoBehaviour
         }
             
         heartsAliveImages[hearts].enabled = false;
-        heartsDeadImages[hearts].enabled = true;
-        
+        heartsDeadImages[hearts].enabled = true;  
     }
 
     public bool HasLives()
@@ -55,8 +59,16 @@ public class PlayersHealth : MonoBehaviour
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(3);
+        PlayeLostMusic();
         loseAnimator.enabled = true;
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void PlayeLostMusic()
+    {
+        if (!_canPlay) return;
+        SoundManager.Instance.PlaySoundFXClip(lostSound, transform, 1f);
+        _canPlay = false;
     }
 }
