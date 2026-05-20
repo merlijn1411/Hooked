@@ -1843,6 +1843,7 @@ MonoBehaviour:
   peekTime: 0.15
   waitTime: 1
   delayBetweenSpawns: 0.5
+  SpearSound: {fileID: 8300000, guid: 870b34852865d0a42a804cfc98bb98e2, type: 3}
 --- !u!1 &1907260973
 GameObject:
   m_ObjectHideFlags: 0
