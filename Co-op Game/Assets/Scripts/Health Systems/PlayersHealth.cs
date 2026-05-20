@@ -14,9 +14,13 @@ public class PlayersHealth : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int hearts;
 
+    [Header("Cooldown")]
+    [SerializeField] private float invincibilityDuration = 1.5f; // Pas deze tijd naar wens aan in de inspector
+    private bool isInvincible = false;
+
     private void Start()
     {
-        for(int i = 0;i < heartsDeadImages.Length;i++)
+        for (int i = 0; i < heartsDeadImages.Length; i++)
         {
             heartsDeadImages[i].enabled = false;
         }
@@ -24,8 +28,15 @@ public class PlayersHealth : MonoBehaviour
 
     public void TakingDamage()
     {
+        if (isInvincible || hearts <= 0) return;
+
         hearts -= damage;
         UpdateUI();
+
+        if (hearts > 0)
+        {
+            StartCoroutine(InvincibilityCooldown());
+        }
     }
 
     private void UpdateUI()
@@ -38,7 +49,13 @@ public class PlayersHealth : MonoBehaviour
             
         heartsAliveImages[hearts].enabled = false;
         heartsDeadImages[hearts].enabled = true;
-        
+    }
+
+    private IEnumerator InvincibilityCooldown()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
 
     public bool HasLives()
