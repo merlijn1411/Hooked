@@ -4,6 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
+    [Header("Sound Object")]
     [SerializeField] private AudioSource soundFXObject;
 
     private void Awake()
