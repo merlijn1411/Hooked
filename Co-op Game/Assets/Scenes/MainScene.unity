@@ -233,6 +233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8538693477401822156, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
+      propertyPath: wonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 11254aff6a3942d43834a71c51b03785, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2019,6 +2023,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6725481253504234355, guid: e67c3f4102417b440bfbd1a613332e8d, type: 3}
+      propertyPath: lostSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9571c3a56d43c9047b3d746b6609f6c6, type: 3}
     - target: {fileID: 6725481253504234355, guid: e67c3f4102417b440bfbd1a613332e8d, type: 3}
       propertyPath: loseScreen
       value: 
