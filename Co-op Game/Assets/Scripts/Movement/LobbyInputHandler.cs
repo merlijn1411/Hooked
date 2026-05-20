@@ -48,13 +48,13 @@ public class LobbyInputHandler : MonoBehaviour, IInputHandler
                 _currentJoystickY = -y;  
             }
 
-            if (action == "A")
+            if (action == "B")
             {
                 SimulateCursorClick();
             }
         }
 
-        if (action == "B")
+        if (action == "A")
         {
             lobbyManager.HandleInput(playerId, action);
         }
