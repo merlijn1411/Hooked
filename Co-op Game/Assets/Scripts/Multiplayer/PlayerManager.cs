@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     private Vector3 RandomSpawn()
     {
-        var randomRange = Random.Range(-.75f, .75f);
+        var randomRange = Random.Range(-.7f, .7f);
         var PosX = SpawnPoint.position.x + randomRange;
         var PosY = SpawnPoint.position.y + randomRange;
         return new Vector3(PosX, PosY + randomRange, 0);
