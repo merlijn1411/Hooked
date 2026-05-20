@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 2936360791137029008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.944978, y: -1.8751361, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -252,7 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 0.8
-  stepSize: 1
 --- !u!114 &5888160946642361047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,8 +536,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5928203130926275167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.9975635, w: 0.06976543}
-  m_LocalPosition: {x: 0.39341438, y: -0.030917406, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.997564, w: 0.06975656}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -546,7 +545,7 @@ Transform:
   - {fileID: 6800662942245354894}
   - {fileID: 2116513946974227984}
   m_Father: {fileID: 3750995641945455399}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -172}
 --- !u!1 &6107176838749289636
 GameObject:
   m_ObjectHideFlags: 0
