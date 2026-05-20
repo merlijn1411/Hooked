@@ -33,7 +33,14 @@ Het GameConcept moet:
 
 Merlijn:
 * Player Movement
-* QR code 
+* Team Movement
+* QR code
+* Save System
+* Snap Mechanic
+* Hook rotation Randomizer
+* Node.exe file
+* Automatic Server Startup
+
 
 Delysha:
 * Hook System
