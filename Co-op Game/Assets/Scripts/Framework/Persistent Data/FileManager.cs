@@ -3,15 +3,22 @@ using UnityEngine;
 
 public class FileManager : MonoBehaviour
 {
-    [SerializeField] private GameFile saveGameFile = new GameFile();
-    
     public static FileManager Instance;
+    
+    [SerializeField] private GameFile saveGameFile = new GameFile();
+    [SerializeField] private bool isLobby;
+    
     private void Awake()
     {
         Instance = this;
         saveGameFile = Load();
     }
 
+    private void Start()
+    {
+        if (isLobby) RemoveAllPlayers();
+    }
+    
     /// <summary>
     /// Writing the file with existing objects or creating new ones
     /// </summary>
@@ -20,24 +27,33 @@ public class FileManager : MonoBehaviour
     public void WritePlayer(int key, ExternalVariables playerCharacter)
     {
         saveGameFile = Load();
-        saveGameFile.AddPlayer($"Player{key}", playerCharacter);
+        saveGameFile.AddPlayer($"Player {key}", playerCharacter);
         SaveToJson(saveGameFile);
     }
 
-    public void RemovePlayer()
+    public void RemovePlayer(string key)
     {
         saveGameFile = Load();
+        saveGameFile.DeletePlayer(key);
+    }
+    
+
+    private void RemoveAllPlayers()
+    {
+        saveGameFile = Load();
+        saveGameFile.DeleteAllPlayers();
+        SaveToJson(saveGameFile);
     }
     
     /// <summary>
     /// Updates the current amount of unlocked levels, to increase the number type "Positive". To Decrease the number type anything but "Positive"
     /// </summary>
     /// <param name="status"></param>
-    public void WriteUnlockedLevels(string status)
+    public void WriteUnlockedLevels(int level)
     {
         saveGameFile = Load();
-        var level = status == "Positive" ? +1 : -1;
         saveGameFile.UnlockedLevel = level;
+        Debug.Log("Hey");
         SaveToJson(saveGameFile);
     }
     

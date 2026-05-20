@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287993921255248915, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1074.7338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2287993921255248915, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5026941689177787430, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
+      propertyPath: UnlockingNextLevel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -238,6 +242,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2287993921255248915, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
   m_PrefabInstance: {fileID: 197276771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &197276773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5026941689177787430, guid: 595e07a292656dd44aef5627f7361cd7, type: 3}
+  m_PrefabInstance: {fileID: 197276771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39081ca50c7a33e44a214fbcf841352e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinEvent
 --- !u!1001 &386864676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1248,7 +1263,7 @@ Transform:
   m_GameObject: {fileID: 1907260973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1074.7338, y: 488.97318, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1402,11 +1417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746100584257134266, guid: a793345e906c3f045a9d0ab035664221, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1074.7338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6746100584257134266, guid: a793345e906c3f045a9d0ab035664221, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -488.97318
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6746100584257134266, guid: a793345e906c3f045a9d0ab035664221, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1741,8 +1756,12 @@ PrefabInstance:
       value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
+      propertyPath: winEvent
+      value: 
+      objectReference: {fileID: 197276773}
+    - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: cycleDuration
-      value: 120
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: winLoseAnimator

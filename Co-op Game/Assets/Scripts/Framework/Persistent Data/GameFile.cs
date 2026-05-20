@@ -20,10 +20,9 @@ public class GameFile
     
     public void AddPlayer(string id, ExternalVariables playerCharacter)
     {
-        if (dict == null)
-            BuildDictionary();
+        if (dict == null) BuildDictionary();
         
-        dict[id] = playerCharacter;
+        dict![id] = playerCharacter;
         
         var index = PlayerInfo.FindIndex(e => e.key == id);
         
@@ -46,9 +45,23 @@ public class GameFile
         
     }
 
-    public void DeletePlayer(string id)
+    public void DeletePlayer(string key)
     {
-        dict.Remove(id);
+        if (dict == null)
+            BuildDictionary();
+
+        dict.Remove(key);
+        
+        PlayerInfo.RemoveAll(player => player.key == key);
+    }
+
+    public void DeleteAllPlayers()
+    {
+        if (dict == null)
+            BuildDictionary();
+
+        PlayerInfo.Clear();
+        dict = new Dictionary<string, ExternalVariables>();
     }
 
     public void AddUnlockedLevels(int unlockedLevels)

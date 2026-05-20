@@ -8,16 +8,11 @@ public class Level : MonoBehaviour
 
     [SerializeField] private Sprite lockedImage;
     [SerializeField] private Sprite unlockedImage;
-    private Image _imageHolder;
-
-    private void OnDisable()
-    {
-        _imageHolder = GetComponent<Image>();
-    }
-
+    [SerializeField] private Image _imageHolder;
+    
     public void isLevelUnlocked(int currentUnlockedLevel)
     {
         _imageHolder.sprite = lockedImage;
-        if (Id == currentUnlockedLevel && unlockedImage != null) _imageHolder.sprite = unlockedImage;
+        if (Id <= currentUnlockedLevel && unlockedImage != null) _imageHolder.sprite = unlockedImage;
     }
 }

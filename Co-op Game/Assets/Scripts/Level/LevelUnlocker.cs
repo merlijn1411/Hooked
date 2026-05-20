@@ -7,19 +7,9 @@ public class LevelUnlocker : MonoBehaviour
     private int setLevel = 1;
     private void Start()
     {
-        InitializeLevels();
         CheckCurrentLevel();
     }
-
-    private void InitializeLevels()
-    {
-        var levels = GetComponentsInChildren<Level>();
-        foreach (var level in levels)
-        {
-            _levels.Add(level);
-        }
-    }
-
+    
     private void CheckCurrentLevel()
     {
         var file = FileManager.Instance.Load();
