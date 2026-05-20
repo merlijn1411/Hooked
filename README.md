@@ -39,6 +39,8 @@ Delysha:
 * Hook System
 * WarningIndecator
 * HookDrop
+* Spear System
+* Bait System
 
 Davey:
 * Player Input
