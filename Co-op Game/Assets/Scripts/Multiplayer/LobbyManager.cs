@@ -106,7 +106,7 @@ public class LobbyManager : MonoBehaviour
 
     public void HandleInput(string playerId, string action)
     {
-        if (action == "B")
+        if (action == "A")
         {
             ToggleReady(playerId);
         }

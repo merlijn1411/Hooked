@@ -147,6 +147,8 @@ MonoBehaviour:
   - {fileID: 8076433406114169359}
   damage: 1
   hearts: 3
+  loseAnimator: {fileID: 0}
+  lostSound: {fileID: 8300000, guid: 9571c3a56d43c9047b3d746b6609f6c6, type: 3}
 --- !u!225 &7748496949252880362
 CanvasGroup:
   m_ObjectHideFlags: 0

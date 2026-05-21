@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5329138547151839585}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.083, z: 0}
+  m_LocalPosition: {x: 0.95, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ Transform:
   m_GameObject: {fileID: 6274574135811938484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9, y: 0, z: 0}
+  m_LocalPosition: {x: -0.993, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,12 +159,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8317094370827794192, guid: 948b785f618be474c9444c8ce48fc052, type: 3}
+  m_Sprite: {fileID: 7597411063721312935, guid: 38435facffa3963409212b965dac9357, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.93, y: 10.68}
+  m_Size: {x: 0.99, y: 1.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
-  playersHealth: {fileID: 0}
   snapMechanic: {fileID: 4234489452501075536}
   hitEffect: {fileID: 4651011739549404065, guid: 23ead127b345fb143b5a5f79b5dd631c, type: 3}
+  hookDamageClip: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
 --- !u!1 &7735624492112496722
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +253,8 @@ GameObject:
   - component: {fileID: 3544395584552792825}
   - component: {fileID: -8514939387652645653}
   - component: {fileID: 2311493230952034348}
+  - component: {fileID: 6088937165580174336}
+  - component: {fileID: 1125398423581535160}
   m_Layer: 0
   m_Name: Rusty Hook
   m_TagString: Untagged
@@ -305,17 +307,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92f7c4ee3cc6104eab1f1ebed8377cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookRandomizer
-  minSpeed: 3
-  maxSpeed: 5
+  minSpeed: 5
+  maxSpeed: 12
   minY: -1.29
   maxY: 9
-  warningDuration: 3
+  warningDuration: 2
   horizontalRange: 2
   horizontalSpeedMin: 0.5
   horizontalSpeedMax: 2
-  lineStart: {fileID: 4412731470690847623}
+  minRandomDropDelay: 0
+  maxRandomDropDelay: 3
+--- !u!114 &6088937165580174336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735624492112496722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45f894b8e0c0ec48a4c58d9fa26b0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HookLine
   linePrefab: {fileID: 6103555529917233456, guid: a9a542612ee6b50459b786e6747fcce2, type: 3}
   hookTop: {fileID: 4412731470690847623}
+--- !u!114 &1125398423581535160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735624492112496722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29891f97448366c4c9c9ae6a1377f2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroySelf
 --- !u!1 &9085923847713447090
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,12 +424,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2440592398940965167, guid: 948b785f618be474c9444c8ce48fc052, type: 3}
+  m_Sprite: {fileID: 2896122167170543578, guid: 638cdb59cd85edc47b823f76b339179f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.93, y: 10.68}
+  m_Size: {x: 2.5, y: 3.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
