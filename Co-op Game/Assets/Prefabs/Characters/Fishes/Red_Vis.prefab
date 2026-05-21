@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 3750995641945455399}
   - component: {fileID: 1863360837407430544}
   - component: {fileID: 5888160946642361047}
+  - component: {fileID: 7581395649646264452}
   - component: {fileID: 7064361120135830276}
   - component: {fileID: 8975512395990431004}
   m_Layer: 0
@@ -267,6 +268,19 @@ MonoBehaviour:
   charRenderer: {fileID: 173004533072403231}
   radius: 0.05
   needsConvert: 1
+--- !u!114 &7581395649646264452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936360791137029008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138395b79ac84dd44affc05cc69b74cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationController
+  _animator: {fileID: 4866870375049277549}
 --- !u!68 &7064361120135830276
 EdgeCollider2D:
   m_ObjectHideFlags: 0
