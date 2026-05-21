@@ -357,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 502276752}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.27, y: -0.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -372,16 +372,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 502276752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dacb8c9791996da438cc5ab3a46b91f5, type: 3}
+  m_Script: {fileID: 11500000, guid: ce14cd2243307b340bdd17a02134e9a9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaitSystem
-  mode: 0
+  m_EditorClassIdentifier: Assembly-CSharp::BaitSpawner
   baitPrefab: {fileID: 5399210578366824295, guid: fa617ffe35585804d99c0c3c5dcdb0be, type: 3}
   playersHealth: {fileID: 8574925708631639552}
-  spawnRate: 3
+  spawnDelay: 8
   minX: -8
   maxX: 8
-  spawnY: 6
+  spawnY: 5
   fallSpeed: 2
   destroyY: -6
 --- !u!1 &519420028
@@ -976,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150067719809312149, guid: d772c581c213a914bb57664466b694af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4150067719809312149, guid: d772c581c213a914bb57664466b694af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1445,11 +1444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86006d65685c51d43bd22d68c5067178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
---- !u!95 &2026484778 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6114742751937456837, guid: a9be5abf3005bce46ab25e3f6b9fb3ba, type: 3}
-  m_PrefabInstance: {fileID: 827702867430366413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062007859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,9 +1923,6 @@ PrefabInstance:
       propertyPath: winEvent
       value: 
       objectReference: {fileID: 197276773}
-      propertyPath: wonSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 11254aff6a3942d43834a71c51b03785, type: 3}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: cycleDuration
       value: 60

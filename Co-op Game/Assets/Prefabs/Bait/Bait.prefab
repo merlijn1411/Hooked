@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8733934787543473051}
   - component: {fileID: 1366335227958925656}
   - component: {fileID: 845415134830334141}
-  - component: {fileID: 5428283890093089891}
+  - component: {fileID: -3276410677164734679}
   m_Layer: 0
   m_Name: Bait
   m_TagString: Untagged
@@ -129,7 +129,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.955
---- !u!114 &5428283890093089891
+--- !u!114 &-3276410677164734679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,15 +138,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5399210578366824295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dacb8c9791996da438cc5ab3a46b91f5, type: 3}
+  m_Script: {fileID: 11500000, guid: d0152837de946504a8aef635ed0094b0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaitSystem
-  mode: 1
-  baitPrefab: {fileID: 0}
-  playersHealth: {fileID: 0}
-  spawnRate: 3
-  minX: -8
-  maxX: 8
-  spawnY: 6
+  m_EditorClassIdentifier: Assembly-CSharp::Bait
   fallSpeed: 2
   destroyY: -6
