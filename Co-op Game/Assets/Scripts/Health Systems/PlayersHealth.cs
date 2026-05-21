@@ -14,9 +14,21 @@ public class PlayersHealth : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int hearts;
 
+    [Header("Cooldown")]
+    [SerializeField] private float invincibilityDuration = 1.5f; // Pas deze tijd naar wens aan in de inspector
+    private bool isInvincible = false;
+
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip hookDamageClip;
+
+    [Header("Animations")]
+    [SerializeField] private Animator loseAnimator;
+
     private void Start()
     {
-        for(int i = 0;i < heartsDeadImages.Length;i++)
+        loseAnimator.enabled = false;
+
+        for (int i = 0; i < heartsDeadImages.Length; i++)
         {
             heartsDeadImages[i].enabled = false;
         }
@@ -24,8 +36,29 @@ public class PlayersHealth : MonoBehaviour
 
     public void TakingDamage()
     {
+        if (isInvincible || hearts <= 0) return;
+
+        SoundManager.Instance.PlaySoundFXClip(hookDamageClip, transform, 1f);
         hearts -= damage;
         UpdateUI();
+
+        if (hearts > 0)
+        {
+            StartCoroutine(InvincibilityCooldown());
+        }
+    }
+
+    // NIEUW: heart teruggeven
+    public void AddHeart()
+    {
+        // Alleen als speler niet full hp heeft
+        if (hearts < heartsAliveImages.Length)
+        {
+            heartsAliveImages[hearts].enabled = true;
+            heartsDeadImages[hearts].enabled = false;
+
+            hearts++;
+        }
     }
 
     private void UpdateUI()
@@ -35,10 +68,16 @@ public class PlayersHealth : MonoBehaviour
             StartCoroutine(EndGame());
             hearts = 0;
         }
-            
+
         heartsAliveImages[hearts].enabled = false;
         heartsDeadImages[hearts].enabled = true;
-        
+    }
+
+    private IEnumerator InvincibilityCooldown()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
 
     public bool HasLives()
@@ -47,10 +86,15 @@ public class PlayersHealth : MonoBehaviour
         return hasLives;
     }
 
-    //This function is called when te player has died and a resart menu can open. For now we just quickly resart the level.
+    //This function is called when the player has died and a restart menu can open.
     private IEnumerator EndGame()
     {
+        yield return new WaitForSeconds(3);
+
+        loseAnimator.enabled = true;
+
         yield return new WaitForSeconds(5);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
