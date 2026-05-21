@@ -19,14 +19,10 @@ public class FileManager : MonoBehaviour
 
     private void Start()
     {
-        if (isLobby)
+        if (_isFirstBoot)
         {
-
-            if (_isFirstBoot)
-            {
-                RemoveAllPlayers();
-                _isFirstBoot = false; 
-            }
+            RemoveAllPlayers();
+            _isFirstBoot = false; 
         }
     }
     
