@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
 
     [Header("Animator")]
     [SerializeField] private Animator winLoseAnimator;
+    
+    [SerializeField] private WinEvent winEvent;
 
     private float _timer;
     private bool _hasTriggered = false;
@@ -35,7 +37,7 @@ public class Timer : MonoBehaviour
         {
             _hasTriggered = true;
             winLoseAnimator.enabled = true;
-            WinEvent.TriggerWin();
+            winEvent.TriggerWin();
             return;
         }
 
