@@ -18,8 +18,7 @@ public class PlayersHealth : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 1.5f; // Pas deze tijd naar wens aan in de inspector
     private bool isInvincible = false;
 
-    private void Start()
-    {
+
     [Header("Animations")]
     [SerializeField] private Animator loseAnimator;
 
