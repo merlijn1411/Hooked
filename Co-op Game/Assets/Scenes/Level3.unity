@@ -1225,7 +1225,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1207745604}
-  - component: {fileID: 1207745605}
   - component: {fileID: 1207745606}
   m_Layer: 0
   m_Name: BaitManager
@@ -1249,18 +1248,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1907260974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1207745605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207745603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dacb8c9791996da438cc5ab3a46b91f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaitSystem
 --- !u!114 &1207745606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,8 +1266,6 @@ MonoBehaviour:
   minX: -8
   maxX: 8
   spawnY: 5
-  fallSpeed: 2
-  destroyY: -6
 --- !u!1001 &1241194696
 PrefabInstance:
   m_ObjectHideFlags: 0

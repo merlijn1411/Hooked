@@ -1039,14 +1039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14cd2243307b340bdd17a02134e9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaitSystem
-  baitPrefab: {fileID: 0}
+  baitPrefab: {fileID: 5399210578366824295, guid: fa617ffe35585804d99c0c3c5dcdb0be, type: 3}
   playersHealth: {fileID: 1831833972}
   spawnDelay: 8
   minX: -8
   maxX: 8
   spawnY: 5
-  fallSpeed: 2
-  destroyY: -6
 --- !u!1001 &809365375
 PrefabInstance:
   m_ObjectHideFlags: 0
