@@ -32,7 +32,7 @@ public class LobbyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void PlayerJoined(string playerId)
+    public void PlayerJoined(string playerId, int playerIndex)
     {
         if (players.Contains(playerId))
         {
@@ -47,6 +47,13 @@ public class LobbyManager : MonoBehaviour
             CheckAllReady();
             return; 
         }
+        
+        FileManager.Instance.WritePlayer(playerIndex, new ExternalVariables
+        {
+            ID = playerId,
+            Index = playerIndex
+        });
+
 
         if (players.Count >= 4) return;
 
@@ -85,15 +92,11 @@ public class LobbyManager : MonoBehaviour
                 PlayerImages[i].gameObject.SetActive(true);
 
                 Color imgColor = PlayerImages[i].color;
+
+                var readyALpha = isReady ? 1.0f : 0.5f;
                 
-                if (isReady)
-                {
-                    imgColor.a = 1.0f;
-                }
-                else
-                {
-                    imgColor.a = 0.5f;
-                }
+                imgColor.a = readyALpha;
+               
                 
                 PlayerImages[i].color = imgColor;
             }
