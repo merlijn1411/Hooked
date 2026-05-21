@@ -9,7 +9,6 @@ public class SackMass : MonoBehaviour
     {
         _fileManager = FileManager.Instance;
         _rb2D = GetComponent<Rigidbody2D>();
-        _rb2D.linearDamping = 10f; 
     }
 
     private void Start()
@@ -26,13 +25,13 @@ public class SackMass : MonoBehaviour
         switch (playerCount)
         {
             case 1:
-                _rb2D.linearDamping = 4f;
+                _rb2D.linearDamping = 3.5f;
                 break;
             case 2:
-                _rb2D.linearDamping = 7f;
+                _rb2D.linearDamping = 6.5f;
                 break;
             case 3:
-                _rb2D.linearDamping = 8.5f;
+                _rb2D.linearDamping = 8f;
                 break;
         }
     }
