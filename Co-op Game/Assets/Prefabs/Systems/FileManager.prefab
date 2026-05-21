@@ -48,6 +48,7 @@ MonoBehaviour:
   saveGameFile:
     UnlockedLevel: 0
     PlayerInfo: []
+  isLobby: 0
 --- !u!114 &5031825519509877480
 MonoBehaviour:
   m_ObjectHideFlags: 0
