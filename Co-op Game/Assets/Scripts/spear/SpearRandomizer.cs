@@ -22,6 +22,9 @@ public class SpearRandomizer : MonoBehaviour
     [SerializeField] private float waitTime = 1f;
     [SerializeField] private float delayBetweenSpawns = 0.5f;
 
+    [Header("Start Delay")]
+    [SerializeField] private float startDelay = 5f;
+
     [Header("Audio Clip")]
     [SerializeField] private AudioClip SpearSound;
 
@@ -36,6 +39,8 @@ public class SpearRandomizer : MonoBehaviour
 
     private IEnumerator RunLoop()
     {
+        yield return new WaitForSeconds(startDelay);
+
         while (true)
         {
             var spearData = Random.Range(0, 2) == 0
@@ -85,6 +90,7 @@ public class SpearRandomizer : MonoBehaviour
             yield break;
 
         SoundManager.Instance.PlaySoundFXClip(SpearSound, transform, 0.6f);
+
         _speed = downSpeed;
         yield return MoveTo(bottomPos);
 
@@ -98,7 +104,6 @@ public class SpearRandomizer : MonoBehaviour
 
         Destroy(_currentSpear);
     }
-
 
     private IEnumerator MoveTo(Vector2 targetPosition)
     {
