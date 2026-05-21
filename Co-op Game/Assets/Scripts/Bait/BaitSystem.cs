@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class BaitSystem : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class BaitSystem : MonoBehaviour
     [SerializeField] private PlayersHealth playersHealth;
 
     [Header("Spawn Settings")]
-    [SerializeField] private float spawnRate;
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     [SerializeField] private float spawnY;
@@ -30,7 +30,7 @@ public class BaitSystem : MonoBehaviour
     private void Start()
     {
         if (mode == Mode.Spawner)
-            InvokeRepeating(nameof(SpawnBait), 1f, spawnRate);
+            StartCoroutine(SpawnRoutine());
     }
 
     private void Update()
@@ -42,6 +42,16 @@ public class BaitSystem : MonoBehaviour
 
         if (transform.position.y < destroyY)
             Destroy(gameObject);
+    }
+
+    private IEnumerator SpawnRoutine()
+    {
+        while (true)
+        {
+            SpawnBait();
+
+            yield return new WaitForSeconds(6f);
+        }
     }
 
     private void SpawnBait()
