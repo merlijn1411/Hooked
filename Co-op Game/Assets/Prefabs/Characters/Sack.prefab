@@ -1408,6 +1408,8 @@ GameObject:
   - component: {fileID: 3197396137342388905}
   - component: {fileID: 7692178353129141605}
   - component: {fileID: 4109477944136500918}
+  - component: {fileID: 6766355933266611157}
+  - component: {fileID: 6143528329341717495}
   m_Layer: 0
   m_Name: Sack
   m_TagString: Player
@@ -1482,7 +1484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShapeEdgeCollider2D
   charRenderer: {fileID: 4463442905045905973}
-  radius: 0.05
+  radius: 0.1
   needsConvert: 1
 --- !u!50 &7692178353129141605
 Rigidbody2D:
@@ -1496,11 +1498,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDamping: 12.25
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0d7e5e4814a8617459a7429650896107, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1509,8 +1511,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!68 &4109477944136500918
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1554,6 +1556,34 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6766355933266611157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530775725308175868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5496574fe5ffbd744a0dd7afa33ddb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteCollideStretch
+  spriteSkin: {fileID: 533962073183599578}
+  stretchStrength: 0.2
+  influenceRadius: 1
+  returnSpeed: 5
+--- !u!114 &6143528329341717495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530775725308175868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59fb2118c013bd4598f9c480c8f6fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SackMass
 --- !u!1 &8562099003333250196
 GameObject:
   m_ObjectHideFlags: 0
