@@ -3,21 +3,21 @@ using UnityEngine;
 public class Bait : MonoBehaviour
 {
     [Header("Bait Settings")]
-    [SerializeField] private float fallSpeed = 2f;
-    [SerializeField] private float destroyY = -5f;
+    [SerializeField] private float _fallSpeed = 2f;
+    [SerializeField] private float _destroyY = -5f;
 
-    private PlayersHealth playersHealth;
+    private PlayersHealth _playersHealth;
 
     public void SetHealth(PlayersHealth health)
     {
-        playersHealth = health;
+        _playersHealth = health;
     }
 
     private void Update()
     {
-        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        transform.position += Vector3.down * _fallSpeed * Time.deltaTime;
 
-        if (transform.position.y < destroyY)
+        if (transform.position.y < _destroyY)
             Destroy(gameObject);
     }
 
@@ -26,8 +26,8 @@ public class Bait : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (playersHealth != null)
-            playersHealth.AddHeart();
+        if (_playersHealth != null)
+            _playersHealth.AddHeart();
 
         Destroy(gameObject);
     }
