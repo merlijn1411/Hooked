@@ -18,6 +18,8 @@ public class PlayersHealth : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 1.5f; // Pas deze tijd naar wens aan in de inspector
     private bool isInvincible = false;
 
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip hookDamageClip;
 
     [Header("Animations")]
     [SerializeField] private Animator loseAnimator;
@@ -36,6 +38,7 @@ public class PlayersHealth : MonoBehaviour
     {
         if (isInvincible || hearts <= 0) return;
 
+        SoundManager.Instance.PlaySoundFXClip(hookDamageClip, transform, 1f);
         hearts -= damage;
         UpdateUI();
 
