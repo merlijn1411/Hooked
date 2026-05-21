@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class SackMass : MonoBehaviour
 {
-    private LobbyManager _lobbyManager;
+    private FileManager _fileManager;
     private Rigidbody2D _rb2D;
     
+    private void Awake()
+    {
+        _fileManager = FileManager.Instance;
+        _rb2D = GetComponent<Rigidbody2D>();
+        _rb2D.linearDamping = 10f; 
+    }
+
     private void Start()
     {
-        _lobbyManager = LobbyManager.Instance;
-        _rb2D = GetComponent<Rigidbody2D>();
-        _rb2D.linearDamping = 12.25f;
-
         CalculateMass();
     }
     
@@ -18,7 +21,8 @@ public class SackMass : MonoBehaviour
     private void CalculateMass()
     {
         // var damping = PlayerCount > 0 ? 10 + (1.125f * PlayerCount) : 10f;
-        var playerCount = _lobbyManager.players.Count;
+        var data = _fileManager.Load();
+        var playerCount = data.PlayerInfo.Count;
         switch (playerCount)
         {
             case 1:
