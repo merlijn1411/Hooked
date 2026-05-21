@@ -377,12 +377,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaitSpawner
   baitPrefab: {fileID: 5399210578366824295, guid: fa617ffe35585804d99c0c3c5dcdb0be, type: 3}
   playersHealth: {fileID: 8574925708631639552}
-  spawnDelay: 8
+  spawnDelay: 7
   minX: -8
   maxX: 8
   spawnY: 5
-  fallSpeed: 2
-  destroyY: -6
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
