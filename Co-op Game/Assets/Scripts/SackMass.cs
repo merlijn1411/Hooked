@@ -26,13 +26,13 @@ public class SackMass : MonoBehaviour
         switch (playerCount)
         {
             case 1:
-                _rb2D.linearDamping = 5f;
+                _rb2D.linearDamping = 4f;
                 break;
             case 2:
-                _rb2D.linearDamping = 7.5f;
+                _rb2D.linearDamping = 7f;
                 break;
             case 3:
-                _rb2D.linearDamping = 10f;
+                _rb2D.linearDamping = 8.5f;
                 break;
         }
     }
