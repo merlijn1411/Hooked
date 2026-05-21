@@ -8,6 +8,9 @@ public class FileManager : MonoBehaviour
     [SerializeField] private GameFile saveGameFile = new GameFile();
     [SerializeField] private bool isLobby;
     
+    // Deze variabele wordt alleen bij een compleet nieuwe opstart van de game op 'true' gezet
+    private static bool _isFirstBoot = true;
+    
     private void Awake()
     {
         Instance = this;
@@ -16,7 +19,15 @@ public class FileManager : MonoBehaviour
 
     private void Start()
     {
-        if (isLobby) RemoveAllPlayers();
+        if (isLobby)
+        {
+
+            if (_isFirstBoot)
+            {
+                RemoveAllPlayers();
+                _isFirstBoot = false; 
+            }
+        }
     }
     
     /// <summary>
@@ -91,6 +102,4 @@ public class FileManager : MonoBehaviour
         var path = Path.Combine(Application.persistentDataPath, "data.json");
         if (File.Exists(path)) File.Delete(path);
     }
-    
-    
 }

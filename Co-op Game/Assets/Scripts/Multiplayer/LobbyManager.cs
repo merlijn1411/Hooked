@@ -29,7 +29,28 @@ public class LobbyManager : MonoBehaviour
             startGameButton.interactable = false;
         }
         
+        LoadSavedPlayers();
         UpdateUI();
+    }
+
+    private void LoadSavedPlayers()
+    {
+        if (FileManager.Instance == null) return;
+
+        var data = FileManager.Instance.Load();
+        if (data != null && data.PlayerInfo != null)
+        {
+            foreach (var playerFile in data.PlayerInfo)
+            {
+                string playerId = playerFile.Value.ID;
+                
+                if (!players.Contains(playerId))
+                {
+                    players.Add(playerId);
+                    _readyStates[playerId] = false; 
+                }
+            }
+        }
     }
 
     public void PlayerJoined(string playerId, int playerIndex)
