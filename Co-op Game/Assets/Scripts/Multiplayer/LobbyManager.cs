@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
+    public static LobbyManager Instance { get; private set; }
+    
     private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
 
     [Header("Player Slots (Images)")]
@@ -12,7 +15,12 @@ public class LobbyManager : MonoBehaviour
     public List<string> players = new List<string>();
 
     [Header("UI Elements")]
-    public Button startGameButton;
+    [SerializeField] private Button startGameButton;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

@@ -1041,6 +1041,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1384254527}
+    - targetCorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1384254528}
   m_SourcePrefab: {fileID: 100100000, guid: d772c581c213a914bb57664466b694af, type: 3}
 --- !u!1 &1384254522 stripped
 GameObject:
@@ -1068,6 +1071,18 @@ MonoBehaviour:
   stretchStrength: 0.2
   influenceRadius: 1
   returnSpeed: 5
+--- !u!114 &1384254528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384254522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59fb2118c013bd4598f9c480c8f6fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SackMass
 --- !u!95 &1432909633 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9118176530816065869, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
@@ -1337,6 +1352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hooks(New)
       objectReference: {fileID: 0}
+    - target: {fileID: 9073626323200854851, guid: 5671a7faf72d7c5469dc641f9bd5b09a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1445,11 +1464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86006d65685c51d43bd22d68c5067178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
---- !u!95 &2026484778 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6114742751937456837, guid: a9be5abf3005bce46ab25e3f6b9fb3ba, type: 3}
-  m_PrefabInstance: {fileID: 827702867430366413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062007859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,13 +1939,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 2004075305742198364, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: winEvent
       value: 
       objectReference: {fileID: 197276773}
-      propertyPath: wonSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 11254aff6a3942d43834a71c51b03785, type: 3}
     - target: {fileID: 3458027596841875332, guid: 41222bee2c59879409730d80697dc9c6, type: 3}
       propertyPath: cycleDuration
       value: 60
