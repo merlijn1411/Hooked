@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +7,11 @@ public class LobbyManager : MonoBehaviour
     public static LobbyManager Instance { get; private set; }
     
     private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
-
+    
     [Header("Player Slots (Images)")]
-    public List<Image> PlayerImages;
+    [SerializeField] private List<Image> PlayerReadyImages;
+
+    [SerializeField] private List<Image> PlayerUnreadyImages;
     
     public List<string> players = new List<string>();
 
@@ -101,29 +102,31 @@ public class LobbyManager : MonoBehaviour
         CheckAllReady(); 
     }
 
-    void UpdateUI()
+    private void UpdateUI()
     {
-        for (int i = 0; i < PlayerImages.Count; i++)
+        for (var i = 0; i < PlayerReadyImages.Count; i++)
         {
             if (i < players.Count)
             {
-                string playerId = players[i];
-                bool isReady = _readyStates.ContainsKey(playerId) && _readyStates[playerId];
+                var playerId = players[i];
+                var isReady = _readyStates.ContainsKey(playerId) && _readyStates[playerId];
                 
-                PlayerImages[i].gameObject.SetActive(true);
+                PlayerReadyImages[i].gameObject.SetActive(true);
+                PlayerUnreadyImages[i].gameObject.SetActive(true);
+                
+                var imgColor = PlayerReadyImages[i].color;
 
-                Color imgColor = PlayerImages[i].color;
-
-                var readyALpha = isReady ? 1.0f : 0.5f;
+                var readyALpha = isReady ? 1.0f : 0f;
                 
                 imgColor.a = readyALpha;
                
                 
-                PlayerImages[i].color = imgColor;
+                PlayerReadyImages[i].color = imgColor;
             }
             else
             {
-                PlayerImages[i].gameObject.SetActive(false);
+                PlayerReadyImages[i].gameObject.SetActive(false);
+                PlayerUnreadyImages[i].gameObject.SetActive(false);
             }
         }
     }
