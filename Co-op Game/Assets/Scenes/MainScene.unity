@@ -1038,52 +1038,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1384254527}
-    - targetCorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1384254528}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d772c581c213a914bb57664466b694af, type: 3}
---- !u!1 &1384254522 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8530775725308175868, guid: d772c581c213a914bb57664466b694af, type: 3}
-  m_PrefabInstance: {fileID: 1057060524}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1384254526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4150067719809312149, guid: d772c581c213a914bb57664466b694af, type: 3}
   m_PrefabInstance: {fileID: 1057060524}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1384254527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384254522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5496574fe5ffbd744a0dd7afa33ddb3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpriteCollideStretch
-  spriteSkin: {fileID: 2140438703}
-  stretchStrength: 0.2
-  influenceRadius: 1
-  returnSpeed: 5
---- !u!114 &1384254528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384254522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59fb2118c013bd4598f9c480c8f6fa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SackMass
 --- !u!95 &1432909633 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9118176530816065869, guid: 14297f60a8ef92d408885c83906c8abd, type: 3}
@@ -1556,17 +1517,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140438703 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 533962073183599578, guid: d772c581c213a914bb57664466b694af, type: 3}
-  m_PrefabInstance: {fileID: 1057060524}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteSkin
 --- !u!1001 &49871440806902920
 PrefabInstance:
   m_ObjectHideFlags: 0
