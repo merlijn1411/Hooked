@@ -158,6 +158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1907260974}
     m_Modifications:
+    - target: {fileID: 173863620277094666, guid: 3dff3deba83a0d64ea7b4cd38b88b9f6, type: 3}
+      propertyPath: soundFXObject
+      value: 
+      objectReference: {fileID: 1014762637663103745, guid: 776eb129e136c9e4ea3ed788e9f9e6e0, type: 3}
     - target: {fileID: 6641889020402316600, guid: 3dff3deba83a0d64ea7b4cd38b88b9f6, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -1777,6 +1781,10 @@ PrefabInstance:
       propertyPath: loseAnimator
       value: 
       objectReference: {fileID: 1502916288}
+    - target: {fileID: 7226540192237718818, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
+      propertyPath: hookDamageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
     - target: {fileID: 7837651537208968100, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1977,6 +1985,7 @@ MonoBehaviour:
   peekTime: 0.15
   waitTime: 1
   delayBetweenSpawns: 0.5
+  startDelay: 5
   SpearSound: {fileID: 8300000, guid: 870b34852865d0a42a804cfc98bb98e2, type: 3}
 --- !u!1 &1907260973
 GameObject:
