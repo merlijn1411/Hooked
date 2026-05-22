@@ -299,6 +299,8 @@ De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar b
 daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
 zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
 
+![HookRandomizer](readme-assets/hooks.gif)
+
 ```mermaid
 classDiagram
 class HookRandomizer {
@@ -350,6 +352,9 @@ Speer systeem door delysha
 De speer is een dynamisch obstakel dat in een vaste cyclus beweegt en de speler dwingt om te reageren. 
 De speer verschijnt vanuit verschillende richtingen en voert een aanvalspatroon uit waarbij hij eerst kort zichtbaar wordt, 
 daarna volledig aanvalt en vervolgens weer verdwijnt.
+
+![SpearRandomizer](readme-assets/spear.gif)
+
 ```mermaid
 classDiagram
 class SpearRandomizer {
@@ -389,6 +394,8 @@ De bait is een positieve pickup in de game.
 In tegenstelling tot obstakels zoals speren, 
 helpt de bait de speler juist door extra health te geven bij aanraking. 
 De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
+
+![BaitSystem](readme-assets/bait.gif)
 
 ```mermaid
 classDiagram
