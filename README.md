@@ -33,7 +33,14 @@ Het GameConcept moet:
 
 Merlijn:
 * Player Movement
-* QR code 
+* Team Movement
+* QR code
+* Save System
+* Snap Mechanic
+* Hook rotation Randomizer
+* Node.exe file
+* Automatic Server Startup
+
 
 Delysha:
 * Hook System
@@ -431,3 +438,10 @@ class PlayersHealth {
 BaitSpawner --> Bait : spawns
 Bait --> PlayersHealth : calls AddHeart()
 ```
+## Player & Team Movement gemaakt door Merlijn
+Player Movement. Na dat je de Input hebt gegeven vanaf je telefoon met de joystick geeft die het door aan de PlayerMovement.cs. Dan kan je bewegen door de hele scene. Omdat je in een plastic zak zit moet je je kunnen navigeren daarin.
+
+Team Movement. Het is mogelijk om in je eentje 1 kant op te bewegen maar, het is dan niet mogelijk om alle obstakels op tijd te vermijden. Hoe je dat wel doet is dat samen. Door samen dezelfde kant op te bewegen ga je veel sneller en dan is het wel mogelijk om de obstakels te ontwijken.
+![PlayerMovement Visual Sheet](readme-assets/Visual-Sheets/PlayerMovement.jpg)
+
+![teamMovement](readme-assets/Visual-Sheets/TeamMovement.jpg)
