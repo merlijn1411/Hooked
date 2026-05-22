@@ -438,3 +438,78 @@ class PlayersHealth {
 BaitSpawner --> Bait : spawns
 Bait --> PlayersHealth : calls AddHeart()
 ```
+** Hook Fix**
+
+De Hook Fix is gemaakt op basis van feedback die is ontvangen tijdens de playtest. De snelheid en hoe random de haaken naar beneden komen is nu aangepast. Er zijn ook kleine developerfixes gemaakt.
+
+```mermaid
+
+classDiagram
+class SpawnHook {
+    - GameObject[] startingPoints
+    - GameObject hook
+    - Start()
+}
+
+class HookLine {
+    - GameObject linePrefab
+    - Transform hookTop
+    - Transform lineStart
+    - GameObject _lineInstance
+    - Transform _lineTransform
+    - SpriteRenderer _lineRenderer
+    - float _lineWidth
+
+    - Start()
+    - Update()
+    + SetLineStart(Transform startPoint)
+    - UpdateLine()
+}
+
+class HookRandomizer {
+    - float minSpeed
+    - float maxSpeed
+    - float minY
+    - float maxY
+    - float warningDuration
+    - float horizontalRange
+    - float horizontalSpeedMin
+    - float horizontalSpeedMax
+    - float minRandomDropDelay
+    - float maxRandomDropDelay
+
+    - float _verticalSpeed
+    - float _verticalDirection
+    - Vector3 _startPos
+    - Vector3 _horizontalTarget
+    - float _horizontalSpeed
+    - bool _isWaiting
+    - bool _isDropping
+    - HookWarningIndecator _warning
+
+    - Start()
+    - Update()
+    - HookRandomFacing()
+    - Move()
+    - DropRoutine()
+    - ChooseNewHorizontalTarget()
+}
+
+class HookDropManager {
+    + Instance
+    + RequestDrop()
+    + DropFinished()
+}
+
+class HookWarningIndecator {
+    + RefreshIndicatorAt(float x)
+    + ShowWarning(float duration)
+}
+
+SpawnHook --> HookLine : sets line start
+SpawnHook --> HookRandomizer : instantiates hook
+HookLine --> SpriteRenderer : updates line
+HookRandomizer --> HookDropManager : requests drop
+HookRandomizer --> HookWarningIndecator : controls warning
+
+```
