@@ -513,3 +513,36 @@ HookRandomizer --> HookDropManager : requests drop
 HookRandomizer --> HookWarningIndecator : controls warning
 
 ```
+**Sound Design**
+Het Sound Design brengt geluiden en muziek naar Hooked. Geluiden zoals:
+* Buttons
+* Bubbelstream
+* Speer
+* Snoekbaars
+* Muziek voor alle levels
+
+```mermaid
+
+classDiagram
+class SoundManager {
+    + Instance
+    - AudioSource soundFXObject
+
+    - Awake()
+    + PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+}
+
+class AudioSource {
+    + clip
+    + volume
+    + Play()
+}
+
+class AudioClip
+class Transform
+
+SoundManager --> AudioSource : instantiates
+SoundManager --> AudioClip : plays clip
+SoundManager --> Transform : uses position
+
+```
