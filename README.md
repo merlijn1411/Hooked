@@ -39,6 +39,8 @@ Delysha:
 * Hook System
 * WarningIndecator
 * HookDrop
+* Spear System
+* Bait System
 
 Davey:
 * Player Input
@@ -290,4 +292,142 @@ class Rigidbody2D
 BubbelStreamTimer --> BubbelStreamSpawner : calls spawn
 BubbelStreamSpawner --> BubbelStream : instantiates
 BubbelStream --> Rigidbody2D : applies upward force
+```
+
+## HookRandomizer door delysha
+De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar beneden en boven gaan op random speed capacities. 
+daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
+zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
+
+![HookRandomizer](readme-assets/hooks.gif)
+
+```mermaid
+classDiagram
+class HookRandomizer {
+    - float minSpeed
+    - float maxSpeed
+    - float minY
+    - float maxY
+    - float warningDuration
+    - float horizontalRange
+    - float horizontalSpeedMin
+    - float horizontalSpeedMax
+    - float minRandomDropDelay
+    - float maxRandomDropDelay
+
+    - float _verticalSpeed
+    - float _verticalDirection
+    - Vector3 _startPos
+    - Vector3 _horizontalTarget
+    - float _horizontalSpeed
+    - bool _isWaiting
+    - bool _isDropping
+
+    - HookWarningIndecator _warning
+
+    + Start()
+    + Update()
+    - Move()
+    - HookRandomFacing()
+    - DropRoutine()
+    - ChooseNewHorizontalTarget()
+}
+
+class HookWarningIndecator {
+    + RefreshIndicatorAt(float x)
+    + ShowWarning(float duration)
+}
+
+class HookDropManager {
+    + RequestDrop()
+    + DropFinished()
+}
+
+HookRandomizer --> HookWarningIndecator : shows warning
+HookRandomizer --> HookDropManager : coordinates drops
+```
+
+Speer systeem door delysha
+
+De speer is een dynamisch obstakel dat in een vaste cyclus beweegt en de speler dwingt om te reageren. 
+De speer verschijnt vanuit verschillende richtingen en voert een aanvalspatroon uit waarbij hij eerst kort zichtbaar wordt, 
+daarna volledig aanvalt en vervolgens weer verdwijnt.
+
+![SpearRandomizer](readme-assets/spear.gif)
+
+```mermaid
+classDiagram
+class SpearRandomizer {
+    - SpearData leftToRight
+    - SpearData rightToLeft
+    - float downSpeed
+    - float upSpeed
+    - float peekTime
+    - float waitTime
+    - float delayBetweenSpawns
+    - float startDelay
+    - AudioClip SpearSound
+    + Start()
+    - RunLoop()
+    - HandleSpear()
+    - MoveTo(Vector2 target)
+    - StopMovement()
+}
+
+class SpearData {
+    - GameObject Prefab
+    - Transform Top
+    - Transform BottomTarget
+    - float RotationZ
+}
+
+class Rigidbody2D
+
+SpearRandomizer --> SpearData : uses
+SpearRandomizer --> Rigidbody2D : controls movement
+SpearRandomizer --> AudioClip : plays sound
+```
+
+Bait systeem door delysha
+
+De bait is een positieve pickup in de game. 
+In tegenstelling tot obstakels zoals speren, 
+helpt de bait de speler juist door extra health te geven bij aanraking. 
+De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
+
+![BaitSystem](readme-assets/bait.gif)
+
+```mermaid
+classDiagram
+class BaitSpawner {
+    - GameObject baitPrefab
+    - PlayersHealth playersHealth
+    - float spawnDelay
+    - float minX
+    - float maxX
+    - float spawnY
+    + Start()
+    - SpawnRoutine()
+    - SpawnBait()
+}
+
+class Bait {
+    - float fallSpeed
+    - float destroyY
+    - PlayersHealth _playersHealth
+    + SetHealth(PlayersHealth health)
+    + Update()
+    + OnTriggerEnter2D(Collider2D other)
+}
+
+class PlayersHealth {
+    - int hearts
+    - Image[] heartsAliveImages
+    - Image[] heartsDeadImages
+    + AddHeart()
+    + RemoveHeart()
+}
+
+BaitSpawner --> Bait : spawns
+Bait --> PlayersHealth : calls AddHeart()
 ```
