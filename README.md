@@ -57,7 +57,6 @@ Luuk:
 * Snoekbaars
 * Hook Fix
 * Sound Design
-* Win en Lose Screen
 
 Tirza: 
 * startscherm
