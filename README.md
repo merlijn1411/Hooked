@@ -266,7 +266,7 @@ SpawnSnoekbaar --> PlayersHealth : uses
 Snoekbaar --> SpawnSnoekbaar : reads SpawnLeft
 ```
 
-** Bubbel stream door Luuk**
+**Bubbel stream door Luuk**
 
 De bubbel stream is een nieuw obstakel in de game. In tegenstelling tot andere obstakels veroorzaakt deze geen damage, maar duwt hij de speler omhoog wanneer je erin terechtkomt.
 Dit kan ervoor zorgen dat spelers de controle over hun beweging verliezen en uit positie raken.
