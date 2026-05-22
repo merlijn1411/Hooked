@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayersHealth : MonoBehaviour
 {
+    public static event Action OnPlayerHitted;
+    
     [Header("UI Elements")]
     [SerializeField] private Image[] heartsAliveImages;
     [SerializeField] private Image[] heartsDeadImages;
@@ -13,6 +15,13 @@ public class PlayersHealth : MonoBehaviour
     [Header("Hearts & damage")]
     [SerializeField] private int damage;
     [SerializeField] private int hearts;
+
+    [Header("Cooldown")]
+    [SerializeField] private float invincibilityDuration = 1.5f; // Pas deze tijd naar wens aan in de inspector
+    private bool isInvincible = false;
+
+    [Header("Audio Clip")]
+    [SerializeField] private AudioClip hookDamageClip;
 
     [Header("Animations")]
     [SerializeField] private Animator loseAnimator;
@@ -29,8 +38,17 @@ public class PlayersHealth : MonoBehaviour
 
     public void TakingDamage()
     {
+        if (isInvincible || hearts <= 0) return;
+
+        SoundManager.Instance.PlaySoundFXClip(hookDamageClip, transform, 1f);
+        OnPlayerHitted?.Invoke();
         hearts -= damage;
         UpdateUI();
+
+        if (hearts > 0)
+        {
+            StartCoroutine(InvincibilityCooldown());
+        }
     }
 
     // NIEUW: heart teruggeven
@@ -56,6 +74,13 @@ public class PlayersHealth : MonoBehaviour
 
         heartsAliveImages[hearts].enabled = false;
         heartsDeadImages[hearts].enabled = true;
+    }
+
+    private IEnumerator InvincibilityCooldown()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
 
     public bool HasLives()

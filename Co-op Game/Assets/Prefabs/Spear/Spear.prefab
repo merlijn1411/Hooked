@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 887759821686349881}
   - component: {fileID: 7084231971416731774}
-  - component: {fileID: 4896601652742340885}
+  - component: {fileID: 4405980285557550287}
   m_Layer: 0
   m_Name: TipCollider
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 92991596158536157}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.3, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -69,7 +69,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.2
---- !u!114 &4896601652742340885
+--- !u!114 &4405980285557550287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684dc4817d57004478c3c6dcf39147f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HookTouchEffect
-  snapMechanic: {fileID: 0}
+  snapMechanic: {fileID: 793558773777292616}
   hitEffect: {fileID: 4651011739549404065, guid: f06334202f23cde4fab93efc13892c49, type: 3}
 --- !u!1 &5917598910029723973
 GameObject:
@@ -115,6 +115,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 887759821686349881}
+  - {fileID: 6598953784706468625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &544145325618111919
@@ -203,3 +204,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &7301494125939975950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6598953784706468625}
+  - component: {fileID: 793558773777292616}
+  m_Layer: 0
+  m_Name: snapmechanic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6598953784706468625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301494125939975950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6929771390240964094}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &793558773777292616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301494125939975950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be40a49aed960c409c966f86dc9ab16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapMechanic

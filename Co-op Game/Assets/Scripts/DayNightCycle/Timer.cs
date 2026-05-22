@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
 
     [Header("Animator")]
     [SerializeField] private Animator winLoseAnimator;
+    
+    [SerializeField] private WinEvent winEvent;
 
     private float _timer;
     private bool _hasTriggered = false;
@@ -35,12 +37,18 @@ public class Timer : MonoBehaviour
         {
             _hasTriggered = true;
             winLoseAnimator.enabled = true;
-            WinEvent.TriggerWin();
+            StartCoroutine(StartAnimation());
             return;
         }
 
         if (!(_timer > 0)) return;
         var currentTime = _timer / cycleDuration;
         filledImage.fillAmount = currentTime;
+    }
+
+    private IEnumerator StartAnimation()
+    {
+        yield return new WaitForSeconds(2f);
+        winEvent.TriggerWin();
     }
 }
