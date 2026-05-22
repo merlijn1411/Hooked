@@ -37,12 +37,18 @@ public class Timer : MonoBehaviour
         {
             _hasTriggered = true;
             winLoseAnimator.enabled = true;
-            winEvent.TriggerWin();
+            StartCoroutine(StartAnimation());
             return;
         }
 
         if (!(_timer > 0)) return;
         var currentTime = _timer / cycleDuration;
         filledImage.fillAmount = currentTime;
+    }
+
+    private IEnumerator StartAnimation()
+    {
+        yield return new WaitForSeconds(2f);
+        winEvent.TriggerWin();
     }
 }
