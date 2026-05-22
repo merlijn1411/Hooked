@@ -140,7 +140,7 @@ WinEvent --> WinListener : triggers event
 **Player input door Davey en merlijn**
 
 
-![Player input](readme-assets/)
+![Player input](readme-assets/visualsheet%202.png)
 
 
 Het Player Input systeem regelt hoe input van spelers vanaf hun telefoon wordt ontvangen, verwerkt en toegepast binnen de Unity game. Dit systeem maakt gebruik van een client-server architectuur waarbij input via een server wordt doorgestuurd naar de game.
