@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayersHealth : MonoBehaviour
 {
+    public static event Action OnPlayerHitted;
+    
     [Header("UI Elements")]
     [SerializeField] private Image[] heartsAliveImages;
     [SerializeField] private Image[] heartsDeadImages;
@@ -39,6 +42,7 @@ public class PlayersHealth : MonoBehaviour
         if (isInvincible || hearts <= 0) return;
 
         SoundManager.Instance.PlaySoundFXClip(hookDamageClip, transform, 1f);
+        OnPlayerHitted?.Invoke();
         hearts -= damage;
         UpdateUI();
 

@@ -7,40 +7,54 @@ public class PlayerAnimationController : MonoBehaviour
 
     private Vector2 _lastPosition;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        _lastPosition = transform.position;
-
-        var isMoving = _lastPosition.magnitude > 0.1f;
-        
-        _animator.SetBool("IsMoving", isMoving);
+        WinEvent.OnPlayersWon +=  StartHappy;
+        PlayersHealth.OnPlayerHitted += StartHit;
     }
 
-    public void StartHappy()
+    private void Update()
+    {
+        var distanceMoved = Vector2.Distance(transform.position, _lastPosition);
+
+        var isMoving = distanceMoved > .01f;
+        
+        _animator.SetBool("IsMoving", isMoving);
+
+        StartCoroutine(UpdateLastPosition());
+    }
+
+    private IEnumerator UpdateLastPosition()
+    {
+        yield return new WaitForSeconds(1f);
+        _lastPosition = transform.position;
+    }
+
+    private void StartHappy()
     {
         StartCoroutine(IsHappy());
     }
 
     private IEnumerator IsHappy()
     {
-        _animator.SetBool("IsHappy", true);
+        _animator.SetTrigger("IsHappy");
 
         yield return new WaitForSeconds(2f);
         
-        _animator.SetBool("IsHappy", false);
+        _animator.SetTrigger("IsHappy");
     }
     
-    public void StartHit()
+    private void StartHit()
     {
         StartCoroutine(HasBeenHit());
     }
 
     private IEnumerator HasBeenHit()
     {
-        _animator.SetBool("HasHitted", true);
+        _animator.SetTrigger("HasHitted");
         
         yield return new WaitForSeconds(2f);
         
-        _animator.SetBool("HasHitted", false);
+        _animator.SetTrigger("HasHitted");
     }
 }
