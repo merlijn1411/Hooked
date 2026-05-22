@@ -299,7 +299,51 @@ De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar b
 daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
 zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
 
+```mermaid
+classDiagram
+class HookRandomizer {
+    - float minSpeed
+    - float maxSpeed
+    - float minY
+    - float maxY
+    - float warningDuration
+    - float horizontalRange
+    - float horizontalSpeedMin
+    - float horizontalSpeedMax
+    - float minRandomDropDelay
+    - float maxRandomDropDelay
 
+    - float _verticalSpeed
+    - float _verticalDirection
+    - Vector3 _startPos
+    - Vector3 _horizontalTarget
+    - float _horizontalSpeed
+    - bool _isWaiting
+    - bool _isDropping
+
+    - HookWarningIndecator _warning
+
+    + Start()
+    + Update()
+    - Move()
+    - HookRandomFacing()
+    - DropRoutine()
+    - ChooseNewHorizontalTarget()
+}
+
+class HookWarningIndecator {
+    + RefreshIndicatorAt(float x)
+    + ShowWarning(float duration)
+}
+
+class HookDropManager {
+    + RequestDrop()
+    + DropFinished()
+}
+
+HookRandomizer --> HookWarningIndecator : shows warning
+HookRandomizer --> HookDropManager : coordinates drops
+```
 
 Speer systeem door delysha
 
@@ -374,5 +418,9 @@ class PlayersHealth {
     - Image[] heartsAliveImages
     - Image[] heartsDeadImages
     + AddHeart()
+    + RemoveHeart()
 }
+
+BaitSpawner --> Bait : spawns
+Bait --> PlayersHealth : calls AddHeart()
 ```
