@@ -438,7 +438,7 @@ class PlayersHealth {
 BaitSpawner --> Bait : spawns
 Bait --> PlayersHealth : calls AddHeart()
 ```
-** Hook Fix **
+**Hook Fix**
 
 De Hook Fix is gemaakt op basis van feedback die is ontvangen tijdens de playtest. De snelheid en hoe random de haaken naar beneden komen is nu aangepast. Er zijn ook kleine developerfixes gemaakt.
 
