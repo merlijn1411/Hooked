@@ -514,6 +514,7 @@ HookRandomizer --> HookWarningIndecator : controls warning
 
 ```
 **Sound Design**
+
 Het Sound Design brengt geluiden en muziek naar Hooked. Geluiden zoals:
 * Buttons
 * Bubbelstream
