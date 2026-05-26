@@ -313,6 +313,7 @@ De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar b
 daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
 zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
 
+![VS Hook Randomizer](readme-assets/VisualsheetsHookRandomizer.png)
 ![HookRandomizer](readme-assets/hooks.gif)
 
 ```mermaid
@@ -367,6 +368,7 @@ De speer is een dynamisch obstakel dat in een vaste cyclus beweegt en de speler 
 De speer verschijnt vanuit verschillende richtingen en voert een aanvalspatroon uit waarbij hij eerst kort zichtbaar wordt, 
 daarna volledig aanvalt en vervolgens weer verdwijnt.
 
+![VS Spear Randomizer](readme-assets/visualsheetSpearRandomizer.png)
 ![SpearRandomizer](readme-assets/spear.gif)
 
 ```mermaid
@@ -409,7 +411,9 @@ In tegenstelling tot obstakels zoals speren,
 helpt de bait de speler juist door extra health te geven bij aanraking. 
 De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
 
+![VS Bait](readme-assets/visualsheetbait.png)
 ![BaitSystem](readme-assets/bait.gif)
+![VS Bait](readme-assets/visualsheetBaitSpawner.png)
 
 ```mermaid
 classDiagram
