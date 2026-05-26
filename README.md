@@ -411,7 +411,7 @@ In tegenstelling tot obstakels zoals speren,
 helpt de bait de speler juist door extra health te geven bij aanraking. 
 De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
 
-![VS Bait](readme-assets/visualsheetBait.png)
+![VS Bait](readme-assets/visualsheetbait.png)
 ![BaitSystem](readme-assets/bait.gif)
 
 ```mermaid
