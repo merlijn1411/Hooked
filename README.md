@@ -176,6 +176,7 @@ Door gebruik te maken van deze structuur wordt de input losgekoppeld van specifi
 
 
 ![Lobby input](readme-assets/LobbyInput-Hooked.gif)
+![Lobby input](readme-assets/visualsheet%20lobbymenu.png)
 
 
 De lobby is de wachtruimte waarin spelers samenkomen voordat de game start. Wanneer spelers verbinding maken met de game via de QR-code, worden zij toegevoegd aan de lobby.
