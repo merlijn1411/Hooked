@@ -33,12 +33,21 @@ Het GameConcept moet:
 
 Merlijn:
 * Player Movement
-* QR code 
+* Team Movement
+* QR code
+* Save System
+* Snap Mechanic
+* Hook rotation Randomizer
+* Node.exe file
+* Automatic Server Startup
+
 
 Delysha:
 * Hook System
 * WarningIndecator
 * HookDrop
+* Spear System
+* Bait System
 
 Davey:
 * Player Input
@@ -53,6 +62,8 @@ Luuk:
 * DayNightCycle
 * HookedTouchedEffect
 * Snoekbaars
+* Hook Fix
+* Sound Design
 
 Tirza: 
 * startscherm
@@ -77,6 +88,7 @@ Vincent:
 De Day & Night Cycle bepaalt de duur van een level. Tijdens het spelen loopt er een timer die een volledige dag voorstelt.
 Een visuele balk laat zien hoeveel tijd er nog over is. Deze balk loopt geleidelijk leeg en verandert van kleur van geel naar blauw, zodat de speler duidelijke feedback krijgt over de resterende tijd.
 Wanneer de timer is afgelopen, is de dag voltooid en hebben de spelers het level gewonnen.
+![VS DayNight](readme-assets/VS%20Day&Night%20Cycle.png)
 ![DayNightCycle](readme-assets/Day&NightCycle.gif)
 ```mermaid
 classDiagram
@@ -99,6 +111,7 @@ class DayNightCycle {
 
 Het Health Systeem houdt bij hoeveel levens de spelers nog hebben tijdens een level. Wanneer een speler schade oploopt, wordt het aantal levens verminderd.
 De resterende levens worden visueel weergegeven in de UI, zodat spelers altijd kunnen zien hoeveel health er nog over is. Op dit moment wordt hiervoor tijdelijke art gebruikt, die later vervangen kan worden door definitieve visuals.
+![VS Health](readme-assets/VS%20Health%20System.png)
 ![Health-System](readme-assets/HealthSystem.gif)
 ```mermaid
 classDiagram
@@ -182,7 +195,7 @@ Wanneer een speler de lobby verlaat, wordt deze automatisch verwijderd uit de sp
 
 Het Hook Touch Effect zorgt ervoor dat wanneer een speler een haak raakt, er een particle effect wordt afgespeeld en het team een leven verliest. Dit systeem geeft directe visuele feedback bij schade en is gekoppeld aan het health systeem, zodat spelers worden gestraft voor het raken van obstakels.
 
-
+![VS HookTouch](readme-assets/VS%20Hook%20Touch%20Effect.png)
 ![Hook Touch Effect](readme-assets/HookTouchEffect.gif)
 
 
@@ -210,6 +223,7 @@ HookTouchEffect --> ParticleSystem : spawns effect
 De Snoekbaars komt vanaf de linker- of rechterkant van het scherm en probeert de spelers (vissen) te raken.
 Voordat de snoekbaars verschijnt, wordt er een visuele waarschuwing gegeven. Kleine vissen zwemmen snel weg vanaf de kant waar de snoekbaars vandaan zal komen. Hierdoor weten spelers dat er gevaar aankomt en hebben ze kort de tijd om te reageren.
 Wanneer de snoekbaars over het scherm beweegt, moeten spelers hem ontwijken. Als een speler geraakt wordt, verliest het team een leven.
+![VS Snoekbaar](readme-assets/VS%20Snoekbaar.png)
 ![Snoekbaars](readme-assets/snoekbaars-showcase.gif)
 
 ```mermaid
@@ -258,10 +272,11 @@ SpawnSnoekbaar --> PlayersHealth : uses
 Snoekbaar --> SpawnSnoekbaar : reads SpawnLeft
 ```
 
-## Bubbel stream door Luuk
+**Bubbel stream door Luuk**
 
 De bubbel stream is een nieuw obstakel in de game. In tegenstelling tot andere obstakels veroorzaakt deze geen damage, maar duwt hij de speler omhoog wanneer je erin terechtkomt.
 Dit kan ervoor zorgen dat spelers de controle over hun beweging verliezen en uit positie raken.
+![VS BubbelStream](readme-assets/VS%20BubbelStream.png)
 ![Bubble Stream](readme-assets/bubbelstream-showcase.gif)
 
 ```mermaid
@@ -291,3 +306,257 @@ BubbelStreamTimer --> BubbelStreamSpawner : calls spawn
 BubbelStreamSpawner --> BubbelStream : instantiates
 BubbelStream --> Rigidbody2D : applies upward force
 ```
+
+## HookRandomizer door delysha
+De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar beneden en boven gaan op random speed capacities. 
+daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
+zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
+
+![HookRandomizer](readme-assets/hooks.gif)
+
+```mermaid
+classDiagram
+class HookRandomizer {
+    - float minSpeed
+    - float maxSpeed
+    - float minY
+    - float maxY
+    - float warningDuration
+    - float horizontalRange
+    - float horizontalSpeedMin
+    - float horizontalSpeedMax
+    - float minRandomDropDelay
+    - float maxRandomDropDelay
+
+    - float _verticalSpeed
+    - float _verticalDirection
+    - Vector3 _startPos
+    - Vector3 _horizontalTarget
+    - float _horizontalSpeed
+    - bool _isWaiting
+    - bool _isDropping
+
+    - HookWarningIndecator _warning
+
+    + Start()
+    + Update()
+    - Move()
+    - HookRandomFacing()
+    - DropRoutine()
+    - ChooseNewHorizontalTarget()
+}
+
+class HookWarningIndecator {
+    + RefreshIndicatorAt(float x)
+    + ShowWarning(float duration)
+}
+
+class HookDropManager {
+    + RequestDrop()
+    + DropFinished()
+}
+
+HookRandomizer --> HookWarningIndecator : shows warning
+HookRandomizer --> HookDropManager : coordinates drops
+```
+
+Speer systeem door delysha
+
+De speer is een dynamisch obstakel dat in een vaste cyclus beweegt en de speler dwingt om te reageren. 
+De speer verschijnt vanuit verschillende richtingen en voert een aanvalspatroon uit waarbij hij eerst kort zichtbaar wordt, 
+daarna volledig aanvalt en vervolgens weer verdwijnt.
+
+![SpearRandomizer](readme-assets/spear.gif)
+
+```mermaid
+classDiagram
+class SpearRandomizer {
+    - SpearData leftToRight
+    - SpearData rightToLeft
+    - float downSpeed
+    - float upSpeed
+    - float peekTime
+    - float waitTime
+    - float delayBetweenSpawns
+    - float startDelay
+    - AudioClip SpearSound
+    + Start()
+    - RunLoop()
+    - HandleSpear()
+    - MoveTo(Vector2 target)
+    - StopMovement()
+}
+
+class SpearData {
+    - GameObject Prefab
+    - Transform Top
+    - Transform BottomTarget
+    - float RotationZ
+}
+
+class Rigidbody2D
+
+SpearRandomizer --> SpearData : uses
+SpearRandomizer --> Rigidbody2D : controls movement
+SpearRandomizer --> AudioClip : plays sound
+```
+
+Bait systeem door delysha
+
+De bait is een positieve pickup in de game. 
+In tegenstelling tot obstakels zoals speren, 
+helpt de bait de speler juist door extra health te geven bij aanraking. 
+De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
+
+![BaitSystem](readme-assets/bait.gif)
+
+```mermaid
+classDiagram
+class BaitSpawner {
+    - GameObject baitPrefab
+    - PlayersHealth playersHealth
+    - float spawnDelay
+    - float minX
+    - float maxX
+    - float spawnY
+    + Start()
+    - SpawnRoutine()
+    - SpawnBait()
+}
+
+class Bait {
+    - float fallSpeed
+    - float destroyY
+    - PlayersHealth _playersHealth
+    + SetHealth(PlayersHealth health)
+    + Update()
+    + OnTriggerEnter2D(Collider2D other)
+}
+
+class PlayersHealth {
+    - int hearts
+    - Image[] heartsAliveImages
+    - Image[] heartsDeadImages
+    + AddHeart()
+    + RemoveHeart()
+}
+
+BaitSpawner --> Bait : spawns
+Bait --> PlayersHealth : calls AddHeart()
+```
+**Hook Fix door Luuk**
+
+De Hook Fix is gemaakt op basis van feedback die is ontvangen tijdens de playtest. De snelheid en hoe random de haaken naar beneden komen is nu aangepast. Er zijn ook kleine developerfixes gemaakt.
+
+```mermaid
+
+classDiagram
+class SpawnHook {
+    - GameObject[] startingPoints
+    - GameObject hook
+    - Start()
+}
+
+class HookLine {
+    - GameObject linePrefab
+    - Transform hookTop
+    - Transform lineStart
+    - GameObject _lineInstance
+    - Transform _lineTransform
+    - SpriteRenderer _lineRenderer
+    - float _lineWidth
+
+    - Start()
+    - Update()
+    + SetLineStart(Transform startPoint)
+    - UpdateLine()
+}
+
+class HookRandomizer {
+    - float minSpeed
+    - float maxSpeed
+    - float minY
+    - float maxY
+    - float warningDuration
+    - float horizontalRange
+    - float horizontalSpeedMin
+    - float horizontalSpeedMax
+    - float minRandomDropDelay
+    - float maxRandomDropDelay
+
+    - float _verticalSpeed
+    - float _verticalDirection
+    - Vector3 _startPos
+    - Vector3 _horizontalTarget
+    - float _horizontalSpeed
+    - bool _isWaiting
+    - bool _isDropping
+    - HookWarningIndecator _warning
+
+    - Start()
+    - Update()
+    - HookRandomFacing()
+    - Move()
+    - DropRoutine()
+    - ChooseNewHorizontalTarget()
+}
+
+class HookDropManager {
+    + Instance
+    + RequestDrop()
+    + DropFinished()
+}
+
+class HookWarningIndecator {
+    + RefreshIndicatorAt(float x)
+    + ShowWarning(float duration)
+}
+
+SpawnHook --> HookLine : sets line start
+SpawnHook --> HookRandomizer : instantiates hook
+HookLine --> SpriteRenderer : updates line
+HookRandomizer --> HookDropManager : requests drop
+HookRandomizer --> HookWarningIndecator : controls warning
+
+```
+**Sound Design**
+
+Het Sound Design brengt geluiden en muziek naar Hooked. Geluiden zoals:
+* Buttons
+* Bubbelstream
+* Speer
+* Snoekbaars
+* Muziek voor alle levels
+
+```mermaid
+
+classDiagram
+class SoundManager {
+    + Instance
+    - AudioSource soundFXObject
+
+    - Awake()
+    + PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+}
+
+class AudioSource {
+    + clip
+    + volume
+    + Play()
+}
+
+class AudioClip
+class Transform
+
+SoundManager --> AudioSource : instantiates
+SoundManager --> AudioClip : plays clip
+SoundManager --> Transform : uses position
+
+```
+## Player & Team Movement gemaakt door Merlijn
+Player Movement. Na dat je de Input hebt gegeven vanaf je telefoon met de joystick geeft die het door aan de PlayerMovement.cs. Dan kan je bewegen door de hele scene. Omdat je in een plastic zak zit moet je je kunnen navigeren daarin.
+
+Team Movement. Het is mogelijk om in je eentje 1 kant op te bewegen maar, het is dan niet mogelijk om alle obstakels op tijd te vermijden. Hoe je dat wel doet is dat samen. Door samen dezelfde kant op te bewegen ga je veel sneller en dan is het wel mogelijk om de obstakels te ontwijken.
+![PlayerMovement Visual Sheet](readme-assets/Visual-Sheets/PlayerMovement.jpg)
+
+![teamMovement](readme-assets/Visual-Sheets/TeamMovement.jpg)
