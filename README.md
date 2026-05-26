@@ -413,6 +413,7 @@ De bait valt vanaf boven naar beneden en verdwijnt als deze niet wordt opgepakt.
 
 ![VS Bait](readme-assets/visualsheetbait.png)
 ![BaitSystem](readme-assets/bait.gif)
+![VS Bait](readme-assets/visualsheetBaitSpawner.png)
 
 ```mermaid
 classDiagram
