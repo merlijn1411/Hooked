@@ -153,7 +153,7 @@ WinEvent --> WinListener : triggers event
 **Player input door Davey en merlijn**
 
 
-![Player input](readme-assets/)
+![Player input](readme-assets/visualsheet%202.png)
 
 
 Het Player Input systeem regelt hoe input van spelers vanaf hun telefoon wordt ontvangen, verwerkt en toegepast binnen de Unity game. Dit systeem maakt gebruik van een client-server architectuur waarbij input via een server wordt doorgestuurd naar de game.
@@ -176,6 +176,7 @@ Door gebruik te maken van deze structuur wordt de input losgekoppeld van specifi
 
 
 ![Lobby input](readme-assets/LobbyInput-Hooked.gif)
+![Lobby input](readme-assets/visualsheet%20lobbymenu.png)
 
 
 De lobby is de wachtruimte waarin spelers samenkomen voordat de game start. Wanneer spelers verbinding maken met de game via de QR-code, worden zij toegevoegd aan de lobby.
