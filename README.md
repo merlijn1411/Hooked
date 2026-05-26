@@ -313,7 +313,7 @@ De hookRandomizer is gemaakt om er voor te zorgen dat de haken in de game naar b
 daarbij is het ook om er voor te zorgen dat de haken zelf bepalen waar ze naar beneden vallen door te kiezen tussen links en rechts, 
 zodat je als speler elke keer de haken op een andere plek moet ontwijken en je niet steeds het zelfde patroon hebt. waardoor het voor de speler heel gaotish lijkt wat de bedoeling is van de game. 
 
-![VS Hook Randomizer](readme-assets/VisualSheetHookRandomizer.png)
+![VS Hook Randomizer](readme-assets/VisualsheetsHookRandomizer.png)
 ![HookRandomizer](readme-assets/hooks.gif)
 
 ```mermaid
