@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,24 +48,22 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void LoadScene()
     {
+        Debug.Log("ladennn");
         PlayTransitionIn();
     }
     
     
     private void PlayTransitionIn()
     {
-        Debug.Log("cheese");
+        _animator.Update(0f);
         _animator.Play("TransitionIn", 0, 0f);
-        
     }
 
     private void PlayTransitionOut()
     {
-        if (!_enterGame) return;
+     
         _animator.Update(0f);
-
         _animator.Play("TransitionOut", 0, .35f);
-        
         
     }
     
