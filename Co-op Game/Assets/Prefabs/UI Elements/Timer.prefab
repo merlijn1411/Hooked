@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4661030887693688665, guid: 199f3505356d9ac4e9f7e9dd4ecf53f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 199f3505356d9ac4e9f7e9dd4ecf53f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayNightCycle
   cycleDuration: 120
   filledImage: {fileID: 7359559016226498388}
+  winLoseAnimator: {fileID: 0}
+  winEvent: {fileID: 0}
 --- !u!1 &8337637431674875483
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ RectTransform:
   m_GameObject: {fileID: 8337637431674875483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 816193941322733263}
@@ -201,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3.7}
   m_SizeDelta: {x: 44.2984, y: 42.6096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4401184691781127719

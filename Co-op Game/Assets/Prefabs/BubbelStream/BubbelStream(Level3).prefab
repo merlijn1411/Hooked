@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 576004657266059069}
   - component: {fileID: 2177211811378260118}
   m_Layer: 0
-  m_Name: BubbelStream
+  m_Name: BubbelStream(Level3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffeb5f60c76bdb4c82f24f2de5769ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbelStream
-  bubbleForce: 10
+  bubbleForce: 18
   DestroyStreamTime: 15
 --- !u!1001 &3526255794973914375
 PrefabInstance:

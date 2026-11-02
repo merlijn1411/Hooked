@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbelStreamSpawner
   bubbelStream: {fileID: 7075847392012435147, guid: d0eb8c614ba6d8446873034802bfa51a, type: 3}
+  bubbelsSounds: {fileID: 8300000, guid: 1efc1c10398723648836c31707fb6c49, type: 3}
 --- !u!114 &4896007124863699410
 MonoBehaviour:
   m_ObjectHideFlags: 0

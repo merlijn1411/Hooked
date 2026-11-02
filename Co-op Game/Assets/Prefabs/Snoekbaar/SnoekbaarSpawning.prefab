@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b7048e323c3704bb4ffdce910abab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSnoekbaar
-  SpawnLeft: 0
   snoekbaar: {fileID: 3597179486655943289, guid: 61b5bf08e06d490448a309acc6ba0c2e, type: 3}
   hookTouchEffect: {fileID: 0}
+  snoekbaarIncomming: {fileID: 8300000, guid: 4a830c6a1b15bd24fbb9b8b9ce63d11e, type: 3}
 --- !u!114 &3598728185426289504
 MonoBehaviour:
   m_ObjectHideFlags: 0
