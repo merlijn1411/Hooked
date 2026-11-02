@@ -48,7 +48,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void LoadScene()
     {
-        Debug.Log("ladennn");
         PlayTransitionIn();
     }
     
@@ -61,7 +60,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void PlayTransitionOut()
     {
-     
+        if (!_enterGame) return; 
         _animator.Update(0f);
         _animator.Play("TransitionOut", 0, .35f);
         
