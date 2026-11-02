@@ -1606,6 +1606,10 @@ PrefabInstance:
       propertyPath: loseAnimator
       value: 
       objectReference: {fileID: 1742636211}
+    - target: {fileID: 7226540192237718818, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
+      propertyPath: hookDamageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
     - target: {fileID: 7837651537208968100, guid: e9b7423227a4dd74ab441aeae8b1a5bb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
