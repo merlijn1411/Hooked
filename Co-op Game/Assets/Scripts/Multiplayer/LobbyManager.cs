@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
+    public static LobbyManager Instance { get; private set; }
+    
     private Dictionary<string, bool> _readyStates = new Dictionary<string, bool>();
 
     [Header("Player Slots (Images)")]
@@ -13,7 +16,12 @@ public class LobbyManager : MonoBehaviour
     public List<string> players = new List<string>();
 
     [Header("UI Elements")]
-    public Button startGameButton;
+    [SerializeField] private Button startGameButton;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -22,10 +30,31 @@ public class LobbyManager : MonoBehaviour
             startGameButton.interactable = false;
         }
         
+        LoadSavedPlayers();
         UpdateUI();
     }
 
-    public void PlayerJoined(string playerId)
+    private void LoadSavedPlayers()
+    {
+        if (FileManager.Instance == null) return;
+
+        var data = FileManager.Instance.Load();
+        if (data != null && data.PlayerInfo != null)
+        {
+            foreach (var playerFile in data.PlayerInfo)
+            {
+                string playerId = playerFile.Value.ID;
+                
+                if (!players.Contains(playerId))
+                {
+                    players.Add(playerId);
+                    _readyStates[playerId] = false; 
+                }
+            }
+        }
+    }
+
+    public void PlayerJoined(string playerId, int playerIndex)
     {
         if (players.Contains(playerId))
         {
@@ -40,6 +69,13 @@ public class LobbyManager : MonoBehaviour
             CheckAllReady();
             return; 
         }
+        
+        FileManager.Instance.WritePlayer(playerIndex, new ExternalVariables
+        {
+            ID = playerId,
+            Index = playerIndex
+        });
+
 
         if (players.Count >= 4) return;
 
@@ -78,15 +114,11 @@ public class LobbyManager : MonoBehaviour
                 PlayerImages[i].gameObject.SetActive(true);
 
                 Color imgColor = PlayerImages[i].color;
+
+                var readyALpha = isReady ? 1.0f : 0.5f;
                 
-                if (isReady)
-                {
-                    imgColor.a = 1.0f;
-                }
-                else
-                {
-                    imgColor.a = 0.5f;
-                }
+                imgColor.a = readyALpha;
+               
                 
                 PlayerImages[i].color = imgColor;
             }
@@ -99,7 +131,7 @@ public class LobbyManager : MonoBehaviour
 
     public void HandleInput(string playerId, string action)
     {
-        if (action == "B")
+        if (action == "A")
         {
             ToggleReady(playerId);
         }
@@ -145,10 +177,10 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(ChangeScene());
+        StartCoroutine(StartScene());
     }
 
-    private IEnumerator ChangeScene()
+    public IEnumerator StartScene()
     {
         if (startGameButton != null && !startGameButton.interactable) yield return null;
         
@@ -159,10 +191,8 @@ public class LobbyManager : MonoBehaviour
         }
         
         SceneTransitionManager.Instance.LoadScene();
-
-        var duration = SceneTransitionManager.Instance.transitionInDuration;
-        yield return new WaitForSeconds(duration);
-
+        
+        yield return new WaitForSeconds(SceneTransitionManager.Instance.transitionInDuration);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 }

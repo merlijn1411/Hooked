@@ -7703,7 +7703,7 @@ ScriptedImporter:
   documentAlignment: 7
   importHiddenLayers: 0
   layerMappingOption: 2
-  generatePhysicsShape: 0
+  generatePhysicsShape: 1
   paperDollMode: 0
   keepDupilcateSpriteName: 1
   generateTileAssets: 0

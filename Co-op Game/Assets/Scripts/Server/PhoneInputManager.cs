@@ -7,6 +7,8 @@ using System.Linq;
 
 public class PhoneInputManager : MonoBehaviour
 {
+    public LobbyManager lobbyManager;
+    
     [Header("Debug Settings")]
     [SerializeField] private bool enableDebugLogs = true;
 
@@ -16,7 +18,7 @@ public class PhoneInputManager : MonoBehaviour
     private ConcurrentQueue<string> _messageQueue = new ConcurrentQueue<string>();
     
     private PlayerManager _playerManager;
-    public LobbyManager lobbyManager;
+    private int _playerCounter = -1;
 
     public string ServerURL { get; private set; }
 
@@ -87,7 +89,8 @@ public class PhoneInputManager : MonoBehaviour
                 
                 if (lobbyManager != null)
                 {
-                    lobbyManager.PlayerJoined(msg.playerId);
+                    _playerCounter += 1;
+                    lobbyManager.PlayerJoined(msg.playerId, _playerCounter);
                 }
             }
             else if (msg.type == "player_left" || msg.type == "disconnect")
@@ -97,6 +100,7 @@ public class PhoneInputManager : MonoBehaviour
 
                 if (lobbyManager != null)
                 {
+                    _playerCounter -= 1;
                     lobbyManager.PlayerLeft(msg.playerId);
                 }
 

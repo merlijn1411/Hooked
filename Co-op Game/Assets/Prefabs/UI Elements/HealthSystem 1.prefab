@@ -525,6 +525,9 @@ MonoBehaviour:
   - {fileID: 9066337446877912259}
   damage: 1
   hearts: 3
+  invincibilityDuration: 1.5
+  hookDamageClip: {fileID: 8300000, guid: ebcbba89ad0913f4a8aeacabce3a97ff, type: 3}
+  loseAnimator: {fileID: 0}
 --- !u!225 &2705236222193832595
 CanvasGroup:
   m_ObjectHideFlags: 0

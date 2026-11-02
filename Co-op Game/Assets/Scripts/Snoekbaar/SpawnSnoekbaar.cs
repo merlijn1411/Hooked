@@ -10,6 +10,9 @@ public class SpawnSnoekbaar : MonoBehaviour
     [Header("Hook Touch Effect")]
     [SerializeField] private PlayersHealth hookTouchEffect;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip snoekbaarIncomming;
+
     public void SpawningSnoekbaar()
     {
         Camera cam = Camera.main;
@@ -22,6 +25,7 @@ public class SpawnSnoekbaar : MonoBehaviour
         Vector3 viewportPos = new Vector3(x, y, cam.nearClipPlane);
         Vector3 worldPos = cam.ViewportToWorldPoint(viewportPos);
 
+        SoundManager.Instance.PlaySoundFXClip(snoekbaarIncomming, transform, 1f);
         var snoek = Instantiate(snoekbaar, worldPos, Quaternion.identity);
         var snoekScript = snoek.GetComponent<Snoekbaar>();
         var snoekHealth = snoek.GetComponent<HookTouchEffect>();
