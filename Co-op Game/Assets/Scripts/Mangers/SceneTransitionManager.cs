@@ -6,13 +6,13 @@ public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance;
     public float transitionInDuration;
-    
-    [SerializeField] private List<GameObject> parentHolders;
 
-    private readonly List<Animator> _animators = new();
+    private static bool _enterGame = false;
+    private Animator _animator = new();
 
     private void Awake()
     {
+        
         if (Instance == null)
         {
             Instance = this;
@@ -38,21 +38,13 @@ public class SceneTransitionManager : MonoBehaviour
     private void Start()
     {
         InitializeAnimators();
+        _enterGame = true;
     }
     
     private void InitializeAnimators()
     {
-        _animators.Clear();
-
-        foreach (var holder in parentHolders)
-        {
-            var childAnimators = holder.GetComponentsInChildren<Animator>();
-
-            foreach (var animator in childAnimators)
-            {
-                _animators.Add(animator);
-            }
-        }
+        _animator = GetComponentInChildren<Animator>();
+        Debug.Log(_animator);
     }
 
     public void LoadScene()
@@ -63,21 +55,18 @@ public class SceneTransitionManager : MonoBehaviour
     
     private void PlayTransitionIn()
     {
-        foreach (var animator in _animators)
-        {
-            animator.Play("TransitionIn", 0, 0f);
-        }
+        Debug.Log("cheese");
+        _animator.Play("TransitionIn", 0, 0f);
+        
     }
 
     private void PlayTransitionOut()
     {
-        foreach (var animator in _animators)
-        {
-            animator.Rebind();
-            animator.Update(0f);
+        if (!_enterGame) return;
+        _animator.Update(0f);
 
-            animator.Play("TransitionOut", 0, .35f);
-        }
+        _animator.Play("TransitionOut", 0, .35f);
+        
         
     }
     
