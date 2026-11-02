@@ -11,7 +11,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void Awake()
     {
-        
         if (Instance == null)
         {
             Instance = this;
@@ -43,7 +42,6 @@ public class SceneTransitionManager : MonoBehaviour
     private void InitializeAnimators()
     {
         _animator = GetComponentInChildren<Animator>();
-        Debug.Log(_animator);
     }
 
     public void LoadScene()
@@ -62,7 +60,7 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (!_enterGame) return; 
         _animator.Update(0f);
-        _animator.Play("TransitionOut", 0, .35f);
+        _animator.Play("TransitionOut", 0, .45f);
         
     }
     
